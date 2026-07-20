@@ -32,13 +32,14 @@ export default function ProsopocracyPage() {
       <header className="masthead">
         <div className="wrap mastheadInner">
           <div className="wordmark">
-            <b>PROSOPOCRACY</b>
+            <b>PROSOPOCRACY</b> &middot; ΠΡΟΣΩΠΟΚΡΑΤΙΑ
           </div>
           <nav className="nav">
             <a href="#etymology">Etymology</a>
             <a href="#definition">Definition</a>
             <a href="#beyond">Beyond Democracy</a>
             <a href="#rota">ROTA</a>
+            <a href="/el">Ελληνικά</a>
           </nav>
         </div>
       </header>
