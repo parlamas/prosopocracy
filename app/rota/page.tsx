@@ -3,6 +3,7 @@
 
 import { useEffect, useRef } from 'react';
 import '../styles.css';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 export default function RotaPage() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -40,6 +41,7 @@ export default function RotaPage() {
             <a href="#precedent">Precedent</a>
             <a href="#rotation">How It Works</a>
             <a href="#fund">Support</a>
+            <LanguageSwitcher current="en" />
           </nav>
         </div>
       </header>
