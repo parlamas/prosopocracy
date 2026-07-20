@@ -3,7 +3,7 @@
 
 import { useEffect, useRef } from 'react';
 import '../../styles.css';
-import LanguageSwitcher from '../../components/LanguageSwitcher';
+import LanguageSwitcher from '../../../components/LanguageSwitcher';
 
 export default function RotaPageGreek() {
   const rootRef = useRef<HTMLDivElement>(null);
