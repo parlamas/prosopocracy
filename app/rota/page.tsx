@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import '../../styles.css';
+import '../styles.css';
 
 export default function RotaPageGreek() {
   const rootRef = useRef<HTMLDivElement>(null);
