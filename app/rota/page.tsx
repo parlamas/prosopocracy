@@ -1,10 +1,10 @@
-// app/el/rota/page.tsx
+// app/rota/page.tsx
 'use client';
 
 import { useEffect, useRef } from 'react';
-import '../../styles.css';
+import '../styles.css';
 
-export default function RotaPageGreek() {
+export default function RotaPage() {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,43 +28,41 @@ export default function RotaPageGreek() {
   }, []);
 
   return (
-    <div className="prosopoRoot" ref={rootRef} lang="el">
+    <div className="prosopoRoot" ref={rootRef}>
       <header className="masthead">
         <div className="wrap mastheadInner">
           <div className="wordmark">
-            <b>ROTA</b> &middot; Έργο Πολιτικής Παιδείας
+            <b>ROTA</b> &middot; A Civic Education Project
           </div>
           <nav className="nav">
-            <a href="/el">&larr; Προσωποκρατία</a>
-            <a href="#argument">Επιχείρημα</a>
-            <a href="#precedent">Προηγούμενο</a>
-            <a href="#rotation">Πώς Λειτουργεί</a>
-            <a href="#fund">Υποστήριξη</a>
+            <a href="/">&larr; Prosopocracy</a>
+            <a href="#argument">Argument</a>
+            <a href="#precedent">Precedent</a>
+            <a href="#rotation">How It Works</a>
+            <a href="#fund">Support</a>
           </nav>
         </div>
       </header>
 
       <section className="hero">
         <div className="wrap">
-          <div className="eyebrow">Μια ιδέα παλαιότερη από τις εκλογές</div>
-          <h1 className="thesis">Εξουσία, όχι άδεια.</h1>
+          <div className="eyebrow">An idea older than elections</div>
+          <h1 className="thesis">Power, not permission.</h1>
           <p className="lede">
-            Οταν η εξουσία ανατίθεται σε άγνωστους μέσω εκλογών, δεν έχουμε δημοκρατία —
-            έχουμε μόνο κυβερνήσεις που δανείζονται το όνομα <i>δημοκρατία</i>. Χτίζουμε την
-            επιχειρηματολογία για την αληθινή δημοκρατία: διακυβέρνηση με εκ περιτροπής
-            συμμετοχή με αλφαβητική σειρά, όπου κάθε πολίτης αναλαμβάνει τις ευθύνες του, και
-            κανείς δεν κρατά την εξουσία αρκετά καιρό ώστε να διαφθαρεί. Για παράγειγμα και
-            ανάλογα με τα δημογραφικά:
+            There is no democracy where power is delegated to elected officials for years
+            at a time &mdash; only governments that borrow the name. We&apos;re building the
+            case for the real thing: government by rotation, where every citizen takes their
+            turn, and no one holds power long enough for it to corrupt them.
           </p>
           <div className="heroMeta">
             <div>
-              <strong>2 εβδομάδες</strong>στο δημοτικό συμβούλιο, ανά πολίτη, ανά έτος
+              <strong>2 weeks</strong>on city council, per citizen, per year
             </div>
             <div>
-              <strong>2 εβδομάδες</strong>στην αστυνόμευση, ανά πολίτη, ανά έτος
+              <strong>2 weeks</strong>in law enforcement, per citizen, per year
             </div>
             <div>
-              <strong>2 εβδομάδες</strong>ως δικαστής ή ένορκος, ανά πολίτη, ανά έτος
+              <strong>2 weeks</strong>as judge or juror, per citizen, per year
             </div>
           </div>
         </div>
@@ -72,67 +70,66 @@ export default function RotaPageGreek() {
 
       <section id="argument" className="section">
         <div className="wrap">
-          <div className="sectionLabel">Το Επιχείρημα</div>
-          <h2 className="sectionTitle">Γιατί εκ περιτροπής, και όχι εκλογή</h2>
+          <div className="sectionLabel">The Argument</div>
+          <h2 className="sectionTitle">Why rotation, not election</h2>
           <p className="sectionIntro">
-            Η ψήφος αποφασίζει ποιός σας κυβερνά. Επειδή ψηφίζετε δεν σημαίνει ότι κυβερνάτε
-            τον εαυτό σας. Η εκ περιτροπής άσκηση εξουσίας στηρίζεται σε πέντε ισχυρισμούς
-            όπου φαίνεται καθαρά ότι εκλογές και αυτοδιακυβέρνηση δεν είναι το ίδιο πράγμα.
+            Voting decides who governs you. It has never, by itself, meant you govern
+            yourself. The case for rotation rests on five claims &mdash; each one a reason
+            elections and self-rule aren&apos;t the same thing.
           </p>
 
           <div className="ledger reveal">
             <div className="ledgerRow">
-              <div className="ledgerMark">Ισχυρισμός 1</div>
+              <div className="ledgerMark">Claim 1</div>
               <div>
-                <h3>Η μόνιμη εξουσία και η δημοκρατία δεν συνάδουν και αλληλοαποκλείονται.</h3>
+                <h3>Permanent power and democracy are mutually exclusive.</h3>
                 <p>
-                  Αν κάποιος κρατά την εξουσία επ&apos; αόριστον — ή ακόμη και για σταθερή
-                  πολυετή θητεία — οι πολίτες δεν κυβερνούν. Κυβερνώνται έως τις επόμενες
-                  εκλογές.
+                  If someone holds power indefinitely &mdash; or even for a fixed multi-year
+                  term &mdash; citizens aren&apos;t ruling. They&apos;re being ruled, with a
+                  review period attached.
                 </p>
               </div>
             </div>
             <div className="ledgerRow">
-              <div className="ledgerMark">Ισχυρισμός 2</div>
+              <div className="ledgerMark">Claim 2</div>
               <div>
-                <h3>Η ανάθεση εξουσίας και η δημοκρατία δεν συνάδουν και αλληλοαποκλείονται.</h3>
+                <h3>Delegated power and democracy are mutually exclusive.</h3>
                 <p>
-                  Τη στιγμή που παραδίδετε την εξουσία σας σε άτομα που υποτίθεται ότι σας
-                  αντιπροσωπεύουν, δεν ασκείτε πλέον εξουσία. Εχετε εξουσιοδοτήσει άλλους να
-                  ασκούν εξουσια, κάτι το οποίο είναι τελέιως διαφορετικό.
+                  The instant you hand your power to a representative, it stops being your
+                  power in action. It becomes their judgment, exercised on your behalf
+                  &mdash; which is a different thing.
                 </p>
               </div>
             </div>
             <div className="ledgerRow">
-              <div className="ledgerMark">Ισχυρισμός 3</div>
+              <div className="ledgerMark">Claim 3</div>
               <div>
-                <h3>Η ψήφος επιλέγει κυβερνήτες. Δεν κάνει τους πολίτες κυβερνήτες.</h3>
+                <h3>Voting selects rulers. It doesn&apos;t make citizens rulers.</h3>
                 <p>
-                  Το να ψηφίζετε περιοδικά ποιός σας κυβερνά δεν είναι το ίδιο με το να
-                  ασκείτε εξουσία εσείς οι ίδιοι. Αλλο ψευδαίσθηση δημοκρατίας και άλλο
-                  αληθινή δημοκρατία.
+                  Choosing who governs you, periodically, is not the same exercise as
+                  governing. One is a consumer choice. The other is the thing democracy is
+                  supposed to mean.
                 </p>
               </div>
             </div>
             <div className="ledgerRow">
-              <div className="ledgerMark">Ισχυρισμός 4</div>
+              <div className="ledgerMark">Claim 4</div>
               <div>
-                <h3>Οι σύντομες θητείες αφαιρούν τον χρόνο που απαιτείται για να ριζώσει η διαφθορά.</h3>
+                <h3>Short terms remove the time corruption needs.</h3>
                 <p>
-                  Δίκτυα πελατειακών σχέσεων, σχέσεις με χορηγούς και κίνητρα σταδιοδρομίας
-                  χρειάζονται όλα χρόνο για να σχηματιστούν. Δύο εβδομάδες στην εξουσία δεν
-                  αρκούν για να χτιστεί κανένα από αυτά.
+                  Patronage networks, donor relationships, and career incentives all need
+                  time to form. Two weeks in office isn&apos;t long enough to build any of
+                  them.
                 </p>
               </div>
             </div>
             <div className="ledgerRow">
-              <div className="ledgerMark">Ισχυρισμός 5</div>
+              <div className="ledgerMark">Claim 5</div>
               <div>
-                <h3>Η εκ περιτροπής συμμετοχή είναι η πιο αποκεντρωμένη μορφή εξουσίας.</h3>
+                <h3>Rotation is as decentralized as power gets.</h3>
                 <p>
-                  Καμία μόνιμη τάξη υπευθύνων λήψης αποφάσεων. Κανείς επαγγελματίας
-                  πολιτικός. Καμία μόνιμη παραμονή στην εξουσία. Η εξουσία περνά μέσα από
-                  όλους, και προχωρά.
+                  No standing class of decision-makers. No professional politicians. No
+                  permanent incumbency. Power passes through everyone, then moves on.
                 </p>
               </div>
             </div>
@@ -142,34 +139,32 @@ export default function RotaPageGreek() {
 
       <section id="precedent" className="section">
         <div className="wrap">
-          <div className="sectionLabel">Η ιδέα δεν είναι νέα.</div>
-          <h2 className="sectionTitle">Έτσι ξεκίνησε το όραμα της δημοκρατίας</h2>
+          <div className="sectionLabel">Not a New Idea</div>
+          <h2 className="sectionTitle">This is how democracy began</h2>
           <div className="precedentGrid reveal">
             <div>
               <p>
-                Στην κλασική Αθήνα, τα περισσότερα δημόσια αξιώματα δεν κερδίζονταν με
-                εκλογή — αλλά με κλήρωση, από τη δεξαμενή των πολιτών με δικαίωμα
-                συμμετοχής. Η εκλογή αντιμετωπιζόταν με καχυποψία, και λάμβανε χώρα κυρίως
-                για τις λίγες θέσεις που απαιτούσαν εξειδικευμένη δεξιότητα, όπως η
-                στρατηγία.
+                In classical Athens, most public offices weren&apos;t won by election
+                &mdash; they were filled by lottery, drawn from the pool of eligible
+                citizens. Election was viewed with suspicion, reserved mainly for the few
+                roles requiring specialized skill, like generalship.
               </p>
               <p>
-                Η λογική ήταν άμεση: οι εκλογές τείνουν να ευνοούν τους πλούσιους, τους καλά
-                δισκτυομένους και τους επιτήδειους. Η κλήρωση δεν ευνοεί κανέναν. Εθεωρείτο
-                ο πιο δημοκρατικός μηχανισμός — η επιλογή με κλήρο είχε σκοπό να ασκούν
-                εξουσία οι πολίτες σε προσωπικό επίπεδο.
+                The reasoning was direct: elections tend to favor the wealthy, the
+                well-connected, and the persuasive. A lottery favors no one. It was
+                considered the more democratic mechanism &mdash; selection by lot was, in a
+                real sense, the original meaning of &quot;rule by the people.&quot;
               </p>
               <p>
-                Αυτή η παράδοση επανεμφανίζεται σήμερα στις πολιτειακές συνελεύσεις πολιτών
-                στην Ιρλανδία και τη Γαλλία, σε προτάσεις μεταρρύθμισης βασισμένες στην
-                κλήρωση παγκοσμίως, και σε ένα αυξανόμενο σώμα πολιτικής θεωρίας που
-                αμφισβητεί αν οι εκλογές ήταν ποτέ το καθοριστικό χαρακτηριστικό της
-                δημοκρατίας.
+                That tradition resurfaces today in citizens&apos; assemblies in Ireland and
+                France, in sortition-based reform proposals worldwide, and in a growing body
+                of political theory questioning whether elections were ever democracy&apos;s
+                defining feature at all.
               </p>
             </div>
             <div className="quoteBlock">
-              «Δήμος κράτος» — η εξουσία των πολιτών. Όχι η εξουσία να επιλέγεις ποιός
-              κυβερνά. Η ίδια η εξουσία, στα χέρια των πολιτών.
+              &quot;Demos kratos&quot; &mdash; the power of the people. Not the power to
+              choose who rules. The power, itself, in the people&apos;s hands.
             </div>
           </div>
         </div>
@@ -177,12 +172,12 @@ export default function RotaPageGreek() {
 
       <section id="rotation" className="section dialSection">
         <div className="wrap">
-          <div className="sectionLabel">Πώς Λειτουργεί</div>
-          <h2 className="sectionTitle">Ένας πολίτης, τρεις εκ περιτροπής θητείες, κάθε χρόνο</h2>
+          <div className="sectionLabel">How It Works</div>
+          <h2 className="sectionTitle">One citizen, three rotations, every year</h2>
           <p className="sectionIntro">
-            Κάθε ενήλικος πολίτης περνά από τη σειρά διαδοχικά — με αλφαβητική σειρά. Κανείς
-            δεν εξαιρείται λόγω θέσης. Κανείς δεν αναλαμβάνει την εξουσία πριν φθάσει η σειρά
-            του.
+            Every adult citizen moves through the rotation in sequence &mdash;
+            alphabetically, or by a transparent randomized order. No one is exempt by
+            status. No one repeats early.
           </p>
 
           <div className="dialWrap reveal">
@@ -191,7 +186,7 @@ export default function RotaPageGreek() {
               viewBox="0 0 320 320"
               xmlns="http://www.w3.org/2000/svg"
               role="img"
-              aria-label="Διάγραμμα που δείχνει τον χρόνο ενός πολίτη χωρισμένο σε τρεις εκ περιτροπής πολιτικές υποχρεώσεις και την καθημερινή ζωή"
+              aria-label="Diagram showing a citizen's year divided into three rotating civic duties and ordinary life"
             >
               <circle cx="160" cy="160" r="140" fill="none" stroke="#C9BD9D" strokeWidth="1" />
               <path
@@ -224,7 +219,7 @@ export default function RotaPageGreek() {
                 fill="#4B4E54"
                 letterSpacing="0.5"
               >
-                ΕΝΑΣ
+                ONE
               </text>
               <text
                 x="160"
@@ -235,36 +230,36 @@ export default function RotaPageGreek() {
                 fill="#4B4E54"
                 letterSpacing="0.5"
               >
-                ΠΟΛΙΤΗΣ
+                CITIZEN
               </text>
             </svg>
             <div className="dialLegend">
               <div className="dialLegendItem">
                 <div className="dialSwatch" style={{ background: '#DED4B9', border: '1px solid #C9BD9D' }} />
                 <div>
-                  <h4>Καθημερινή ζωή — το μεγαλύτερο μέρος του χρόνου</h4>
-                  <p>Δουλειά, οικογένεια, ανάπαυση. Η πολιτική υποχρέωση δεν είναι καριέρα.</p>
+                  <h4>Ordinary life &mdash; most of the year</h4>
+                  <p>Work, family, rest. Civic duty is a rotation through the calendar, not a career.</p>
                 </div>
               </div>
               <div className="dialLegendItem">
                 <div className="dialSwatch" style={{ background: '#2C3A55' }} />
                 <div>
-                  <h4>Δημοτικό συμβούλιο — 2 εβδομάδες</h4>
-                  <p>Τοπικές νομοθετικές και δημοσιονομικές αποφάσεις, λαμβανόμενες από όποιον είναι η σειρά του, όχι από όποιον έκανε την πιο σκληρή εκστρατεία.</p>
+                  <h4>City council &mdash; 2 weeks</h4>
+                  <p>Local legislative and budget decisions, made by whoever&apos;s turn it is, not by whoever campaigned hardest.</p>
                 </div>
               </div>
               <div className="dialLegendItem">
                 <div className="dialSwatch" style={{ background: '#4A5D52' }} />
                 <div>
-                  <h4>Αστυνόμευση — 2 εβδομάδες</h4>
-                  <p>Τα καθήκοντα κοινοτικής αστυνόμευσης εναλλάσσονται με τον ίδιο τρόπο, υπό τυποποιημένη εκπαίδευση που ολοκληρώνουν εκ των προτέρων όλοι οι πολίτες.</p>
+                  <h4>Law enforcement &mdash; 2 weeks</h4>
+                  <p>Community policing duties rotate the same way, under standardized training all citizens complete in advance.</p>
                 </div>
               </div>
               <div className="dialLegendItem">
                 <div className="dialSwatch" style={{ background: '#A9824E' }} />
                 <div>
-                  <h4>Δικαστής ή ένορκος — 2 εβδομάδες</h4>
-                  <p>Και το δικαστικό καθήκον εναλλάσσεται — επεκτείνοντας την αρχή της ενορκίας που είναι ήδη γνωστή σε πολλά νομικά συστήματα σήμερα.</p>
+                  <h4>Judge or juror &mdash; 2 weeks</h4>
+                  <p>Judicial duty rotates too &mdash; extending the jury principle already familiar in many legal systems today.</p>
                 </div>
               </div>
             </div>
@@ -274,36 +269,35 @@ export default function RotaPageGreek() {
 
       <section id="questions" className="section">
         <div className="wrap">
-          <div className="sectionLabel">Ανοιχτά Ερωτήματα</div>
-          <h2 className="sectionTitle">Τί δεν έχει λύσει ακόμη αυτή η ιδέα</h2>
+          <div className="sectionLabel">Open Questions</div>
+          <h2 className="sectionTitle">What this idea hasn&apos;t solved yet</h2>
           <p className="sectionIntro">
-            Δεν το παρουσιάζουμε αυτό ως ολοκληρωμένο σχέδιο. Μία σοβαρή ιδέα κερδίζει
-            εμπιστοσύνη κατονομάζοντας τα δυσκολότερα προβλήματά της, όχι κρύβοντάς τα.
+            We&apos;re not presenting this as a finished blueprint. A serious idea earns
+            trust by naming its hardest problems, not hiding them.
           </p>
           <div className="questions reveal">
             <div className="qRow">
-              <h4>Πώς διαχειρίζονται οι μη εκπαιδευμένοι πολίτες τεχνικούς ρόλους όπως η δικαστική κρίση ή η αστυνόμευση;</h4>
+              <h4>How do untrained citizens handle technical roles like judging or policing?</h4>
               <p>
-                Η υποχρεωτική, τυποποιημένη εκπαίδευση πριν από κάθε θητεία είναι η βασική
-                υπόθεση εργασίας — όμως η έκταση και η αυστηρότητα αυτής της εκπαίδευσης
-                παραμένει ανοιχτό ζήτημα, και είναι το πιο δύσκολο πρόβλημα σχεδιασμού σε
-                αυτό το μοντέλο.
+                Standardized, mandatory training ahead of each rotation is the working
+                assumption &mdash; but the scope and rigor of that training is unresolved,
+                and it&apos;s the single hardest design problem in this model.
               </p>
             </div>
             <div className="qRow">
-              <h4>Κλιμακώνεται η εκ περιτροπής συμμετοχή πέρα από ένα δημοτικό συμβούλιο σε ένα εθνικό κοινοβούλιο;</h4>
+              <h4>Does rotation scale beyond a city council to a national legislature?</h4>
               <p>
-                Η κλήρωση έχει σαφές ιστορικό προηγούμενο σε επίπεδο πόλης. Η κλιμάκωσή της
-                σε εθνική διακυβέρνηση — ειδικά για ζητήματα που απαιτούν συνέχεια, όπως η
-                εξωτερική πολιτική — είναι ανοιχτό ζήτημα σχεδιασμού, όχι λυμένο.
+                Sortition has clear historical precedent at city scale. Scaling it to
+                national governance &mdash; especially for matters requiring continuity,
+                like foreign policy &mdash; is an open design question, not a solved one.
               </p>
             </div>
             <div className="qRow">
-              <h4>Πώς μοιάζει στην πράξη η μετάβαση από το σημερινό σύστημα;</h4>
+              <h4>What does the transition from the current system actually look like?</h4>
               <p>
-                Δεν έχουμε ακόμη σχέδιο μετάβασης. Η πρώτη φάση αυτού του έργου είναι η
-                οικοδόμηση δημόσιας κατανόησης της ιδέας — ο σχεδιασμός της μετάβασης έρχεται
-                μετά, με περισσότερους ανθρώπους να συμμετέχουν στη διαμόρφωσή του.
+                We don&apos;t have a transition plan yet. The first phase of this project is
+                building public understanding of the idea &mdash; transition design comes
+                after, and with more people involved in shaping it.
               </p>
             </div>
           </div>
@@ -312,29 +306,28 @@ export default function RotaPageGreek() {
 
       <section id="fund" className="section fund">
         <div className="wrap">
-          <div className="sectionLabel">Υποστηρίξτε Αυτό το Έργο</div>
-          <h2 className="sectionTitle">Χρηματοδοτούμε την παιδεία, όχι μια εκστρατεία</h2>
+          <div className="sectionLabel">Support This Project</div>
+          <h2 className="sectionTitle">We&apos;re funding the education, not a campaign</h2>
           <p className="sectionIntro">
-            Αυτό δεν έχει να κάνει με υποψήφιους, κόμματα ή ψηφοφορία. Είναι ένα επιχείρημα
-            που πρέπει να φτάσει καθαρά στον κόσμο πριν προχωρήσει οπουδήποτε. Η συνεισφορά
-            σας χρηματοδοτεί την πρώτη φάση: την οικοδόμηση της επιχειρηματολογίας, δημόσια,
-            ανοιχτά.
+            This isn&apos;t a candidate, a party, or a vote. It&apos;s an argument that needs
+            to reach people clearly before it can go anywhere. Your contribution funds the
+            first phase: building the case, in public, in the open.
           </p>
 
           <div className="fundBox reveal">
-            <h3>Τι χρηματοδοτείτε</h3>
+            <h3>What this funds</h3>
             <ul className="fundList">
-              <li>Έναν σαφή, τεκμηριωμένο εκπαιδευτικό ιστότοπο που εξηγεί το μοντέλο εκ περιτροπής συμμετοχής και τις ιστορικές του ρίζες</li>
-              <li>Επεξηγήσεις σε απλή γλώσσα και οπτικό υλικό — συμπεριλαμβανομένης ειλικρινούς αντιμετώπισης των ανοιχτών ερωτημάτων παραπάνω</li>
-              <li>Τη θεμελίωση για τοπικές συζητήσεις και πιλοτικές συνελεύσεις πολιτών</li>
+              <li>A clear, well-sourced educational website explaining the rotation model and its historical roots</li>
+              <li>Plain-language and visual explainers &mdash; including honest treatment of the open questions above</li>
+              <li>Groundwork for local discussions and pilot citizens&apos; assemblies</li>
             </ul>
             {/* TODO: replace href with your real payment processor link (Stripe / Donorbox / Open Collective) */}
             <a href="#" className="ctaBtn">
-              Συνεισφέρετε στο έργο
+              Contribute to the project
             </a>
             <p className="ctaNote">
-              Οι δωρεές επεξεργάζονται με διαφάνεια — κάθε συνεισφορά και δαπάνη είναι
-              δημόσια ορατή. Κανένα κονδύλιο δεν υποστηρίζει υποψήφιο ή κόμμα.
+              Donations are processed transparently &mdash; every contribution and expense
+              is publicly visible. No funds support any candidate or party.
             </p>
           </div>
         </div>
@@ -342,7 +335,7 @@ export default function RotaPageGreek() {
 
       <footer className="prosopoFooter">
         <div className="wrap">
-          <p>ROTA — Έργο Πολιτικής Παιδείας · Χωρίς διαδικτύωση με κόμμα ή υποψήφιο</p>
+          <p>ROTA &middot; A Civic Education Project &middot; Not affiliated with any party or candidate</p>
         </div>
       </footer>
     </div>
