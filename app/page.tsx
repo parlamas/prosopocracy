@@ -237,7 +237,7 @@ export default function ProsopocracyPage() {
               power passes through everyone in person, and no one holds it long enough for it
               to stop being theirs.
             </p>
-            <a href="https://www.malakia.company/democracy" className="rotaLink">
+            <a href="/rota" className="rotaLink">
               Read the ROTA proposal &rarr;
             </a>
           </div>

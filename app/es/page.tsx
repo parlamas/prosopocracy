@@ -242,16 +242,16 @@ export default function ProsopocracyPageSpanish() {
               cívico, de modo que el poder pase por todos en persona, y nadie lo retenga el
               tiempo suficiente para dejar de ser suyo.
             </p>
-            <a href="https://www.malakia.company/democracy" className="rotaLink">
+            
               Leer la propuesta ROTA (EN) &rarr;
-            </a>
+            
           </div>
         </div>
       </section>
 
       <footer className="prosopoFooter">
         <div className="wrap">
-          <p>Prosopocracia &middot; Poder ejercido en persona, no delegado</p>
+          <p>Prosopocracia &middot; Poder ejercido en persona, no delegado.<br />© 2026 Isidoros Parlamas · parlamas@live.com</p>
         </div>
       </footer>
     </div>

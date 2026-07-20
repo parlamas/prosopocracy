@@ -245,7 +245,7 @@ export default function ProsopocracyPageGreek() {
               περνά μέσα από όλους αυτοπροσώπως, και κανείς να μην την κρατά αρκετά καιρό
               ώστε να πάψει να είναι δική του.
             </p>
-            <a href="https://www.malakia.company/democracy/el" className="rotaLink">
+            <a href="/el/rota" className="rotaLink">
               Διαβάστε την πρόταση ROTA &rarr;
             </a>
           </div>
