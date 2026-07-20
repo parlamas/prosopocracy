@@ -40,6 +40,7 @@ export default function ProsopocracyPageGreek() {
             <a href="#notconfuse">Όχι Αυτό</a>
             <a href="#definition">Ορισμός</a>
             <a href="#beyond">Πέρα από τη Δημοκρατία</a>
+            <a href="#accountability">Ευθύνη</a>
             <a href="#rota">ROTA</a>
             <LanguageSwitcher current="el" />
           </nav>
@@ -175,6 +176,57 @@ export default function ProsopocracyPageGreek() {
               δεύτερο είναι ο τρόπος με τον οποίο το πρώτο παύει να είναι απλώς μια
               υπόσχεση.
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="accountability" className="section">
+        <div className="wrap">
+          <div className="sectionLabel">Κανείς Άλλος για να Κατηγορήσεις</div>
+          <h2 className="sectionTitle">Ο διάβολος δεν κρύβεται στις λεπτομέρειες &mdash; οι διάβολοι είναι οι ίδιοι οι πολίτες</h2>
+          <div className="reveal">
+            <p className="sectionIntro">
+              Στα αντιπροσωπευτικά συστήματα, η αποτυχία έχει πάντα πού να κρυφτεί.
+            </p>
+            <p style={{ marginTop: 18, color: 'var(--ink-soft)', fontSize: 16.5, maxWidth: '62ch' }}>
+              «Ο διάβολος κρύβεται στις λεπτομέρειες» γίνεται δικαιολογία: η ευθύνη
+              μετατοπίζεται προς απόμακρους τεχνοκράτες, προς ένα σύστημα πολύ πολύπλοκο για
+              να αποδοθεί σε ένα μόνο πρόσωπο. Η προσωποκρατία αφαιρεί αυτόν τον κρυψώνα
+              δομικά, όχι ηθικά &mdash; ο πολίτης που κατέχει την εξουσία είναι η ίδια η
+              λεπτομέρεια. Δεν υπάρχει αλλού διάβολος να βρεθεί.
+            </p>
+            <div className="quoteBlock">
+              Στην προσωποκρατία, δεν θα μπορείς να κατηγορήσεις έναν πρόεδρο, ένα κόμμα ή
+              ένα σύστημα για τις αποτυχίες σου. Αν αποτύχεις, είναι επειδή εσύ απέτυχες.
+            </div>
+          </div>
+
+          <div className="rotaBox reveal" style={{ marginTop: 40 }}>
+            <h3>
+              Ο Ακρογωνιαίος Λίθος: Οριστική{' '}
+              <span style={{ fontWeight: 400, fontSize: 14, color: 'var(--brass)' }}>(Horistics)</span>
+            </h3>
+            <p style={{ fontStyle: 'italic', color: 'var(--civic-blue)', fontWeight: 600, marginBottom: 4 }}>
+              «Οριστική είναι η εύστοχη και αεροστεγής διατύπωση της ειδοποιού διαφοράς
+              εννοιών.»
+            </p>
+            <p style={{ fontStyle: 'italic', color: 'var(--ink-soft)', fontSize: 14, marginBottom: 16 }}>
+              &quot;Horistics is the apposite and airtight formulation of the differentia of
+              concepts.&quot;
+            </p>
+            <p>
+              Η αφαίρεση κάθε δικαιολογίας λειτουργεί μόνο αν οι πολίτες μπορούν να βλέπουν
+              αρκετά καθαρά ώστε να κυβερνούν καλά αφού οι δικαιολογίες εξαφανιστούν. Γι&apos;
+              αυτό ο ακρογωνιαίος λίθος της προσωποκρατίας είναι η Οριστική &mdash; η
+              επιστήμη που περιγράφει αυτός ο ορισμός. Ένας πολίτης που δεν μπορεί να ορίσει
+              με ακρίβεια την ελευθερία, τη δικαιοσύνη ή τη διαφθορά δεν μπορεί να
+              αναμένεται να ασκήσει εξουσία πάνω σε αυτές με ακρίβεια. Η προσωποκρατία
+              απαιτεί πολίτες ικανούς να βλέπουν πολιτικά· η Οριστική είναι ο τρόπος με τον
+              οποίο χτίζεται αυτή η όραση.
+            </p>
+            <a href="https://horistics.ai" className="rotaLink">
+              Εξασκήσου στην Οριστική &rarr;
+            </a>
           </div>
         </div>
       </section>

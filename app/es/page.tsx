@@ -40,6 +40,7 @@ export default function ProsopocracyPageSpanish() {
             <a href="#notconfuse">No Esto</a>
             <a href="#definition">Definición</a>
             <a href="#beyond">Más Allá de la Democracia</a>
+            <a href="#accountability">Responsabilidad</a>
             <a href="#rota">ROTA</a>
             <LanguageSwitcher current="es" />
           </nav>
@@ -174,6 +175,56 @@ export default function ProsopocracyPageSpanish() {
               Demos kratos, poder del pueblo. Prosopo kratos, poder en la persona. El segundo
               es la forma en que el primero deja de ser solo una promesa.
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="accountability" className="section">
+        <div className="wrap">
+          <div className="sectionLabel">Nadie Más a Quien Culpar</div>
+          <h2 className="sectionTitle">El diablo no está en los detalles &mdash; los diablos son los propios ciudadanos</h2>
+          <div className="reveal">
+            <p className="sectionIntro">
+              En los sistemas representativos, el fracaso siempre tiene dónde esconderse.
+            </p>
+            <p style={{ marginTop: 18, color: 'var(--ink-soft)', fontSize: 16.5, maxWidth: '62ch' }}>
+              &laquo;El diablo está en los detalles&raquo; se convierte en una excusa: la
+              culpa se desplaza hacia tecnócratas distantes, hacia un sistema demasiado
+              complejo como para atribuírselo a una sola persona. La prosopocracia elimina
+              ese escondite de forma estructural, no moral &mdash; el ciudadano que ejerce el
+              poder es el detalle mismo. No hay ningún diablo en otro lugar que encontrar.
+            </p>
+            <div className="quoteBlock">
+              En la prosopocracia, no podrás señalar a un presidente, un partido o un sistema
+              por tus fracasos. Si fracasas, es porque tú fracasaste.
+            </div>
+          </div>
+
+          <div className="rotaBox reveal" style={{ marginTop: 40 }}>
+            <h3>
+              La Piedra Angular: Horistics{' '}
+              <span style={{ fontWeight: 400, fontSize: 14, color: 'var(--brass)' }}>(Οριστική)</span>
+            </h3>
+            <p style={{ fontStyle: 'italic', color: 'var(--civic-blue)', fontWeight: 600, marginBottom: 4 }}>
+              &quot;Horistics is the apposite and airtight formulation of the differentia of
+              concepts.&quot;
+            </p>
+            <p style={{ fontStyle: 'italic', color: 'var(--ink-soft)', fontSize: 14, marginBottom: 16 }}>
+              &laquo;Οριστική είναι η εύστοχη και αεροστεγής διατύπωση της ειδοποιού διαφοράς
+              εννοιών.&raquo;
+            </p>
+            <p>
+              Eliminar cada excusa solo funciona si los ciudadanos pueden ver con suficiente
+              claridad para gobernar bien una vez que las excusas desaparecen. Por eso la
+              piedra angular de la prosopocracia es Horistics &mdash; la disciplina que
+              describe esta definición. Un ciudadano que no puede definir con precisión la
+              libertad, la justicia o la corrupción tampoco puede ejercer con precisión el
+              poder sobre ellas. La prosopocracia exige ciudadanos capaces de ver
+              políticamente; Horistics es cómo se construye esa visión.
+            </p>
+            <a href="https://horistics.ai" className="rotaLink">
+              Practica Horistics &rarr;
+            </a>
           </div>
         </div>
       </section>

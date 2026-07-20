@@ -40,6 +40,7 @@ export default function ProsopocracyPage() {
             <a href="#notconfuse">Not This</a>
             <a href="#definition">Definition</a>
             <a href="#beyond">Beyond Democracy</a>
+            <a href="#accountability">Accountability</a>
             <a href="#rota">ROTA</a>
             <LanguageSwitcher current="en" />
           </nav>
@@ -171,6 +172,54 @@ export default function ProsopocracyPage() {
               Demos kratos, power of the people. Prosopo kratos, power in the person. The
               second is how the first stops being a promise.
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="accountability" className="section">
+        <div className="wrap">
+          <div className="sectionLabel">No One Else to Blame</div>
+          <h2 className="sectionTitle">The devil is not in the details &mdash; the devils are the citizens</h2>
+          <div className="reveal">
+            <p className="sectionIntro">
+              In representative systems, failure always has somewhere to hide.
+            </p>
+            <p style={{ marginTop: 18, color: 'var(--ink-soft)', fontSize: 16.5, maxWidth: '62ch' }}>
+              &quot;The devil is in the details&quot; becomes an excuse: blame drifts toward
+              distant technocrats, toward a system too complex for any one person to be held
+              to. Prosopocracy removes that hiding place structurally, not morally &mdash;
+              the citizen holding power is the detail. There is no devil elsewhere to find.
+            </p>
+            <div className="quoteBlock">
+              In prosopocracy, you will not be able to point at a president, a party, or a
+              system for your failures. If you fail, it is because you failed.
+            </div>
+          </div>
+
+          <div className="rotaBox reveal" style={{ marginTop: 40 }}>
+            <h3>
+              The Cornerstone: Horistics{' '}
+              <span style={{ fontWeight: 400, fontSize: 14, color: 'var(--brass)' }}>(Οριστική)</span>
+            </h3>
+            <p style={{ fontStyle: 'italic', color: 'var(--civic-blue)', fontWeight: 600, marginBottom: 4 }}>
+              &quot;Horistics is the apposite and airtight formulation of the differentia of
+              concepts.&quot;
+            </p>
+            <p style={{ fontStyle: 'italic', color: 'var(--ink-soft)', fontSize: 14, marginBottom: 16 }}>
+              &laquo;Οριστική είναι η εύστοχη και αεροστεγής διατύπωση της ειδοποιού διαφοράς
+              εννοιών.&raquo;
+            </p>
+            <p>
+              Removing every excuse only works if citizens can see clearly enough to govern
+              well once the excuses are gone. That is why prosopocracy&apos;s cornerstone is
+              horistics &mdash; the discipline this definition describes. A citizen who
+              cannot define liberty, justice, or corruption precisely cannot be expected to
+              wield power over them precisely either. Prosopocracy demands citizens capable
+              of seeing politically; horistics is how that sight is built.
+            </p>
+            <a href="https://horistics.ai" className="rotaLink">
+              Practice horistics &rarr;
+            </a>
           </div>
         </div>
       </section>
