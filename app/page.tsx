@@ -3,6 +3,7 @@
 
 import { useEffect, useRef } from 'react';
 import './styles.css';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 export default function ProsopocracyPage() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -39,7 +40,7 @@ export default function ProsopocracyPage() {
             <a href="#definition">Definition</a>
             <a href="#beyond">Beyond Democracy</a>
             <a href="#rota">ROTA</a>
-            <a href="/el">Ελληνικά</a>
+            <LanguageSwitcher current="en" />
           </nav>
         </div>
       </header>
