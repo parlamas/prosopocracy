@@ -37,6 +37,7 @@ export default function ProsopocracyPageSpanish() {
           </div>
           <nav className="nav">
             <a href="#etymology">Etimología</a>
+            <a href="#notconfuse">No Esto</a>
             <a href="#definition">Definición</a>
             <a href="#beyond">Más Allá de la Democracia</a>
             <a href="#rota">ROTA</a>
@@ -84,6 +85,46 @@ export default function ProsopocracyPageSpanish() {
                 prosopocracia significa, literalmente, poder de la persona &mdash; un poder
                 que permanece donde está la persona, en lugar de pasar a un representante
                 que actúa en su lugar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="notconfuse" className="section">
+        <div className="wrap">
+          <div className="sectionLabel">No Confundir Con</div>
+          <h2 className="sectionTitle">Poder ejercido por todos &mdash; no venerado en uno solo</h2>
+          <p className="sectionIntro">
+            La raíz griega πρόσωπο (persona) puede combinarse con terminaciones muy
+            distintas. Solo una de ellas describe lo que significa esta palabra.
+          </p>
+          <div className="confuseGrid reveal">
+            <div className="confuseItem">
+              <span className="mark no">No es esto</span>
+              <div className="term">Προσωπολατρεία</div>
+              <span className="suffix">-λατρεία &middot; latreia, adoración</span>
+              <p className="desc">
+                Un culto construido alrededor de un único gobernante, venerado, mientras
+                todos los demás permanecen pasivos. Culto a la personalidad.
+              </p>
+            </div>
+            <div className="confuseItem">
+              <span className="mark no">No es esto</span>
+              <div className="term">Προσωπολαγνεία</div>
+              <span className="suffix">-λαγνεία &middot; lagneia, obsesión</span>
+              <p className="desc">
+                Fijación en el rostro o la imagen de un líder, en lugar de en lo que
+                realmente hace. Obsesión con la personalidad.
+              </p>
+            </div>
+            <div className="confuseItem correct">
+              <span className="mark yes">Esto</span>
+              <div className="term">Προσωποκρατία</div>
+              <span className="suffix">-κρατία &middot; kratos, poder</span>
+              <p className="desc">
+                Poder distribuido en cada ciudadano, personalmente, uno a uno. No una persona
+                exaltada &mdash; poder que pasa, en persona, a través de todos.
               </p>
             </div>
           </div>

@@ -37,6 +37,7 @@ export default function ProsopocracyPageGreek() {
           </div>
           <nav className="nav">
             <a href="#etymology">Ετυμολογία</a>
+            <a href="#notconfuse">Όχι Αυτό</a>
             <a href="#definition">Ορισμός</a>
             <a href="#beyond">Πέρα από τη Δημοκρατία</a>
             <a href="#rota">ROTA</a>
@@ -84,6 +85,46 @@ export default function ProsopocracyPageGreek() {
                 εξουσία), η προσωποκρατία σημαίνει, κυριολεκτικά, εξουσία του προσώπου
                 &mdash; εξουσία που παραμένει εκεί όπου βρίσκεται το άτομο, αντί να περνά σε
                 έναν αντιπρόσωπο που ενεργεί στη θέση του.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="notconfuse" className="section">
+        <div className="wrap">
+          <div className="sectionLabel">Να Μην Συγχέεται Με</div>
+          <h2 className="sectionTitle">Εξουσία που ασκείται από όλους &mdash; όχι λατρεία ενός</h2>
+          <p className="sectionIntro">
+            Η ρίζα πρόσωπο μπορεί να συνδυαστεί με πολύ διαφορετικές καταλήξεις. Μόνο μία
+            από αυτές περιγράφει αυτό που σημαίνει η λέξη.
+          </p>
+          <div className="confuseGrid reveal">
+            <div className="confuseItem">
+              <span className="mark no">Όχι αυτό</span>
+              <div className="term">Προσωπολατρεία</div>
+              <span className="suffix">-λατρεία &middot; λατρεία</span>
+              <p className="desc">
+                Μια λατρεία γύρω από έναν μόνο ηγέτη, ενώ όλοι οι υπόλοιποι παραμένουν
+                παθητικοί. Λατρεία προσώπου.
+              </p>
+            </div>
+            <div className="confuseItem">
+              <span className="mark no">Όχι αυτό</span>
+              <div className="term">Προσωπολαγνεία</div>
+              <span className="suffix">-λαγνεία &middot; εμμονή</span>
+              <p className="desc">
+                Εμμονή με το πρόσωπο ή την εικόνα ενός ηγέτη, αντί για όσα πράττει. Εμμονή με
+                την προσωπικότητα.
+              </p>
+            </div>
+            <div className="confuseItem correct">
+              <span className="mark yes">Αυτό</span>
+              <div className="term">Προσωποκρατία</div>
+              <span className="suffix">-κρατία &middot; κράτος, εξουσία</span>
+              <p className="desc">
+                Εξουσία που κατανέμεται σε κάθε πολίτη, προσωπικά, έναν έναν. Όχι ένα
+                πρόσωπο εξυμνημένο &mdash; εξουσία που περνά, αυτοπροσώπως, μέσα από όλους.
               </p>
             </div>
           </div>

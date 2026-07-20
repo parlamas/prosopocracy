@@ -37,6 +37,7 @@ export default function ProsopocracyPage() {
           </div>
           <nav className="nav">
             <a href="#etymology">Etymology</a>
+            <a href="#notconfuse">Not This</a>
             <a href="#definition">Definition</a>
             <a href="#beyond">Beyond Democracy</a>
             <a href="#rota">ROTA</a>
@@ -82,6 +83,46 @@ export default function ProsopocracyPage() {
                 Paired with <strong>-cracy</strong> (from <em>kratos</em>, power or rule),
                 prosopocracy means, literally, rule by the person &mdash; power that stays
                 where the person is, rather than passing to a face acting in their place.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="notconfuse" className="section">
+        <div className="wrap">
+          <div className="sectionLabel">Not to Be Confused With</div>
+          <h2 className="sectionTitle">Power exercised by everyone &mdash; not worshipped in one</h2>
+          <p className="sectionIntro">
+            The root πρόσωπο (person) can combine with very different endings. Only one of
+            them describes what this word means.
+          </p>
+          <div className="confuseGrid reveal">
+            <div className="confuseItem">
+              <span className="mark no">Not this</span>
+              <div className="term">Προσωπολατρεία</div>
+              <span className="suffix">-λατρεία &middot; latreia, worship</span>
+              <p className="desc">
+                A cult built around a single ruler, adored, while everyone else stays
+                passive. Personality worship.
+              </p>
+            </div>
+            <div className="confuseItem">
+              <span className="mark no">Not this</span>
+              <div className="term">Προσωπολαγνεία</div>
+              <span className="suffix">-λαγνεία &middot; lagneia, obsession</span>
+              <p className="desc">
+                Fixation on a leader&apos;s face or image, rather than on what they actually
+                do. Personality obsession.
+              </p>
+            </div>
+            <div className="confuseItem correct">
+              <span className="mark yes">This</span>
+              <div className="term">Προσωποκρατία</div>
+              <span className="suffix">-κρατία &middot; kratos, power</span>
+              <p className="desc">
+                Power distributed into every citizen, personally, one at a time. Not one
+                person exalted &mdash; power that passes, in person, through everyone.
               </p>
             </div>
           </div>
