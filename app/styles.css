@@ -36,7 +36,7 @@
 
 .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
 
-.masthead{position:relative; z-index:1; border-bottom:1px solid var(--line); padding:18px 0;}
+.masthead{position:relative; z-index:50; border-bottom:1px solid var(--line); padding:18px 0;}
 .mastheadInner{display:flex; justify-content:space-between; align-items:center;}
 .wordmark{font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft);}
 .wordmark b{color:var(--civic-blue);}
