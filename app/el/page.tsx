@@ -224,6 +224,11 @@ export default function ProsopocracyPageGreek() {
               απαιτεί πολίτες ικανούς να βλέπουν πολιτικά· η Οριστική είναι ο τρόπος με τον
               οποίο χτίζεται αυτή η όραση.
             </p>
+            <p style={{ fontSize: 14, color: 'var(--ink-soft)', marginBottom: 16 }}>
+              Η Οριστική εντοπίζει τις ρίζες της στη σωκρατική μέθοδο της οριστικής
+              διερεύνησης &mdash; το 2030 σηματοδοτεί τα 2.500 χρόνια από τη γέννηση του
+              Σωκράτη.
+            </p>
             <a href="https://horistics.ai" className="rotaLink">
               Εξασκήσου στην Οριστική &rarr;
             </a>

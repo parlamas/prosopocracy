@@ -222,6 +222,10 @@ export default function ProsopocracyPageSpanish() {
               poder sobre ellas. La prosopocracia exige ciudadanos capaces de ver
               políticamente; Horistics es cómo se construye esa visión.
             </p>
+            <p style={{ fontSize: 14, color: 'var(--ink-soft)', marginBottom: 16 }}>
+              Horistics se remonta al método socrático de indagación definitoria &mdash;
+              2030 marca 2.500 años desde el nacimiento de Sócrates.
+            </p>
             <a href="https://horistics.ai" className="rotaLink">
               Practica Horistics &rarr;
             </a>
@@ -242,16 +246,16 @@ export default function ProsopocracyPageSpanish() {
               cívico, de modo que el poder pase por todos en persona, y nadie lo retenga el
               tiempo suficiente para dejar de ser suyo.
             </p>
-            
+            <a href="/rota" className="rotaLink">
               Leer la propuesta ROTA (EN) &rarr;
-            
+            </a>
           </div>
         </div>
       </section>
 
       <footer className="prosopoFooter">
         <div className="wrap">
-          <p>Prosopocracia &middot; Poder ejercido en persona, no delegado.<br />© 2026 Isidoros Parlamas · parlamas@live.com</p>
+          <p>Prosopocracia &middot; Poder ejercido en persona, no delegado</p>
         </div>
       </footer>
     </div>

@@ -217,6 +217,10 @@ export default function ProsopocracyPage() {
               wield power over them precisely either. Prosopocracy demands citizens capable
               of seeing politically; horistics is how that sight is built.
             </p>
+            <p style={{ fontSize: 14, color: 'var(--ink-soft)', marginBottom: 16 }}>
+              Horistics traces to the Socratic method of definitional inquiry &mdash; 2030
+              marks 2,500 years since Socrates&apos; birth.
+            </p>
             <a href="https://horistics.ai" className="rotaLink">
               Practice horistics &rarr;
             </a>
