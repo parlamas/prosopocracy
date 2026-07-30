@@ -264,7 +264,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Gobierno por Rotación",
     finalBoxBody: "La prosopocracia nombra cómo debería ser el poder — ejercido por los propios ciudadanos, no delegado a otros. ROTA es la propuesta concreta de cómo construir esto en la práctica: ciudadanos que rotan en turnos breves de deber cívico, de modo que el poder pase por todos en persona, y nadie lo retenga el tiempo suficiente para dejar de ser suyo.",
     finalBoxLinkText: "Leer la propuesta ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/es/rota",
     footerText: "Prosopocracia · Poder ejercido en persona, no delegado",
   },
   pt: {
@@ -321,7 +321,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Governo por Rotação",
     finalBoxBody: "A prosopocracia nomeia como o poder deveria ser — exercido pelos próprios cidadãos, não delegado a outros. O ROTA é a proposta concreta de como construir isso na prática: cidadãos que rodam em mandatos curtos de dever cívico, de modo que o poder passe por todos em pessoa, e ninguém o retenha tempo suficiente para deixar de ser seu.",
     finalBoxLinkText: "Ler a proposta ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/pt/rota",
     footerText: "Prosopocracia · Poder exercido em pessoa, não delegado",
   },
   it: {
@@ -378,7 +378,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Governo a Rotazione",
     finalBoxBody: "La prosopocrazia definisce come dovrebbe essere il potere — esercitato dai cittadini stessi, non delegato altrove. ROTA è la proposta concreta su come costruirlo nella pratica: cittadini che ruotano in brevi mandati di dovere civico, cosicché il potere passi attraverso tutti di persona, e nessuno lo trattenga abbastanza a lungo da smettere di essere suo.",
     finalBoxLinkText: "Leggi la proposta ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/it/rota",
     footerText: "Prosopocrazia · Potere esercitato di persona, non delegato",
   },
   fr: {
@@ -435,7 +435,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Gouvernement par Rotation",
     finalBoxBody: "La prosopocratie nomme à quoi le pouvoir devrait ressembler — exercé par les citoyens eux-mêmes, non délégué ailleurs. ROTA est la proposition concrète de la façon de construire cela en pratique : des citoyens qui tournent sur de courts mandats de devoir civique, afin que le pouvoir passe par tous en personne, et que personne ne le détienne assez longtemps pour qu'il cesse d'être le sien.",
     finalBoxLinkText: "Lire la proposition ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/fr/rota",
     footerText: "Prosopocratie · Pouvoir exercé en personne, non délégué",
   },
   de: {
@@ -492,7 +492,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Regierung durch Rotation",
     finalBoxBody: "Prosopokratie benennt, wie Macht aussehen sollte — ausgeübt von den Bürgern selbst, nicht delegiert. ROTA ist der konkrete Vorschlag, wie das in der Praxis aufgebaut wird: Bürger, die in kurzen Amtszeiten der Bürgerpflicht rotieren, sodass Macht persönlich durch alle hindurchgeht und niemand sie lange genug hält, damit sie aufhört, seine eigene zu sein.",
     finalBoxLinkText: "ROTA-Vorschlag lesen →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/de/rota",
     footerText: "Prosopokratie · Macht, die persönlich ausgeübt wird, nicht delegiert",
   },
   nl: {
@@ -549,7 +549,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Bestuur door Rotatie",
     finalBoxBody: "Prosopocratie benoemt hoe macht eruit zou moeten zien — uitgeoefend door de burgers zelf, niet weggedelegeerd. ROTA is het concrete voorstel voor hoe dat in de praktijk te bouwen: burgers die roteren door korte termijnen van burgerplicht, zodat macht persoonlijk door iedereen heen gaat, en niemand haar lang genoeg vasthoudt om ze niet meer van hemzelf te laten zijn.",
     finalBoxLinkText: "Lees het ROTA-voorstel →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/nl/rota",
     footerText: "Prosopocratie · Macht persoonlijk uitgeoefend, niet gedelegeerd",
   },
   da: {
