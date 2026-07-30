@@ -1803,7 +1803,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Rotasyonla Yönetim",
     finalBoxBody: "Prosopokrasi, gücün nasıl görünmesi gerektiğini adlandırır — başkasına devredilmiş değil, vatandaşların kendileri tarafından kullanılan bir güç. ROTA, bunun pratikte nasıl inşa edileceğine dair somut öneridir: vatandaşlar kısa vatandaşlık görevi süreleri boyunca dönüşümlü olarak görev alır, böylece güç şahsen herkesin içinden geçer ve hiç kimse onu, kendisi olmaktan çıkacak kadar uzun süre elinde tutmaz.",
     finalBoxLinkText: "ROTA önerisini oku →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/tr/rota",
     footerText: "Prosopokrasi · Şahsen kullanılan, devredilmeyen güç",
   },
   ja: {
@@ -1860,7 +1860,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "輪番制による統治",
     finalBoxBody: "プロソポクラシーは、権力がどうあるべきかを名指す——それは市民自身によって行使されるものであり、委任されて手放されるものではない。ROTAは、これを実際にどう構築するかについての具体的な提案である——市民は短い任期の公民的義務を輪番で担い、権力が個人的にすべての人を通り抜け、誰もそれを自分のものでなくなるほど長く保持することがないようにする。",
     finalBoxLinkText: "ROTAの提案を読む →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/ja/rota",
     footerText: "プロソポクラシー · 個人的に行使され、委任されない権力",
   },
   ko: {
@@ -1917,7 +1917,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "순환제 통치",
     finalBoxBody: "프로소포크라시는 권력이 어떤 모습이어야 하는지를 명명한다 — 위임되어 넘겨지는 것이 아니라 시민 자신에 의해 행사되는 권력. ROTA는 이를 실제로 구축하는 방법에 대한 구체적인 제안이다 — 시민들이 짧은 시민적 의무 기간 동안 교대로 근무하여, 권력이 개인적으로 모든 사람을 통과하고, 누구도 그것을 자신의 것이 아니게 될 만큼 오래 붙잡고 있지 않도록 한다.",
     finalBoxLinkText: "ROTA 제안 읽기 →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/ko/rota",
     footerText: "프로소포크라시 · 개인적으로 행사되며 위임되지 않는 권력",
   },
   zh: {
@@ -1974,7 +1974,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "轮换治理",
     finalBoxBody: "人主制阐明了权力应有的样子——由公民自己行使,而非被委托出去。ROTA 是关于如何在实践中构建这一点的具体方案:公民在短期的公民义务任期中轮换,使权力亲自流经每一个人,并且没有人能长时间掌握它,以至于它不再属于他自己。",
     finalBoxLinkText: "阅读 ROTA 提案 →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/zh/rota",
     footerText: "人主制 · 亲自行使、不可委托的权力",
   },
   hi: {
@@ -2031,7 +2031,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "रोटेशन द्वारा शासन",
     finalBoxBody: "व्यक्तितंत्र यह नाम देता है कि शक्ति कैसी दिखनी चाहिए — नागरिकों द्वारा स्वयं प्रयोग की गई, न कि किसी और को सौंपी गई। ROTA इस बात का ठोस प्रस्ताव है कि इसे व्यवहार में कैसे बनाया जाए: नागरिक नागरिक कर्तव्य के छोटे कार्यकालों में बारी-बारी से भाग लेते हैं, ताकि शक्ति व्यक्तिगत रूप से सभी में से होकर गुज़रे, और कोई भी इसे इतने लंबे समय तक न रखे कि यह उसकी अपनी न रह जाए।",
     finalBoxLinkText: "ROTA प्रस्ताव पढ़ें →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/hi/rota",
     footerText: "व्यक्तितंत्र · व्यक्तिगत रूप से प्रयोग की गई, न सौंपी गई शक्ति",
   },
   ms: {
@@ -2088,7 +2088,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Pemerintahan Melalui Rotasi",
     finalBoxBody: "Prosopokrasi menamakan bagaimana kuasa seharusnya kelihatan — dilaksanakan oleh rakyat itu sendiri, bukan diserahkan kepada orang lain. ROTA ialah cadangan khusus tentang bagaimana ini dibina dalam praktiknya: rakyat berputar melalui tempoh tugas kewargaan yang singkat, supaya kuasa mengalir secara peribadi melalui semua orang, dan tiada sesiapa memegangnya cukup lama sehingga ia berhenti menjadi miliknya.",
     finalBoxLinkText: "Baca cadangan ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/ms/rota",
     footerText: "Prosopokrasi · Kuasa yang dilaksanakan secara peribadi, tidak diserahkan",
   },
   id: {
@@ -2145,7 +2145,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Pemerintahan melalui Rotasi",
     finalBoxBody: "Prosopokrasi menamai bagaimana seharusnya kekuasaan itu — dijalankan oleh warga negara itu sendiri, bukan didelegasikan kepada orang lain. ROTA adalah usulan konkret tentang bagaimana membangun ini dalam praktik: warga negara bergiliran dalam masa jabatan singkat tugas kewarganegaraan, sehingga kekuasaan mengalir secara pribadi melalui semua orang, dan tidak ada seorang pun yang memegangnya cukup lama sehingga berhenti menjadi miliknya.",
     finalBoxLinkText: "Baca usulan ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/id/rota",
     footerText: "Prosopokrasi · Kekuasaan yang dijalankan secara pribadi, tidak didelegasikan",
   },
   tl: {
@@ -2202,7 +2202,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Pamamahala sa Pamamagitan ng Pag-ikot",
     finalBoxBody: "Ipinapangalan ng prosopokrasya kung paano dapat magmukha ang kapangyarihan — isinasagawa ng mga mamamayan mismo, hindi ipinagkatiwala sa iba. Ang ROTA ay ang tiyak na panukala kung paano ito itatayo sa praktika: ang mga mamamayan ay nag-iikot sa maiikling termino ng tungkuling sibiko, upang ang kapangyarihan ay dumaan nang personal sa lahat, at walang sinuman ang magtatago nito nang sapat na katagalan upang tumigil itong maging kanya.",
     finalBoxLinkText: "Basahin ang panukalang ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/tl/rota",
     footerText: "Prosopokrasya · Kapangyarihang isinasagawa nang personal, hindi ipinagkatiwala",
   },
   he: {
