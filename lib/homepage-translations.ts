@@ -1347,7 +1347,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Guvernare prin Rotație",
     finalBoxBody: "Prosopocrația numește cum ar trebui să arate puterea — exercitată de cetățenii înșiși, nu delegată altcuiva. ROTA este propunerea concretă pentru cum se construiește asta în practică: cetățeni care se rotesc în mandate scurte de datorie civică, astfel încât puterea să treacă personal prin toți, iar nimeni să nu o dețină suficient de mult timp încât să înceteze să mai fie a lui.",
     finalBoxLinkText: "Citește propunerea ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/ro/rota",
     footerText: "Prosopocrație · Putere exercitată în persoană, nu delegată",
   },
   sr: {
@@ -1404,7 +1404,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Vlast Rotacijom",
     finalBoxBody: "Prozopokratija imenuje kako bi vlast trebalo da izgleda — koju vrše sami građani, a ne prenose na druge. ROTA je konkretan predlog kako to izgraditi u praksi: građani se smenjuju u kratkim mandatima građanske dužnosti, tako da vlast prolazi lično kroz sve, i niko je ne drži dovoljno dugo da prestane da bude njegova.",
     finalBoxLinkText: "Pročitaj predlog ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/sr/rota",
     footerText: "Prozopokratija · Vlast koja se vrši lično, ne prenosi se",
   },
   hr: {
@@ -1461,7 +1461,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Vlast Rotacijom",
     finalBoxBody: "Prozopokracija imenuje kako bi vlast trebala izgledati — koju vrše sami građani, a ne prenose na druge. ROTA je konkretan prijedlog kako to izgraditi u praksi: građani se izmjenjuju u kratkim mandatima građanske dužnosti, tako da vlast prolazi osobno kroz sve, i nitko je ne drži dovoljno dugo da prestane biti njegova.",
     finalBoxLinkText: "Pročitaj prijedlog ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/hr/rota",
     footerText: "Prozopokracija · Vlast koja se vrši osobno, ne prenosi se",
   },
   bg: {
@@ -1518,7 +1518,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Управление чрез Ротация",
     finalBoxBody: "Прозопокрацията назовава как трябва да изглежда властта — упражнявана от самите граждани, а не делегирана другаде. ROTA е конкретното предложение за това как да се изгради това на практика: граждани, редуващи се в кратки мандати на гражданско задължение, така че властта да преминава лично през всички, и никой да не я държи достатъчно дълго, за да престане да бъде негова.",
     finalBoxLinkText: "Прочети предложението ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/bg/rota",
     footerText: "Прозопокрация · Власт, упражнявана лично, не делегирана",
   },
   sq: {
@@ -1575,7 +1575,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Qeverisje me Rotacion",
     finalBoxBody: "Prosopokracia emërton se si duhet të duket pushteti — i ushtruar nga vetë qytetarët, jo i deleguar diku tjetër. ROTA është propozimi konkret se si të ndërtohet kjo në praktikë: qytetarë që rrotullohen në mandate të shkurtra të detyrës qytetare, në mënyrë që pushteti të kalojë personalisht nëpër të gjithë, dhe askush të mos e mbajë atë mjaftueshëm gjatë sa të pushojë së qeni i tij.",
     finalBoxLinkText: "Lexo propozimin ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/sq/rota",
     footerText: "Prosopokracia · Pushtet i ushtruar personalisht, jo i deleguar",
   },
   uk: {
@@ -1632,7 +1632,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Правління Ротацією",
     finalBoxBody: "Прозопократія називає, якою має бути влада — яку здійснюють самі громадяни, а не делегують іншим. ROTA — це конкретна пропозиція щодо того, як побудувати це на практиці: громадяни ротуються через короткі терміни громадянського обов'язку, так що влада проходить особисто крізь усіх, і ніхто не тримає її достатньо довго, щоб вона перестала бути його власною.",
     finalBoxLinkText: "Читати пропозицію ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/uk/rota",
     footerText: "Прозопократія · Влада, що здійснюється особисто, не делегована",
   },
   ru: {
@@ -1689,7 +1689,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "Правление Ротацией",
     finalBoxBody: "Прозопократия называет, какой должна быть власть — осуществляемой самими гражданами, а не делегируемой другим. ROTA — это конкретное предложение о том, как построить это на практике: граждане чередуются в коротких сроках гражданского долга, так что власть проходит лично через всех, и никто не удерживает её достаточно долго, чтобы она перестала быть его собственной.",
     finalBoxLinkText: "Читать предложение ROTA →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/ru/rota",
     footerText: "Прозопократия · Власть, осуществляемая лично, не делегированная",
   },
   ka: {
@@ -1746,7 +1746,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "მმართველობა როტაციით",
     finalBoxBody: "პროსოპოკრატია ასახელებს, როგორი უნდა იყოს ძალაუფლება — თავად მოქალაქეების მიერ განხორციელებული, არა სხვისთვის დელეგირებული. ROTA არის კონკრეტული წინადადება იმისა, თუ როგორ უნდა აშენდეს ეს პრაქტიკაში: მოქალაქეები ერაცხებიან სამოქალაქო ვალდებულების მოკლე ვადებში ისე, რომ ძალაუფლება პირადად გადის ყველას გავლით, და არავინ ინარჩუნებს მას საკმარისად დიდხანს, რომ შეწყვიტოს მისი საკუთარი ყოფნა.",
     finalBoxLinkText: "წაიკითხე ROTA წინადადება →",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/ka/rota",
     footerText: "პროსოპოკრატია · ძალაუფლება, განხორციელებული პირადად, არა დელეგირებული",
   },
   tr: {
