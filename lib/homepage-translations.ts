@@ -2259,7 +2259,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "שלטון באמצעות רוטציה",
     finalBoxBody: "פרוסופוקרטיה נותנת שם לאופן שבו כוח אמור להיראות — מופעל על ידי האזרחים עצמם, לא מואצל הלאה. ROTA היא ההצעה הקונקרטית לאופן שבו לבנות זאת הלכה למעשה: אזרחים המתחלפים בתקופות קצרות של חובה אזרחית, כך שהכוח עובר באופן אישי דרך כולם, ואיש אינו מחזיק בו זמן רב מדי מכדי שיפסיק להיות שלו.",
     finalBoxLinkText: "קרא את הצעת ROTA ←",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/he/rota",
     footerText: "פרוסופוקרטיה · כוח המופעל באופן אישי, לא מואצל",
   },
   ar: {
@@ -2316,7 +2316,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "الحكم بالتناوب",
     finalBoxBody: "تسمي البروسوبوقراطية كيف ينبغي أن تبدو السلطة — ممارَسة من قبل المواطنين أنفسهم، لا مفوَّضة بعيداً. وROTA هو الاقتراح الملموس لكيفية بناء ذلك عملياً: يتناوب المواطنون على فترات قصيرة من الواجب المدني، بحيث تمر السلطة شخصياً عبر الجميع، ولا يحتفظ بها أحد لفترة طويلة بما يكفي لتتوقف عن كونها ملكه.",
     finalBoxLinkText: "اقرأ اقتراح ROTA ←",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/ar/rota",
     footerText: "بروسوبوقراطية · سلطة تُمارَس شخصياً، لا تُفوَّض",
   },
   fa: {
@@ -2373,7 +2373,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     finalBoxTitle: "حکومت از طریق چرخش",
     finalBoxBody: "پروسوپوکراسی نام می‌برد که قدرت باید چگونه باشد — اعمال‌شده توسط خودِ شهروندان، نه واگذارشده به دیگری. ROTA پیشنهاد مشخصی است درباره اینکه چگونه این را در عمل بسازیم: شهروندان در دوره‌های کوتاه وظیفه شهروندی نوبت می‌گیرند، به‌طوری‌که قدرت شخصاً از میان همه عبور کند و هیچ‌کس آن‌قدر طولانی آن را نگه ندارد که دیگر از آنِ او نباشد.",
     finalBoxLinkText: "خواندن پیشنهاد ROTA ←",
-    finalBoxLinkHref: "/rota",
+    finalBoxLinkHref: "/fa/rota",
     footerText: "پروسوپوکراسی · قدرتی که شخصاً اعمال می‌شود، نه واگذارشده",
   },
 };
