@@ -62,6 +62,7 @@ export default function LanguageSwitcher({ current }: { current: string }) {
               minWidth: 170,
               maxHeight: 320,
               overflowY: 'auto',
+              paddingBottom: 8,
               boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
               zIndex: 10,
             }}

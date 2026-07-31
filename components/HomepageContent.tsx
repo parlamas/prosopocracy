@@ -40,8 +40,26 @@ export default function HomepageContent({ lang, t }: { lang: LanguageCode; t: Ho
     <div className="prosopoRoot" ref={rootRef} lang={lang} dir={t.dir}>
       <header className="masthead">
         <div className="wrap mastheadInner">
-          <div className="wordmark">
-            <b>{t.wordmarkNative}</b> &middot; {t.wordmarkSecondary}
+          <div>
+            <div className="wordmark">
+              <b>{t.wordmarkNative}</b> &middot; {t.wordmarkSecondary}
+            </div>
+            <a
+              href="https://horistics.ai"
+              className="byline"
+              style={{
+                display: 'inline-block',
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: 11,
+                letterSpacing: '0.04em',
+                color: 'var(--ink-soft)',
+                textDecoration: 'none',
+                marginTop: 2,
+                opacity: 0.8,
+              }}
+            >
+              A Horistics project · by Isidoros Parlamas
+            </a>
           </div>
           <nav className="nav">
             <a href="#etymology">{t.navEtymology}</a>
