@@ -122,7 +122,7 @@ export const ROTA_TRANSLATIONS: Partial<Record<LanguageCode, RotaText>> = {
     precedentTitle: "This is how democracy began",
     precedentPara1: "In classical Athens, most public offices weren't won by election — they were filled by lottery, drawn from the pool of eligible citizens. Election was viewed with suspicion, reserved mainly for the few roles requiring specialized skill, like generalship.",
     precedentPara2: "The reasoning was direct: elections tend to favor the wealthy, the well-connected, and the persuasive. A lottery favors no one. It was considered the more democratic mechanism — selection by lot was, in a real sense, the original meaning of \"rule by the people.\"",
-    precedentPara3: "That old pseudo-democracy bargain — a vote every few years in exchange for someone else ruling in your name — has run its course. Its legitimacy has worn thin, and its claim to be democracy's final form no longer survives scrutiny. The time for prosopocracy, where citizens hold power directly, has arrived.",
+    precedentPara3: "That old fraudulent pseudo-democracy bargain — a vote every few years in exchange for someone else ruling in your name — has run its course. Its legitimacy has worn thin, and its claim to be democracy's final form never survived scrutiny anyway. The time for prosopocracy, where citizens hold power directly, has arrived.",
     precedentQuote: "\"Demos kratos\" — the power of the people. Not the power to choose who rules. The power, itself, in the people's hands.",
     rotationLabel: "How It Works",
     rotationTitle: "One citizen, three rotations, every year",
