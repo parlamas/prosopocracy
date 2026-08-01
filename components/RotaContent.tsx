@@ -38,6 +38,22 @@ export default function RotaContent({ lang, t }: { lang: LanguageCode; t: RotaTe
 
   return (
     <div className="prosopoRoot" ref={rootRef} lang={lang} dir={dir}>
+      <div
+        className="topRibbon"
+        style={{
+          width: '100%',
+          textAlign: 'center',
+          padding: '6px 12px',
+          fontFamily: "'IBM Plex Mono', monospace",
+          fontSize: 11,
+          letterSpacing: '0.04em',
+          color: 'var(--ink-soft)',
+          background: 'var(--paper-alt, rgba(0,0,0,0.02))',
+          borderBottom: '1px solid var(--line)',
+        }}
+      >
+        A Horistics project &middot; by Isidoros Parlamas
+      </div>
       <header className="masthead">
         <div className="wrap mastheadInner">
           <div className="wordmark">
@@ -45,9 +61,13 @@ export default function RotaContent({ lang, t }: { lang: LanguageCode; t: RotaTe
           </div>
           <nav className="nav">
             <a href={homeHref}>{t.navBack}</a>
+            <span aria-hidden="true"> | </span>
             <a href="#argument">{t.navArgument}</a>
+            <span aria-hidden="true"> | </span>
             <a href="#precedent">{t.navPrecedent}</a>
+            <span aria-hidden="true"> | </span>
             <a href="#rotation">{t.navRotation}</a>
+            <span aria-hidden="true"> | </span>
             <a href="#fund">{t.navSupport}</a>
             <LanguageSwitcher current={lang} />
           </nav>
