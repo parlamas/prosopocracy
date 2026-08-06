@@ -67,6 +67,23 @@ export default function LanguageSwitcher({ current }: { current: string }) {
               zIndex: 10,
             }}
           >
+            <div
+              style={{
+                position: 'sticky',
+                top: 0,
+                padding: '8px 14px 6px',
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: 10,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: 'var(--ink-soft)',
+                opacity: 0.7,
+                background: 'var(--paper)',
+                borderBottom: '1px solid var(--line)',
+              }}
+            >
+              {AVAILABLE_LANGS.length} languages
+            </div>
             {AVAILABLE_LANGS.map((code) => {
               const entry = HOMEPAGE_TRANSLATIONS[code]!;
               return (
