@@ -19,7 +19,20 @@ export default function LanguageSwitcher({ current }: { current: string }) {
   const currentEntry = HOMEPAGE_TRANSLATIONS[current as LanguageCode];
 
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }}>
+    <div style={{ position: 'relative', display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-end', marginLeft: 22 }}>
+      <span
+        style={{
+          fontFamily: "'IBM Plex Mono', monospace",
+          fontSize: 9,
+          textTransform: 'uppercase',
+          letterSpacing: '0.08em',
+          color: 'var(--ink-soft)',
+          opacity: 0.65,
+          marginBottom: 2,
+        }}
+      >
+        {AVAILABLE_LANGS.length} languages
+      </span>
       <button
         onClick={() => setOpen((v) => !v)}
         style={{
@@ -35,7 +48,6 @@ export default function LanguageSwitcher({ current }: { current: string }) {
           alignItems: 'center',
           gap: 6,
           padding: 0,
-          marginLeft: 22,
         }}
       >
         {currentEntry && (
@@ -67,23 +79,6 @@ export default function LanguageSwitcher({ current }: { current: string }) {
               zIndex: 10,
             }}
           >
-            <div
-              style={{
-                position: 'sticky',
-                top: 0,
-                padding: '8px 14px 6px',
-                fontFamily: "'IBM Plex Mono', monospace",
-                fontSize: 10,
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: 'var(--ink-soft)',
-                opacity: 0.7,
-                background: 'var(--paper)',
-                borderBottom: '1px solid var(--line)',
-              }}
-            >
-              {AVAILABLE_LANGS.length} languages
-            </div>
             {AVAILABLE_LANGS.map((code) => {
               const entry = HOMEPAGE_TRANSLATIONS[code]!;
               return (
