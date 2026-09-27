@@ -88,3 +88,6 @@
 .agoraSummaryList .agoraMsgText{font-family:'Newsreader', serif; font-size:17px;}
 .agoraTally{color:var(--stamp-red);}
 .agoraTallyClean{color:var(--civic-blue);}
+
+/* Share */
+.agoraShareRow{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:18px;}

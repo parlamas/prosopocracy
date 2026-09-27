@@ -90,6 +90,37 @@ function formatRemaining(ms: number): string {
   return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${m}:${pad(s)}`;
 }
 
+// Opens the phone's share menu (WhatsApp, Messenger, email …); on computers
+// without one, copies the circle's link instead.
+function ShareButton({ question }: { question: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function share() {
+    const url = window.location.href;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: question, text: `Join this agora circle: ${question}`, url });
+      } catch {
+        // the person closed the share menu
+      }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      window.prompt('Copy this link:', url);
+    }
+  }
+
+  return (
+    <button type="button" className="agoraGhostBtn" onClick={share}>
+      {copied ? 'Link copied' : 'Share'}
+    </button>
+  );
+}
+
 export default function AgoraCircleRoom({ circleId }: { circleId: string }) {
   const [data, setData] = useState<RoomData | null>(null);
   const [offsetMs, setOffsetMs] = useState(0); // server clock minus this device's clock
@@ -335,6 +366,15 @@ export default function AgoraCircleRoom({ circleId }: { circleId: string }) {
                   Cancel circle
                 </button>
               )}
+            </div>
+          )}
+
+                    {data.phase !== 'cancelled' && (
+            <div className="agoraShareRow">
+              <ShareButton question={circle.question} />
+              <span className="agoraHint">
+                Invite people by sending the link on WhatsApp, email or social media.
+              </span>
             </div>
           )}
 

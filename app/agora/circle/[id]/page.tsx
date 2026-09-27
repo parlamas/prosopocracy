@@ -19,11 +19,17 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const circle = await prisma.agoraCircle.findUnique({
+    const circle = await prisma.agoraCircle.findUnique({
     where: { id },
-    select: { question: true },
+    select: { question: true, format: true, placeName: true },
   });
-  return { title: circle ? `${circle.question} · Agora · Prosopocracy` : 'Agora · Prosopocracy' };
+  if (!circle) return { title: 'Agora · Prosopocracy' };
+  const description = `${circle.format === 'ONLINE' ? 'Online' : 'In person'} discussion circle · ${circle.placeName}. Join on prosopocracy.com.`;
+  return {
+    title: `${circle.question} · Agora · Prosopocracy`,
+    description,
+    openGraph: { title: circle.question, description, siteName: 'Prosopocracy' },
+  };
 }
 
 export default async function AgoraCirclePage({ params }: { params: Promise<{ id: string }> }) {
