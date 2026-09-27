@@ -295,9 +295,15 @@ enum AgoraMoveKind {
   RIVAL
 }
 
+enum AgoraFormat {
+  ONLINE
+  IN_PERSON
+}
+
 model AgoraCircle {
   id          String            @id @default(cuid())
   question    String
+  format      AgoraFormat       @default(ONLINE)
   placeName   String
   latitude    Float
   longitude   Float

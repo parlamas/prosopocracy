@@ -3,6 +3,7 @@ import Link from 'next/link';
 import './AgoraContent.css';
 import { HOMEPAGE_TRANSLATIONS, type LanguageCode } from '../lib/homepage-translations';
 import type { AgoraText } from '../lib/agora-translations';
+import AgoraExplorer from './AgoraExplorer';
 
 const FONTS_HREF =
   'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:ital,wght@0,600;0,700;1,400&display=swap';
@@ -41,9 +42,11 @@ export default function AgoraContent({
             <div className="eyebrow">{t.heroEyebrow}</div>
             <h1 className="thesis">{t.heroThesis}</h1>
             <span className="greekTerm">{t.heroGreekTerm}</span>
-            <p className="lede">{t.heroLede}</p>
+                        <p className="lede">{t.heroLede}</p>
           </div>
         </section>
+
+        <AgoraExplorer signedIn={!!userName} />
 
         <section className="section">
           <div className="wrap">
@@ -75,18 +78,6 @@ export default function AgoraContent({
                   <p className="desc">{move.desc}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="wrap">
-            <div className="rotaBox">
-              <h3>{t.statusTitle}</h3>
-              <p>{t.statusBody}</p>
-              <Link href={homeHref} className="rotaLink">
-                {t.statusLinkText}
-              </Link>
             </div>
           </div>
         </section>

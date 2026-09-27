@@ -49,21 +49,21 @@ export const AGORA_TRANSLATIONS: Partial<Record<LanguageCode, AgoraText>> = {
         title: "A question is posted",
         body: "Each circle begins with a single concept: justice, freedom, a friend, corruption.",
       },
+           {
+        title: "Online or in person",
+        body: "The member who starts the circle chooses. Online circles meet here on the site; in-person circles meet at a named place, such as a café or a square.",
+      },
       {
         title: "People nearby join",
-        body: "Circles are pinned to a place. Anyone within 5 km can see them and take one of 4–8 seats.",
+        body: "Circles belong to a place. Anyone within 5 km can see them and take one of 4–8 seats.",
       },
       {
         title: "The circle works in rounds",
         body: "One member proposes a definition. The others may respond only with a refinement, a counterexample, or a rival definition.",
       },
-      {
+            {
         title: "It closes with a result",
-        body: "After 30 minutes, the circle records the definition it reached and the counterexamples it could not answer.",
-      },
-      {
-        title: "Optionally, meet",
-        body: "Circles that work well can continue face to face, at a café or a square nearby.",
+        body: "When the time is up, the circle records the definition it reached and the counterexamples it could not answer.",
       },
     ],
     movesLabel: "The Rules",

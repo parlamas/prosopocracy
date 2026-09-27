@@ -1,0 +1,91 @@
+/* components/AgoraExplorer.css */
+/* Map, circle list and "Start a circle" form. Colours and fonts from app/styles.css */
+
+.agoraToolbar{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin:26px 0 16px;}
+.agoraCoords{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); letter-spacing:0.04em;}
+
+/* z-index + isolation keep Leaflet's layers below the sticky masthead */
+.agoraMap{
+  position:relative; z-index:0; isolation:isolate;
+  height:420px; border:1px solid var(--line); border-radius:3px; overflow:hidden;
+  background:var(--paper-deep);
+}
+.agoraMap .leaflet-container{height:100%; width:100%; font-family:'IBM Plex Sans', sans-serif;}
+.agoraMapPlaceholder{
+  display:flex; align-items:center; justify-content:center; height:100%;
+  font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft);
+}
+
+.agoraMessage{
+  margin-top:18px; padding:12px 16px; max-width:560px;
+  border:1px solid var(--stamp-red); border-radius:2px;
+  color:var(--stamp-red); font-size:15px;
+}
+.agoraEmpty{margin-top:22px; color:var(--ink-soft); font-size:15.5px;}
+
+.agoraList{list-style:none; margin:26px 0 0; padding:0; border-top:1px solid var(--line);}
+.agoraCircleItem{
+  display:flex; justify-content:space-between; align-items:flex-start; gap:20px;
+  padding:20px 0; border-bottom:1px solid var(--line);
+}
+.agoraCircleItem h3{font-size:19px; color:var(--civic-blue); margin-bottom:6px;}
+.agoraMeta{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); letter-spacing:0.03em; margin-top:2px;}
+.agoraNow{color:var(--stamp-red); font-weight:600;}
+.agoraCircleAction{display:flex; flex-direction:column; align-items:flex-end; gap:8px; flex-shrink:0;}
+.agoraBadge{font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass);}
+.agoraFull{font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft);}
+
+.agoraGhostBtn{
+  display:inline-block; background:transparent; text-decoration:none;
+  border:1px solid var(--civic-blue); color:var(--civic-blue) !important;
+  font-family:'IBM Plex Mono', monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.06em;
+  padding:13px 26px; border-radius:2px; cursor:pointer; transition:border-color 0.2s ease, color 0.2s ease;
+}
+.agoraGhostBtn:hover{border-color:var(--stamp-red); color:var(--stamp-red) !important;}
+
+.prosopoRoot button:disabled{opacity:0.5; cursor:not-allowed;}
+
+.agoraCreate{margin-top:44px; display:flex; flex-direction:column; align-items:flex-start; gap:12px;}
+.agoraCreate h3{font-size:20px; color:var(--civic-blue);}
+.agoraHint{font-size:14px; color:var(--ink-soft); max-width:60ch;}
+
+.agoraForm{display:flex; flex-direction:column; gap:18px; width:100%; max-width:560px; margin-top:6px;}
+.agoraForm label{
+  display:flex; flex-direction:column; gap:6px;
+  font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase;
+  letter-spacing:0.06em; color:var(--ink-soft);
+}
+.agoraForm input, .agoraForm select{
+  font-family:'IBM Plex Sans', sans-serif; font-size:16px; text-transform:none; letter-spacing:0;
+  padding:12px 14px; border:1px solid var(--line); border-radius:2px;
+  background:var(--paper); color:var(--ink); width:100%;
+}
+.agoraForm input:focus, .agoraForm select:focus{outline:2px solid var(--civic-blue); outline-offset:1px;}
+.agoraFormRow{display:grid; grid-template-columns:2fr 1fr 1fr; gap:14px;}
+.agoraFormActions{display:flex; gap:12px; flex-wrap:wrap;}
+
+@media(max-width:720px){
+  .agoraMap{height:320px;}
+}
+@media(max-width:640px){
+  .agoraFormRow{grid-template-columns:1fr;}
+  .agoraCircleItem{flex-direction:column;}
+  .agoraCircleAction{align-items:flex-start;}
+}
+
+
+/* Online / In person */
+.agoraFormat{
+  display:inline-block; margin-bottom:6px;
+  font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+  color:var(--civic-blue); border:1px solid var(--civic-blue); border-radius:2px; padding:2px 8px;
+}
+.agoraFormat.inPerson{color:var(--stamp-red); border-color:var(--stamp-red);}
+.agoraSegment{display:inline-flex; border:1px solid var(--civic-blue); border-radius:2px; overflow:hidden; align-self:flex-start;}
+.agoraSegBtn{
+  background:transparent; border:none; cursor:pointer; color:var(--civic-blue);
+  font-family:'IBM Plex Mono', monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.06em;
+  padding:11px 22px;
+}
+.agoraSegBtn + .agoraSegBtn{border-left:1px solid var(--civic-blue);}
+.agoraSegBtn.active{background:var(--civic-blue); color:#FFFFFF;}
