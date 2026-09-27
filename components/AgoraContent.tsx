@@ -4,6 +4,7 @@ import './AgoraContent.css';
 import { HOMEPAGE_TRANSLATIONS, type LanguageCode } from '../lib/homepage-translations';
 import type { AgoraText } from '../lib/agora-translations';
 import AgoraExplorer from './AgoraExplorer';
+import type { RepeatSource } from '../lib/agora';
 
 const FONTS_HREF =
   'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:ital,wght@0,600;0,700;1,400&display=swap';
@@ -11,11 +12,13 @@ const FONTS_HREF =
 export default function AgoraContent({
   lang,
   t,
-  userName,
+    userName,
+  repeatFrom = null,
 }: {
   lang: LanguageCode;
   t: AgoraText;
   userName: string | null;
+  repeatFrom?: RepeatSource | null;
 }) {
   const home = HOMEPAGE_TRANSLATIONS[lang] ?? HOMEPAGE_TRANSLATIONS.en!;
   const homeHref = lang === 'en' ? '/' : `/${lang}`;
@@ -30,7 +33,8 @@ export default function AgoraContent({
             <b>{home.wordmarkNative}</b> · {home.wordmarkSecondary}
           </Link>
             <nav className="nav">
-            <Link href={homeHref}>{t.navHome}</Link>
+                        <Link href={homeHref}>{t.navHome}</Link>
+            {userName && <Link href="/agora/mine">My circles</Link>}
             <Link href="/agora/login">{userName ?? t.navSignIn}</Link>
           </nav>
         </div>
@@ -46,7 +50,7 @@ export default function AgoraContent({
           </div>
         </section>
 
-        <AgoraExplorer signedIn={!!userName} />
+                <AgoraExplorer signedIn={!!userName} repeatFrom={repeatFrom} />
 
         <section className="section">
           <div className="wrap">

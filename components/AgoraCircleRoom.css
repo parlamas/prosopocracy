@@ -91,3 +91,6 @@
 
 /* Share */
 .agoraShareRow{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:18px;}
+
+/* Repeat */
+.agoraRepeatRow{margin-top:12px;}

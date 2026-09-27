@@ -12,6 +12,17 @@ export const MAX_SEATS = 8;
 export const MAX_DAYS_AHEAD = 30;
 export const MAX_UPCOMING_PER_USER = 3;
 
+/** The settings copied from an earlier circle when a member presses "Repeat". */
+export type RepeatSource = {
+  question: string;
+  placeName: string;
+  format: 'ONLINE' | 'IN_PERSON';
+  durationMin: number;
+  maxSeats: number;
+  latitude: number;
+  longitude: number;
+};
+
 const KM_PER_DEG_LAT = 111.32;
 
 /** Great-circle distance between two points, in kilometres. */

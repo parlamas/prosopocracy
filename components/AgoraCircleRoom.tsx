@@ -378,6 +378,14 @@ export default function AgoraCircleRoom({ circleId }: { circleId: string }) {
             </div>
           )}
 
+                    {(me.isCreator || me.isMember) && (
+            <p className="agoraRepeatRow">
+              <Link href={`/agora?repeat=${circle.id}`} className="agoraTextBtn">
+                Repeat this circle
+              </Link>
+            </p>
+          )}
+
           {message && <p className="agoraMessage">{message}</p>}
           {loadError && <p className="agoraMessage">{loadError}</p>}
         </div>

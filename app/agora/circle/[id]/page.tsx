@@ -50,8 +50,9 @@ export default async function AgoraCirclePage({ params }: { params: Promise<{ id
           <Link href="/" className="wordmark agoraWordmark">
             <b>{home.wordmarkNative}</b> · {home.wordmarkSecondary}
           </Link>
-          <nav className="nav">
+                    <nav className="nav">
             <Link href="/agora">Agora</Link>
+            {userName && <Link href="/agora/mine">My circles</Link>}
             <Link href="/agora/login">{userName ?? 'Sign in'}</Link>
           </nav>
         </div>

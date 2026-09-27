@@ -6,7 +6,7 @@
 
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { useCallback, useEffect, useState, useTransition } from 'react';
+import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
 import './AgoraExplorer.css';
 import {
   createCircle,
@@ -14,7 +14,14 @@ import {
   leaveCircle,
   type ActionResult,
 } from '../app/agora/actions';
-import { DURATIONS, MAX_SEATS, MIN_SEATS, RADIUS_KM, RADIUS_OPTIONS } from '../lib/agora';
+import {
+  DURATIONS,
+  MAX_SEATS,
+  MIN_SEATS,
+  RADIUS_KM,
+  RADIUS_OPTIONS,
+  type RepeatSource,
+} from '../lib/agora';
 
 const AgoraMap = dynamic(() => import('./AgoraMap'), {
   ssr: false,
@@ -62,14 +69,28 @@ function defaultStartLocal(): string {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
-export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
-  const [centre, setCentre] = useState<Point | null>(null);
+export default function AgoraExplorer({
+  signedIn,
+  repeatFrom = null,
+}: {
+  signedIn: boolean;
+  repeatFrom?: RepeatSource | null;
+}) {
+  const [centre, setCentre] = useState<Point | null>(
+    repeatFrom ? { lat: repeatFrom.latitude, lng: repeatFrom.longitude } : null
+  );
   const [radiusKm, setRadiusKm] = useState<number>(RADIUS_KM);
   const [circles, setCircles] = useState<NearbyCircle[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
-  const [showForm, setShowForm] = useState(false);
+    const [showForm, setShowForm] = useState(!!repeatFrom && signedIn);
   const [pending, startTransition] = useTransition();
+  const createRef = useRef<HTMLDivElement>(null);
+
+  // Arriving from "Repeat": scroll to the pre-filled form.
+  useEffect(() => {
+    if (repeatFrom && signedIn) createRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [repeatFrom, signedIn]);
 
   const load = useCallback(async (p: Point, r: number) => {
     setLoading(true);
@@ -247,7 +268,7 @@ export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
           </ul>
         )}
 
-        <div className="agoraCreate">
+                <div className="agoraCreate" ref={createRef}>
           <h3>Start a circle</h3>
           {!signedIn ? (
             <p className="agoraHint">
@@ -271,8 +292,9 @@ export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
               </button>
             </>
           ) : (
-            <CreateCircleForm
+                        <CreateCircleForm
               centre={centre}
+              initial={repeatFrom}
               pending={pending}
               onCancel={() => setShowForm(false)}
               onSubmit={(input) =>
@@ -291,21 +313,23 @@ export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
 
 function CreateCircleForm({
   centre,
+  initial,
   pending,
   onCancel,
   onSubmit,
 }: {
   centre: Point | null;
+  initial: RepeatSource | null;
   pending: boolean;
   onCancel: () => void;
   onSubmit: (input: Parameters<typeof createCircle>[0]) => void;
 }) {
-  const [format, setFormat] = useState<Format>('ONLINE');
-  const [question, setQuestion] = useState('');
-  const [placeName, setPlaceName] = useState('');
+    const [format, setFormat] = useState<Format>(initial?.format ?? 'ONLINE');
+  const [question, setQuestion] = useState(initial?.question ?? '');
+  const [placeName, setPlaceName] = useState(initial?.placeName ?? '');
   const [startLocal, setStartLocal] = useState(defaultStartLocal);
-  const [durationMin, setDurationMin] = useState(30);
-  const [maxSeats, setMaxSeats] = useState(MAX_SEATS);
+  const [durationMin, setDurationMin] = useState(initial?.durationMin ?? 30);
+  const [maxSeats, setMaxSeats] = useState(initial?.maxSeats ?? MAX_SEATS);
   const [error, setError] = useState<string | null>(null);
 
   const online = format === 'ONLINE';
@@ -338,7 +362,12 @@ function CreateCircleForm({
   for (let n = MIN_SEATS; n <= MAX_SEATS; n++) seatOptions.push(n);
 
   return (
-    <form className="agoraForm" onSubmit={submit}>
+        <form className="agoraForm" onSubmit={submit}>
+      {initial && (
+        <p className="agoraHint agoraRepeatNote">
+          Repeating an earlier circle. Everything is filled in: choose a new start time.
+        </p>
+      )}
       <div className="agoraSegment" role="radiogroup" aria-label="Format">
         <button
           type="button"

@@ -73,6 +73,11 @@ export default async function AgoraLoginPage({
                 <p className="sectionIntro">
                   Signed in as <strong>{session.user.name}</strong>.
                 </p>
+                                <p className="agoraAuthActions">
+                  <Link href="/agora/mine" className="ctaBtn">
+                    My circles
+                  </Link>
+                </p>
                 <form action={logout} className="agoraAuthActions">
                   <button type="submit" className="ctaBtn">
                     Sign out
