@@ -83,8 +83,13 @@ export async function createCircle(input: CreateCircleInput): Promise<ActionResu
   if (Number.isNaN(startsAt.getTime())) {
     return { ok: false, error: 'Choose a start time.' };
   }
-  if (startsAt.getTime() < now.getTime() - 5 * 60_000) {
+    // A start time up to an hour in the past means "start now"
+  // (for example, when the form was left open for a while).
+  if (startsAt.getTime() < now.getTime() - 60 * 60_000) {
     return { ok: false, error: 'The start time is in the past.' };
+  }
+  if (startsAt.getTime() < now.getTime()) {
+    startsAt.setTime(now.getTime());
   }
   if (startsAt.getTime() > now.getTime() + MAX_DAYS_AHEAD * 24 * 60 * 60_000) {
     return { ok: false, error: `Circles can be scheduled at most ${MAX_DAYS_AHEAD} days ahead.` };
