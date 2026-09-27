@@ -13,12 +13,14 @@ export default function AgoraContent({
   lang,
   t,
     userName,
-  repeatFrom = null,
+    repeatFrom = null,
+  startView = null,
 }: {
   lang: LanguageCode;
   t: AgoraText;
   userName: string | null;
   repeatFrom?: RepeatSource | null;
+  startView?: { lat: number; lng: number } | null;
 }) {
   const home = HOMEPAGE_TRANSLATIONS[lang] ?? HOMEPAGE_TRANSLATIONS.en!;
   const homeHref = lang === 'en' ? '/' : `/${lang}`;
@@ -50,7 +52,7 @@ export default function AgoraContent({
           </div>
         </section>
 
-                <AgoraExplorer signedIn={!!userName} repeatFrom={repeatFrom} />
+                        <AgoraExplorer signedIn={!!userName} repeatFrom={repeatFrom} startView={startView} />
 
         <section className="section">
           <div className="wrap">

@@ -74,9 +74,11 @@ function defaultStartLocal(): string {
 export default function AgoraExplorer({
   signedIn,
   repeatFrom = null,
+  startView = null,
 }: {
   signedIn: boolean;
   repeatFrom?: RepeatSource | null;
+  startView?: { lat: number; lng: number } | null;
 }) {
   const [centre, setCentre] = useState<Point | null>(
     repeatFrom ? { lat: repeatFrom.latitude, lng: repeatFrom.longitude } : null
@@ -89,7 +91,10 @@ export default function AgoraExplorer({
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
   const [searching, setSearching] = useState(false);
-  const [view, setView] = useState<MapView | null>(null);
+    // Where the map first looks: the visitor's approximate city, when known.
+  const [view, setView] = useState<MapView | null>(
+    startView ? { lat: startView.lat, lng: startView.lng, zoom: 11, key: 0 } : null
+  );
   const [pending, startTransition] = useTransition();
   const createRef = useRef<HTMLDivElement>(null);
 
@@ -133,7 +138,7 @@ export default function AgoraExplorer({
     setRadiusKm(RADIUS_KM);
     setCity('');
     setCountry('');
-    setView(null);
+        setView({ lat: 30, lng: 10, zoom: 2, key: Date.now() }); // world view
   }
 
   async function searchPlace(e: React.FormEvent) {
@@ -230,7 +235,7 @@ export default function AgoraExplorer({
           <button type="button" className="ctaBtn" onClick={useMyLocation}>
             Use my location
           </button>
-          {(centre || view) && (
+                    {(centre || (view && view.zoom > 2)) && (
             <button type="button" className="agoraGhostBtn" onClick={resetMap}>
               Reset
             </button>
