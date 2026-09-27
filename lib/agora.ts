@@ -3,8 +3,16 @@
 // both server code and client components (no Prisma, no Node-only APIs).
 
 export const RADIUS_KM = 5; // default search radius
-export const RADIUS_OPTIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20] as const;
+export const RADIUS_OPTIONS = [
+  0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20,
+] as const;
+export const MIN_RADIUS_KM = 0.1;
 export const MAX_RADIUS_KM = 20;
+
+/** "300 m" below 1 km, "5 km" from 1 km up. */
+export function formatRadius(km: number): string {
+  return km < 1 ? `${Math.round(km * 1000)} m` : `${km} km`;
+}
 export const DURATIONS = [15, 30, 45, 60, 90, 120] as const;
 export const MAX_DURATION_MIN = 120;
 export const MIN_SEATS = 4;

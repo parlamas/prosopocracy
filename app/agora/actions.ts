@@ -294,3 +294,29 @@ export async function cancelCircle(circleId: string): Promise<ActionResult> {
   revalidatePath('/agora');
   return { ok: true };
 }
+
+
+// ── Deleting (My circles) ──────────────────────────────────────
+
+/** Permanently deletes a circle, with its members and conversation. Creator only. */
+export async function deleteCircle(circleId: string): Promise<ActionResult> {
+  const session = await auth();
+  const userId = session?.user?.id;
+  if (!userId) return { ok: false, error: 'Please sign in first.' };
+
+  const circle = await prisma.agoraCircle.findUnique({
+    where: { id: String(circleId) },
+    select: { id: true, createdById: true },
+  });
+  if (!circle) return { ok: true }; // already gone
+  if (circle.createdById !== userId) {
+    return { ok: false, error: 'Only the member who started this circle can delete it.' };
+  }
+
+  // Members and messages are removed with it (onDelete: Cascade in the schema).
+  await prisma.agoraCircle.delete({ where: { id: circle.id } });
+
+  revalidatePath('/agora');
+  revalidatePath('/agora/mine');
+  return { ok: true };
+}

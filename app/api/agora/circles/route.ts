@@ -8,6 +8,7 @@ import { prisma } from '../../../../lib/prisma';
 import {
   MAX_DURATION_MIN,
   MAX_RADIUS_KM,
+  MIN_RADIUS_KM,
   RADIUS_KM,
   boundingBox,
   circleEndsAt,
@@ -31,7 +32,7 @@ export async function POST(request: Request) {
   };
   const requestedRadius = Number(radiusKm);
   const radius =
-    Number.isFinite(requestedRadius) && requestedRadius >= 1
+        Number.isFinite(requestedRadius) && requestedRadius >= MIN_RADIUS_KM
       ? Math.min(requestedRadius, MAX_RADIUS_KM)
       : RADIUS_KM;
   const latitude = Number(lat);

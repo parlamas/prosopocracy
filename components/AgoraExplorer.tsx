@@ -19,7 +19,8 @@ import {
   MAX_SEATS,
   MIN_SEATS,
   RADIUS_KM,
-  RADIUS_OPTIONS,
+    RADIUS_OPTIONS,
+  formatRadius,
   type RepeatSource,
 } from '../lib/agora';
 
@@ -153,7 +154,7 @@ export default function AgoraExplorer({
     <section className="section">
       <div className="wrap">
         <div className="sectionLabel">Find a Circle</div>
-        <h2 className="sectionTitle">Circles within {radiusKm} km</h2>
+        <h2 className="sectionTitle">Circles within {formatRadius(radiusKm)}</h2>
         <p className="sectionIntro">
           Tap the map to choose a centre anywhere in the world, or use your current location. The
           location is only used for this search and is not saved.
@@ -167,8 +168,8 @@ export default function AgoraExplorer({
             Radius
             <select value={radiusKm} onChange={(e) => setRadiusKm(Number(e.target.value))}>
               {RADIUS_OPTIONS.map((r) => (
-                <option key={r} value={r}>
-                  {r} km
+                                <option key={r} value={r}>
+                  {formatRadius(r)}
                 </option>
               ))}
             </select>
@@ -197,7 +198,7 @@ export default function AgoraExplorer({
         {!centre && <p className="agoraEmpty">Choose a centre to see circles near it.</p>}
 
         {centre && !loading && circles.length === 0 && (
-          <p className="agoraEmpty">No open circles within {radiusKm} km yet.</p>
+                    <p className="agoraEmpty">No open circles within {formatRadius(radiusKm)} yet.</p>
         )}
 
         {centre && loading && <p className="agoraEmpty">Looking for circles…</p>}

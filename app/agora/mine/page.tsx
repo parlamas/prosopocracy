@@ -7,7 +7,9 @@ import { redirect } from 'next/navigation';
 import '../../styles.css';
 import '../../../components/AgoraContent.css';
 import '../../../components/AgoraExplorer.css';
+import '../../../components/AgoraCircleRoom.css';
 import LocalTime from '../../../components/LocalTime';
+import MyCircleActions from '../../../components/MyCircleActions';
 import { auth } from '../../../lib/auth';
 import { prisma } from '../../../lib/prisma';
 import { circleEndsAt } from '../../../lib/agora';
@@ -58,10 +60,8 @@ function CircleList({ rows }: { rows: Row[] }) {
                 ` · ${r.messageCount} message${r.messageCount === 1 ? '' : 's'}`}
             </p>
           </div>
-          <div className="agoraCircleAction">
-            <Link href={`/agora?repeat=${r.id}`} className="agoraGhostBtn">
-              Repeat
-            </Link>
+                    <div className="agoraCircleAction">
+            <MyCircleActions id={r.id} started={r.started} />
           </div>
         </li>
       ))}

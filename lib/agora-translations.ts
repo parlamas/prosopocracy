@@ -55,7 +55,7 @@ export const AGORA_TRANSLATIONS: Partial<Record<LanguageCode, AgoraText>> = {
       },
       {
         title: "People nearby join",
-                body: "Circles belong to a place. Anyone searching within 1 to 20 km of it can see the circle and take one of 4–8 seats.",
+                body: "Circles belong to a place. Anyone searching within 100 m to 20 km of it can see the circle and take one of 4–8 seats.",
       },
       {
         title: "The circle talks",

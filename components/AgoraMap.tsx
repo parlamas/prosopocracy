@@ -32,6 +32,9 @@ function ClickToPick({ onPick }: { onPick: (lat: number, lng: number) => void })
 
 // Zoom level at which the search circle roughly fits the map.
 function zoomForRadius(km: number): number {
+  if (km <= 0.2) return 17;
+  if (km <= 0.5) return 16;
+  if (km < 1) return 15;
   if (km <= 1) return 14;
   if (km <= 2) return 13;
   if (km <= 5) return 12;
