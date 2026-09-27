@@ -25,10 +25,12 @@ export async function generateMetadata({
   });
   if (!circle) return { title: 'Agora · Prosopocracy' };
   const description = `${circle.format === 'ONLINE' ? 'Online' : 'In person'} discussion circle · ${circle.placeName}. Join on prosopocracy.com.`;
-  return {
+    return {
+    metadataBase: new URL('https://www.prosopocracy.com'),
     title: `${circle.question} · Agora · Prosopocracy`,
     description,
     openGraph: { title: circle.question, description, siteName: 'Prosopocracy' },
+    twitter: { card: 'summary_large_image', title: circle.question, description },
   };
 }
 

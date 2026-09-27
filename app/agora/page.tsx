@@ -8,8 +8,10 @@ import { prisma } from '../../lib/prisma';
 import { headers } from 'next/headers';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.prosopocracy.com'),
   title: AGORA_TRANSLATIONS.en!.metaTitle,
   description: AGORA_TRANSLATIONS.en!.metaDescription,
+  twitter: { card: 'summary_large_image' },
 };
 
 export default async function AgoraPage({
