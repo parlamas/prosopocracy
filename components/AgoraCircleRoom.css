@@ -1,0 +1,90 @@
+/* components/AgoraCircleRoom.css */
+/* The circle page. Shared bits (agoraFormat, agoraMeta, agoraGhostBtn, …) come from AgoraExplorer.css */
+
+.agoraRoomTitle{margin-top:4px; margin-bottom:12px; max-width:none; overflow-wrap:anywhere;}
+
+.agoraStatus{
+  display:flex; flex-direction:column; gap:4px; margin-top:22px; padding:16px 18px; max-width:560px;
+  border:1px solid var(--line); border-radius:3px; background:var(--paper-deep);
+}
+.agoraStatus strong{font-family:'IBM Plex Mono', monospace; font-size:14px; text-transform:uppercase; letter-spacing:0.06em; color:var(--civic-blue);}
+.agoraStatus strong.agoraLive{color:var(--stamp-red);}
+.agoraStatus span{font-size:14.5px; color:var(--ink-soft);}
+
+.agoraMembers{margin-top:18px; font-size:15px; color:var(--ink);}
+.agoraMembersLabel{font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--brass);}
+
+.agoraRoomActions{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:20px;}
+
+.agoraTextBtn{
+  background:none; border:none; padding:4px 0; cursor:pointer;
+  font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em;
+  color:var(--civic-blue); text-decoration:underline; text-underline-offset:3px;
+}
+.agoraTextBtn:hover{color:var(--stamp-red);}
+.agoraTextBtn.danger{color:var(--stamp-red);}
+
+/* The conversation */
+.agoraChat{
+  margin-top:18px; max-height:60vh; overflow-y:auto;
+  border:1px solid var(--line); border-radius:3px; background:var(--paper); padding:6px 18px;
+}
+.agoraChatEmpty{margin:16px 0;}
+.agoraChatList{list-style:none; margin:0; padding:0;}
+.agoraMsg{padding:14px 0; border-bottom:1px solid var(--line);}
+.agoraMsg:last-child{border-bottom:none;}
+.agoraMsgHead{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin-bottom:4px;}
+.agoraMsgAuthor{font-weight:600; font-size:14.5px; color:var(--civic-blue);}
+.agoraMsg.mine .agoraMsgAuthor{color:var(--brass);}
+.agoraMsgTime{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft);}
+.agoraMsgTag{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;
+  padding:1px 7px; border-radius:2px; border:1px solid var(--civic-blue); color:var(--civic-blue);
+}
+.agoraMsg.kind-counterexample .agoraMsgTag{border-color:var(--stamp-red); color:var(--stamp-red);}
+.agoraMsg.kind-proposal .agoraMsgTag, .agoraMsg.kind-rival .agoraMsgTag{background:var(--civic-blue); color:#FFFFFF;}
+.agoraMsgText{font-size:16px; line-height:1.55; color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere;}
+.agoraMsg.kind-proposal .agoraMsgText, .agoraMsg.kind-rival .agoraMsgText{font-family:'Newsreader', serif; font-size:18px;}
+.agoraMsgQuote{
+  margin:4px 0 6px; padding-left:10px; border-left:2px solid var(--line);
+  font-size:13.5px; color:var(--ink-soft); font-style:italic;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.agoraMoveMeta{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft); letter-spacing:0.03em; margin-top:4px;}
+
+/* Writing */
+.agoraComposer{display:flex; flex-direction:column; gap:12px; margin-top:18px; max-width:720px;}
+.agoraKindRow{display:flex; flex-wrap:wrap; gap:8px;}
+.agoraKindBtn{
+  background:transparent; border:1px solid var(--line); border-radius:2px; cursor:pointer; color:var(--ink-soft);
+  font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.05em;
+  padding:7px 12px;
+}
+.agoraKindBtn:hover{border-color:var(--civic-blue); color:var(--civic-blue);}
+.agoraKindBtn.active{background:var(--civic-blue); border-color:var(--civic-blue); color:#FFFFFF;}
+.agoraTargetLabel{
+  display:flex; flex-direction:column; gap:6px;
+  font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft);
+}
+.agoraTargetLabel select{
+  font-family:'IBM Plex Sans', sans-serif; font-size:15px; text-transform:none; letter-spacing:0;
+  padding:10px 12px; border:1px solid var(--line); border-radius:2px; background:var(--paper); color:var(--ink);
+}
+.agoraComposer textarea{
+  font-family:'IBM Plex Sans', sans-serif; font-size:16px; line-height:1.5;
+  padding:12px 14px; border:1px solid var(--line); border-radius:2px; background:var(--paper); color:var(--ink);
+  resize:vertical; width:100%;
+}
+.agoraComposer textarea:focus, .agoraTargetLabel select:focus{outline:2px solid var(--civic-blue); outline-offset:1px;}
+.agoraComposer .agoraFormActions{align-items:center;}
+
+.agoraReadOnly{margin-top:18px;}
+
+/* The record: definitions summary after the circle ends */
+.agoraSummary{margin-top:36px;}
+.agoraSummaryList{list-style:none; margin:10px 0 0; padding:0; display:flex; flex-direction:column; gap:14px;}
+.agoraSummaryList li{border:1px solid var(--line); border-radius:3px; padding:14px 16px; background:var(--paper);}
+.agoraSummaryNumber{font-family:'Newsreader', serif; font-size:18px; font-weight:600; color:var(--civic-blue);}
+.agoraSummaryList .agoraMsgText{font-family:'Newsreader', serif; font-size:17px;}
+.agoraTally{color:var(--stamp-red);}
+.agoraTallyClean{color:var(--civic-blue);}

@@ -1,5 +1,5 @@
 // components/AgoraExplorer.tsx
-// Find circles within 5 km of a chosen point, join or leave them, and start new ones.
+// Find circles within a chosen radius (1–20 km) of a point, join or leave them, and start new ones.
 // Circles are either ONLINE (dialogue on the site; the map point marks the
 // neighbourhood) or IN_PERSON (the map point is the exact meeting spot).
 'use client';
@@ -14,7 +14,7 @@ import {
   leaveCircle,
   type ActionResult,
 } from '../app/agora/actions';
-import { DURATIONS, MAX_SEATS, MIN_SEATS, RADIUS_KM } from '../lib/agora';
+import { DURATIONS, MAX_SEATS, MIN_SEATS, RADIUS_KM, RADIUS_OPTIONS } from '../lib/agora';
 
 const AgoraMap = dynamic(() => import('./AgoraMap'), {
   ssr: false,
@@ -64,19 +64,20 @@ function defaultStartLocal(): string {
 
 export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
   const [centre, setCentre] = useState<Point | null>(null);
+  const [radiusKm, setRadiusKm] = useState<number>(RADIUS_KM);
   const [circles, setCircles] = useState<NearbyCircle[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [pending, startTransition] = useTransition();
 
-  const load = useCallback(async (p: Point) => {
+  const load = useCallback(async (p: Point, r: number) => {
     setLoading(true);
     try {
       const res = await fetch('/api/agora/circles', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lat: p.lat, lng: p.lng }),
+        body: JSON.stringify({ lat: p.lat, lng: p.lng, radiusKm: r }),
         cache: 'no-store',
       });
       const data = await res.json();
@@ -94,8 +95,8 @@ export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
   }, []);
 
   useEffect(() => {
-    if (centre) load(centre);
-  }, [centre, load]);
+    if (centre) load(centre, radiusKm);
+  }, [centre, radiusKm, load]);
 
   function useMyLocation() {
     if (!navigator.geolocation) {
@@ -121,7 +122,7 @@ export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
       } else {
         onSuccess?.();
       }
-      if (centre) await load(centre);
+      if (centre) await load(centre, radiusKm);
     });
   }
 
@@ -131,7 +132,7 @@ export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
     <section className="section">
       <div className="wrap">
         <div className="sectionLabel">Find a Circle</div>
-        <h2 className="sectionTitle">Circles within {RADIUS_KM} km</h2>
+        <h2 className="sectionTitle">Circles within {radiusKm} km</h2>
         <p className="sectionIntro">
           Tap the map to choose a centre anywhere in the world, or use your current location. The
           location is only used for this search and is not saved.
@@ -141,6 +142,16 @@ export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
           <button type="button" className="ctaBtn" onClick={useMyLocation}>
             Use my location
           </button>
+          <label className="agoraRadius">
+            Radius
+            <select value={radiusKm} onChange={(e) => setRadiusKm(Number(e.target.value))}>
+              {RADIUS_OPTIONS.map((r) => (
+                <option key={r} value={r}>
+                  {r} km
+                </option>
+              ))}
+            </select>
+          </label>
           {centre && (
             <span className="agoraCoords">
               Centre {centre.lat.toFixed(4)}, {centre.lng.toFixed(4)}
@@ -151,7 +162,7 @@ export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
         <div className="agoraMap">
           <AgoraMap
             centre={centre}
-            radiusKm={RADIUS_KM}
+            radiusKm={radiusKm}
             circles={circles}
             onPick={(lat, lng) => {
               setMessage(null);
@@ -165,7 +176,7 @@ export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
         {!centre && <p className="agoraEmpty">Choose a centre to see circles near it.</p>}
 
         {centre && !loading && circles.length === 0 && (
-          <p className="agoraEmpty">No open circles within {RADIUS_KM} km yet.</p>
+          <p className="agoraEmpty">No open circles within {radiusKm} km yet.</p>
         )}
 
         {centre && loading && <p className="agoraEmpty">Looking for circles…</p>}
@@ -181,7 +192,11 @@ export default function AgoraExplorer({ signedIn }: { signedIn: boolean }) {
                     <span className={c.format === 'ONLINE' ? 'agoraFormat' : 'agoraFormat inPerson'}>
                       {FORMAT_LABEL[c.format]}
                     </span>
-                    <h3>{c.question}</h3>
+                    <h3>
+                      <Link href={`/agora/circle/${c.id}`} className="agoraCircleLink">
+                        {c.question}
+                      </Link>
+                    </h3>
                     <p className="agoraMeta">
                       {c.placeName} · {c.distanceKm.toFixed(1)} km away
                     </p>
@@ -346,17 +361,18 @@ function CreateCircleForm({
       </div>
       <p className="agoraHint">
         {online
-          ? 'The dialogue takes place here on the site, among people within 5 km of each other.'
+          ? 'The dialogue takes place here on the site, among people nearby.'
           : 'Members meet at a real place and hold the dialogue face to face.'}
       </p>
 
       <label>
-        Question
-        <input
+        Issue to discuss
+        <textarea
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          placeholder="What is justice?"
-          maxLength={200}
+          placeholder="A concept to define, a local question, or anything worth discussing. For example: What is justice? Should the city centre be car-free?"
+          maxLength={500}
+          rows={3}
           required
         />
       </label>

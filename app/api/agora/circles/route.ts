@@ -7,6 +7,7 @@ import { auth } from '../../../../lib/auth';
 import { prisma } from '../../../../lib/prisma';
 import {
   MAX_DURATION_MIN,
+  MAX_RADIUS_KM,
   RADIUS_KM,
   boundingBox,
   circleEndsAt,
@@ -23,7 +24,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
   }
 
-  const { lat, lng } = (body ?? {}) as { lat?: unknown; lng?: unknown };
+    const { lat, lng, radiusKm } = (body ?? {}) as {
+    lat?: unknown;
+    lng?: unknown;
+    radiusKm?: unknown;
+  };
+  const requestedRadius = Number(radiusKm);
+  const radius =
+    Number.isFinite(requestedRadius) && requestedRadius >= 1
+      ? Math.min(requestedRadius, MAX_RADIUS_KM)
+      : RADIUS_KM;
   const latitude = Number(lat);
   const longitude = Number(lng);
   if (
@@ -38,7 +48,7 @@ export async function POST(request: Request) {
   const session = await auth();
   const userId = session?.user?.id ?? '';
 
-  const box = boundingBox(latitude, longitude, RADIUS_KM);
+  const box = boundingBox(latitude, longitude, radius);
   const now = new Date();
   const earliestStart = new Date(now.getTime() - MAX_DURATION_MIN * 60_000);
 
@@ -74,7 +84,7 @@ export async function POST(request: Request) {
       isCreator: userId !== '' && c.createdById === userId,
       distanceKm: haversineKm(latitude, longitude, c.latitude, c.longitude),
     }))
-    .filter((c) => c.distanceKm <= RADIUS_KM);
+        .filter((c) => c.distanceKm <= radius);
 
   return NextResponse.json({ circles });
 }

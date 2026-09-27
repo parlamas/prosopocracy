@@ -5,6 +5,7 @@
 import 'leaflet/dist/leaflet.css';
 import { useEffect } from 'react';
 import {
+  AttributionControl,
   Circle,
   CircleMarker,
   MapContainer,
@@ -29,16 +30,26 @@ function ClickToPick({ onPick }: { onPick: (lat: number, lng: number) => void })
   return null;
 }
 
-function FollowCentre({ centre }: { centre: Point | null }) {
+// Zoom level at which the search circle roughly fits the map.
+function zoomForRadius(km: number): number {
+  if (km <= 1) return 14;
+  if (km <= 2) return 13;
+  if (km <= 5) return 12;
+  if (km <= 10) return 11;
+  return 10;
+}
+
+function FollowCentre({ centre, radiusKm }: { centre: Point | null; radiusKm: number }) {
   const map = useMap();
   useEffect(() => {
     if (!centre) return;
     const target: [number, number] = [centre.lat, centre.lng];
+    const wanted = zoomForRadius(radiusKm);
     const zoom = map.getZoom();
-    if (zoom < 12 || !map.getBounds().contains(target)) {
-      map.setView(target, Math.max(zoom, 12));
+    if (zoom < wanted - 2 || !map.getBounds().contains(target)) {
+      map.setView(target, wanted);
     }
-  }, [centre, map]);
+  }, [centre, radiusKm, map]);
   return null;
 }
 
@@ -54,14 +65,21 @@ export default function AgoraMap({
   onPick: (lat: number, lng: number) => void;
 }) {
   return (
-    <MapContainer center={[30, 10]} zoom={2} worldCopyJump style={{ height: '100%', width: '100%' }}>
+        <MapContainer
+      center={[30, 10]}
+      zoom={2}
+      worldCopyJump
+      attributionControl={false}
+      style={{ height: '100%', width: '100%' }}
+    >
+      <AttributionControl prefix='<a href="https://leafletjs.com">Leaflet</a>' />
       <TileLayer
         url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         maxZoom={19}
       />
       <ClickToPick onPick={onPick} />
-      <FollowCentre centre={centre} />
+            <FollowCentre centre={centre} radiusKm={radiusKm} />
 
       {centre && (
         <>

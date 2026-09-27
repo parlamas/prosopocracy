@@ -2,7 +2,9 @@
 // Shared agora rules and geometry. Pure functions only — safe to import from
 // both server code and client components (no Prisma, no Node-only APIs).
 
-export const RADIUS_KM = 5;
+export const RADIUS_KM = 5; // default search radius
+export const RADIUS_OPTIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20] as const;
+export const MAX_RADIUS_KM = 20;
 export const DURATIONS = [15, 30, 45, 60, 90, 120] as const;
 export const MAX_DURATION_MIN = 120;
 export const MIN_SEATS = 4;

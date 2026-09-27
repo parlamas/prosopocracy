@@ -89,3 +89,26 @@
 }
 .agoraSegBtn + .agoraSegBtn{border-left:1px solid var(--civic-blue);}
 .agoraSegBtn.active{background:var(--civic-blue); color:#FFFFFF;}
+
+
+/* Link from the list to the circle page */
+.agoraCircleLink{text-decoration:none;}
+.agoraCircleLink:hover{text-decoration:underline; text-underline-offset:3px;}
+
+
+/* Radius selector and the "Issue to discuss" box */
+.agoraRadius{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft);
+}
+.agoraRadius select{
+  font-family:'IBM Plex Sans', sans-serif; font-size:15px; text-transform:none; letter-spacing:0;
+  padding:9px 10px; border:1px solid var(--line); border-radius:2px; background:var(--paper); color:var(--ink);
+}
+.agoraForm textarea{
+  font-family:'IBM Plex Sans', sans-serif; font-size:16px; text-transform:none; letter-spacing:0; line-height:1.5;
+  padding:12px 14px; border:1px solid var(--line); border-radius:2px;
+  background:var(--paper); color:var(--ink); width:100%; resize:vertical;
+}
+.agoraForm textarea:focus{outline:2px solid var(--civic-blue); outline-offset:1px;}
+.agoraCircleItem h3{display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;}

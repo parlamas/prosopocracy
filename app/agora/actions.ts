@@ -21,7 +21,7 @@ export type ActionResult = { ok: true; id?: string } | { ok: false; error: strin
 
 export type CreateCircleInput = {
   format: 'ONLINE' | 'IN_PERSON';
-  question: string;
+  question: string; // the issue to discuss, chosen by the creator
   placeName: string; // meeting place (in person) or area (online)
   latitude: number;
   longitude: number;
@@ -66,8 +66,8 @@ export async function createCircle(input: CreateCircleInput): Promise<ActionResu
     if (!format) {
     return { ok: false, error: 'Choose online or in person.' };
   }
-  if (question.length < 5 || question.length > 200) {
-    return { ok: false, error: 'The question must be between 5 and 200 characters.' };
+    if (question.length < 5 || question.length > 500) {
+    return { ok: false, error: 'The issue must be between 5 and 500 characters.' };
   }
   if (placeName.length < 2 || placeName.length > 80) {
         return { ok: false, error: 'The place or area name must be between 2 and 80 characters.' };
@@ -173,6 +173,118 @@ export async function leaveCircle(circleId: string): Promise<ActionResult> {
   await prisma.agoraMember.deleteMany({
     where: { circleId: String(circleId), userId },
   });
+
+  revalidatePath('/agora');
+  return { ok: true };
+}
+
+
+// ── The live dialogue (online circles) ─────────────────────────
+
+export type MoveKind = 'COMMENT' | 'PROPOSAL' | 'REFINEMENT' | 'COUNTEREXAMPLE' | 'RIVAL';
+
+const MOVE_KINDS: readonly MoveKind[] = [
+  'COMMENT',
+  'PROPOSAL',
+  'REFINEMENT',
+  'COUNTEREXAMPLE',
+  'RIVAL',
+];
+
+export async function postMove(
+  circleId: string,
+  kind: MoveKind,
+  text: string,
+  replyToId: string | null
+): Promise<ActionResult> {
+  const participant = await requireParticipant();
+  if ('error' in participant) return { ok: false, error: participant.error };
+
+  if (!MOVE_KINDS.includes(kind)) return { ok: false, error: 'Unknown move.' };
+
+  const body = String(text ?? '').trim();
+    if (body.length < 1 || body.length > 500) {
+    return { ok: false, error: 'A message can be at most 500 characters.' };
+  }
+
+  const circle = await prisma.agoraCircle.findUnique({ where: { id: String(circleId) } });
+  if (!circle || circle.status === 'CLOSED') {
+    return { ok: false, error: 'This circle is not available.' };
+  }
+  if (circle.format !== 'ONLINE') {
+    return { ok: false, error: 'In-person circles hold their dialogue face to face.' };
+  }
+
+  const now = new Date();
+  if (now < circle.startsAt) return { ok: false, error: 'The dialogue has not started yet.' };
+  if (now >= circleEndsAt(circle)) return { ok: false, error: 'The time for this circle is up.' };
+
+  const member = await prisma.agoraMember.findUnique({
+    where: { circleId_userId: { circleId: circle.id, userId: participant.userId } },
+    select: { id: true },
+  });
+  if (!member) return { ok: false, error: 'Only members of this circle can post. Join it first.' };
+
+    // Messages (COMMENT) and proposals stand alone. Refinements, counterexamples
+  // and rival definitions each answer one definition (a proposal or a rival definition).
+  let target: string | null = null;
+  if (kind === 'REFINEMENT' || kind === 'COUNTEREXAMPLE' || kind === 'RIVAL') {
+    if (!replyToId) return { ok: false, error: 'Choose which definition you are responding to.' };
+    const answered = await prisma.agoraMove.findUnique({
+      where: { id: String(replyToId) },
+      select: { circleId: true, kind: true },
+    });
+    if (
+      !answered ||
+      answered.circleId !== circle.id ||
+      (answered.kind !== 'PROPOSAL' && answered.kind !== 'RIVAL')
+    ) {
+      return { ok: false, error: 'You can only respond to a proposed definition.' };
+    }
+    target = String(replyToId);
+  }
+
+  const last = await prisma.agoraMove.findFirst({
+    where: { circleId: circle.id, authorId: participant.userId },
+    orderBy: { createdAt: 'desc' },
+    select: { createdAt: true },
+  });
+    if (last && now.getTime() - last.createdAt.getTime() < 2_000) {
+    return { ok: false, error: 'Please wait a moment between messages.' };
+  }
+
+  await prisma.agoraMove.create({
+    data: {
+      circleId: circle.id,
+      authorId: participant.userId,
+      kind,
+      text: body,
+      replyToId: target,
+    },
+  });
+
+  return { ok: true };
+}
+
+export async function cancelCircle(circleId: string): Promise<ActionResult> {
+  const session = await auth();
+  const userId = session?.user?.id;
+  if (!userId) return { ok: false, error: 'Please sign in first.' };
+
+  const circle = await prisma.agoraCircle.findUnique({
+    where: { id: String(circleId) },
+    select: { id: true, createdById: true, status: true, startsAt: true, durationMin: true },
+  });
+  if (!circle) return { ok: false, error: 'Circle not found.' };
+  if (circle.createdById !== userId) {
+    return { ok: false, error: 'Only the member who started this circle can cancel it.' };
+  }
+  if (circle.status === 'CLOSED') return { ok: true };
+  if (circleEndsAt(circle) <= new Date()) {
+    return { ok: false, error: 'This circle has already ended.' };
+  }
+
+  await prisma.agoraCircle.update({ where: { id: circle.id }, data: { status: 'CLOSED' } });
 
   revalidatePath('/agora');
   return { ok: true };
