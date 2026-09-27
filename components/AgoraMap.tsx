@@ -3,7 +3,7 @@
 'use client';
 
 import 'leaflet/dist/leaflet.css';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   AttributionControl,
   Circle,
@@ -16,6 +16,7 @@ import {
 } from 'react-leaflet';
 
 type Point = { lat: number; lng: number };
+type MapView = { lat: number; lng: number; zoom: number; key: number };
 type MapCircle = { id: string; question: string; latitude: number; longitude: number };
 
 const CIVIC_BLUE = '#2C3A55';
@@ -43,9 +44,16 @@ function zoomForRadius(km: number): number {
 }
 
 function FollowCentre({ centre, radiusKm }: { centre: Point | null; radiusKm: number }) {
-  const map = useMap();
+    const map = useMap();
+  const hadCentre = useRef(false);
   useEffect(() => {
-    if (!centre) return;
+    if (!centre) {
+      // After "Reset": back to the world view.
+      if (hadCentre.current) map.setView([30, 10], 2);
+      hadCentre.current = false;
+      return;
+    }
+    hadCentre.current = true;
     const target: [number, number] = [centre.lat, centre.lng];
     const wanted = zoomForRadius(radiusKm);
     const zoom = map.getZoom();
@@ -56,14 +64,25 @@ function FollowCentre({ centre, radiusKm }: { centre: Point | null; radiusKm: nu
   return null;
 }
 
+// Moves the map when a country is searched (without choosing a centre).
+function FollowView({ view }: { view: MapView | null }) {
+  const map = useMap();
+  useEffect(() => {
+    if (view) map.setView([view.lat, view.lng], view.zoom);
+  }, [view, map]);
+  return null;
+}
+
 export default function AgoraMap({
   centre,
   radiusKm,
+  view = null,
   circles,
   onPick,
 }: {
   centre: Point | null;
   radiusKm: number;
+  view?: MapView | null;
   circles: MapCircle[];
   onPick: (lat: number, lng: number) => void;
 }) {
@@ -82,7 +101,8 @@ export default function AgoraMap({
         maxZoom={19}
       />
       <ClickToPick onPick={onPick} />
-            <FollowCentre centre={centre} radiusKm={radiusKm} />
+                  <FollowCentre centre={centre} radiusKm={radiusKm} />
+      <FollowView view={view} />
 
       {centre && (
         <>

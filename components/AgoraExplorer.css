@@ -116,3 +116,12 @@
 
 /* Repeat: note above the pre-filled form */
 .agoraRepeatNote{color:var(--civic-blue); font-weight:600;}
+
+/* City / country search above the map */
+.agoraPlaceSearch{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; max-width:640px;}
+.agoraPlaceSearch input{
+  flex:1 1 180px; font-family:'IBM Plex Sans', sans-serif; font-size:16px;
+  padding:11px 13px; border:1px solid var(--line); border-radius:2px; background:var(--paper); color:var(--ink);
+}
+.agoraPlaceSearch input:focus{outline:2px solid var(--civic-blue); outline-offset:1px;}
+.agoraPlaceSearch + .agoraToolbar{margin-top:14px;}

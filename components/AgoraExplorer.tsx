@@ -30,6 +30,7 @@ const AgoraMap = dynamic(() => import('./AgoraMap'), {
 });
 
 type Point = { lat: number; lng: number };
+type MapView = { lat: number; lng: number; zoom: number; key: number };
 type Format = 'ONLINE' | 'IN_PERSON';
 
 type NearbyCircle = {
@@ -84,7 +85,11 @@ export default function AgoraExplorer({
   const [circles, setCircles] = useState<NearbyCircle[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
-    const [showForm, setShowForm] = useState(!!repeatFrom && signedIn);
+  const [showForm, setShowForm] = useState(!!repeatFrom && signedIn);
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [searching, setSearching] = useState(false);
+  const [view, setView] = useState<MapView | null>(null);
   const [pending, startTransition] = useTransition();
   const createRef = useRef<HTMLDivElement>(null);
 
@@ -119,6 +124,47 @@ export default function AgoraExplorer({
   useEffect(() => {
     if (centre) load(centre, radiusKm);
   }, [centre, radiusKm, load]);
+
+    function resetMap() {
+    setCentre(null);
+    setCircles([]);
+    setMessage(null);
+    setShowForm(false);
+    setRadiusKm(RADIUS_KM);
+    setCity('');
+    setCountry('');
+    setView(null);
+  }
+
+  async function searchPlace(e: React.FormEvent) {
+    e.preventDefault();
+    if (!city.trim() && !country.trim()) {
+      setMessage('Enter a city, a country, or both.');
+      return;
+    }
+    setMessage(null);
+    setSearching(true);
+    try {
+      const params = new URLSearchParams({ city: city.trim(), country: country.trim() });
+      const res = await fetch(`/api/agora/geocode?${params}`);
+      const data = await res.json();
+      if (!res.ok) {
+        setMessage(data.error ?? 'The place search is unavailable right now.');
+      } else if (!data.found) {
+        setMessage('Place not found. Check the spelling, or tap the map instead.');
+      } else if (city.trim()) {
+        // A city: make it the centre and list circles near it.
+        setCentre({ lat: data.lat, lng: data.lng });
+      } else {
+        // Only a country: zoom the map there, then the member taps the exact spot.
+        setView({ lat: data.lat, lng: data.lng, zoom: 5, key: Date.now() });
+      }
+    } catch {
+      setMessage('The place search is unavailable right now.');
+    } finally {
+      setSearching(false);
+    }
+  }
 
   function useMyLocation() {
     if (!navigator.geolocation) {
@@ -160,10 +206,35 @@ export default function AgoraExplorer({
           location is only used for this search and is not saved.
         </p>
 
+                <form className="agoraPlaceSearch" onSubmit={searchPlace}>
+          <input
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            placeholder="City"
+            aria-label="City"
+            maxLength={100}
+          />
+          <input
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            placeholder="Country"
+            aria-label="Country"
+            maxLength={100}
+          />
+          <button type="submit" className="ctaBtn" disabled={searching}>
+            {searching ? 'Searching…' : 'Go'}
+          </button>
+        </form>
+
         <div className="agoraToolbar">
           <button type="button" className="ctaBtn" onClick={useMyLocation}>
             Use my location
           </button>
+          {(centre || view) && (
+            <button type="button" className="agoraGhostBtn" onClick={resetMap}>
+              Reset
+            </button>
+          )}
           <label className="agoraRadius">
             Radius
             <select value={radiusKm} onChange={(e) => setRadiusKm(Number(e.target.value))}>
@@ -185,6 +256,7 @@ export default function AgoraExplorer({
           <AgoraMap
             centre={centre}
             radiusKm={radiusKm}
+            view={view}
             circles={circles}
             onPick={(lat, lng) => {
               setMessage(null);
