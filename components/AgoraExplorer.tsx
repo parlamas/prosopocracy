@@ -6,6 +6,7 @@
 
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
 import './AgoraExplorer.css';
 import {
@@ -205,6 +206,8 @@ export default function AgoraExplorer({
     );
   }
 
+    const router = useRouter();
+
   function run(action: () => Promise<ActionResult>, onSuccess?: () => void) {
     setMessage(null);
     startTransition(async () => {
@@ -400,8 +403,13 @@ export default function AgoraExplorer({
               pending={pending}
               onCancel={() => setShowForm(false)}
               onSubmit={(input) =>
-                run(
-                  () => createCircle(input),
+                                run(
+                  async () => {
+                    const result = await createCircle(input);
+                    // Go straight to the new circle's page, so its link is in the address bar.
+                    if (result.ok && result.id) router.push(`/agora/circle/${result.id}`);
+                    return result;
+                  },
                   () => setShowForm(false)
                 )
               }
