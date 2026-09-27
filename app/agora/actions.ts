@@ -13,9 +13,14 @@ import {
   MAX_SEATS,
   MAX_UPCOMING_PER_USER,
   MIN_SEATS,
+  RADIUS_OPTIONS,
   circleEndsAt,
+  formatDistance,
+  formatRadius,
   isAdult,
+  type DeviceLocation,
 } from '../../lib/agora';
+import { checkLocation, roundCoord } from '../../lib/locationCheck';
 
 export type ActionResult = { ok: true; id?: string } | { ok: false; error: string };
 
@@ -26,8 +31,11 @@ export type CreateCircleInput = {
   latitude: number;
   longitude: number;
   startsAt: string; // ISO string, converted from the member's local time in the browser
-  durationMin: number;
+    durationMin: number;
   maxSeats: number;
+  localOnly: boolean; // only people within radiusKm may join
+  radiusKm: number; // the circle's local area
+  creatorLocation: DeviceLocation | null; // the creator's device location, if shared
 };
 
 async function requireParticipant(): Promise<{ userId: string } | { error: string }> {
@@ -61,6 +69,8 @@ export async function createCircle(input: CreateCircleInput): Promise<ActionResu
   const startsAt = new Date(input.startsAt);
   const durationMin = Number(input.durationMin);
   const maxSeats = Number(input.maxSeats);
+  const localOnly = input.localOnly === true;
+  const radiusKm = Number(input.radiusKm);
   const now = new Date();
 
     if (!format) {
@@ -97,8 +107,24 @@ export async function createCircle(input: CreateCircleInput): Promise<ActionResu
   if (!(DURATIONS as readonly number[]).includes(durationMin)) {
     return { ok: false, error: 'Choose a valid duration.' };
   }
-  if (!Number.isInteger(maxSeats) || maxSeats < MIN_SEATS || maxSeats > MAX_SEATS) {
+    if (!Number.isInteger(maxSeats) || maxSeats < MIN_SEATS || maxSeats > MAX_SEATS) {
     return { ok: false, error: `Seats must be between ${MIN_SEATS} and ${MAX_SEATS}.` };
+  }
+  if (!(RADIUS_OPTIONS as readonly number[]).includes(radiusKm)) {
+    return { ok: false, error: 'Choose a valid local area.' };
+  }
+
+  // The creator is checked like any member. A local-only circle must be
+  // started from within its own area.
+  const verdict = await checkLocation(input.creatorLocation, { latitude, longitude });
+  const creatorLocal = verdict.valid && verdict.distanceKm <= radiusKm;
+  if (localOnly && !creatorLocal) {
+    return {
+      ok: false,
+      error: verdict.valid
+        ? `A local-only circle must be started from within its area (${formatRadius(radiusKm)}). You appear to be ${formatDistance(verdict.distanceKm)} away.`
+        : verdict.reason,
+    };
   }
 
   const upcoming = await prisma.agoraCircle.count({
@@ -115,23 +141,31 @@ export async function createCircle(input: CreateCircleInput): Promise<ActionResu
     };
   }
 
-    // Online circles only mark a neighbourhood: round to about 1 km so a creator
-  // tapping near home does not publish their exact address.
-  const storedLat = format === 'ONLINE' ? Math.round(latitude * 100) / 100 : latitude;
-  const storedLng = format === 'ONLINE' ? Math.round(longitude * 100) / 100 : longitude;
-
+     // The exact point is stored for the local checks; for online circles the
+  // public list shows it rounded to about 1 km (see api/agora/circles).
   const circle = await prisma.agoraCircle.create({
     data: {
       format,
       question,
       placeName,
-      latitude: storedLat,
-      longitude: storedLng,
+      latitude,
+      longitude,
       startsAt,
       durationMin,
       maxSeats,
+      localOnly,
+      radiusKm,
       createdById: participant.userId,
-      members: { create: { userId: participant.userId } }, // the creator takes the first seat
+      // the creator takes the first seat
+      members: {
+        create: {
+          userId: participant.userId,
+          local: creatorLocal,
+          checkedAt: verdict.valid ? now : null,
+          checkedLat: verdict.valid ? roundCoord(verdict.lat) : null,
+          checkedLng: verdict.valid ? roundCoord(verdict.lng) : null,
+        },
+      },
     },
     select: { id: true },
   });
@@ -140,7 +174,10 @@ export async function createCircle(input: CreateCircleInput): Promise<ActionResu
   return { ok: true, id: circle.id };
 }
 
-export async function joinCircle(circleId: string): Promise<ActionResult> {
+export async function joinCircle(
+  circleId: string,
+  location: DeviceLocation | null = null
+): Promise<ActionResult> {
   const participant = await requireParticipant();
   if ('error' in participant) return { ok: false, error: participant.error };
 
@@ -158,12 +195,31 @@ export async function joinCircle(circleId: string): Promise<ActionResult> {
   });
   if (existing) return { ok: true };
 
-  if (circle._count.members >= circle.maxSeats) {
+   if (circle._count.members >= circle.maxSeats) {
     return { ok: false, error: 'This circle is full.' };
   }
 
+  // Local or visiting? In a local-only circle, only local members may join.
+  const verdict = await checkLocation(location, circle);
+  const local = verdict.valid && verdict.distanceKm <= circle.radiusKm;
+  if (circle.localOnly && !local) {
+    return {
+      ok: false,
+      error: verdict.valid
+        ? `This circle is only for people within ${formatRadius(circle.radiusKm)}. You appear to be ${formatDistance(verdict.distanceKm)} away.`
+        : verdict.reason,
+    };
+  }
+
   await prisma.agoraMember.create({
-    data: { circleId: circle.id, userId: participant.userId },
+    data: {
+      circleId: circle.id,
+      userId: participant.userId,
+      local,
+      checkedAt: verdict.valid ? new Date() : null,
+      checkedLat: verdict.valid ? roundCoord(verdict.lat) : null,
+      checkedLng: verdict.valid ? roundCoord(verdict.lng) : null,
+    },
   });
 
   revalidatePath('/agora');
@@ -224,11 +280,17 @@ export async function postMove(
   if (now < circle.startsAt) return { ok: false, error: 'The dialogue has not started yet.' };
   if (now >= circleEndsAt(circle)) return { ok: false, error: 'The time for this circle is up.' };
 
-  const member = await prisma.agoraMember.findUnique({
+    const member = await prisma.agoraMember.findUnique({
     where: { circleId_userId: { circleId: circle.id, userId: participant.userId } },
-    select: { id: true },
+    select: { id: true, local: true, checkedAt: true },
   });
   if (!member) return { ok: false, error: 'Only members of this circle can post. Join it first.' };
+  if (
+    circle.localOnly &&
+    !(member.local && member.checkedAt && member.checkedAt >= circle.startsAt)
+  ) {
+    return { ok: false, error: 'This circle is local only. Confirm your location to take part.' };
+  }
 
     // Messages (COMMENT) and proposals stand alone. Refinements, counterexamples
   // and rival definitions each answer one definition (a proposal or a rival definition).
@@ -318,5 +380,58 @@ export async function deleteCircle(circleId: string): Promise<ActionResult> {
 
   revalidatePath('/agora');
   revalidatePath('/agora/mine');
+  return { ok: true };
+}
+
+
+// ── Location confirmation (local-only circles) ─────────────────
+
+/**
+ * A member confirms they are (still) within the circle's local area.
+ * Local-only online circles require this after the circle has started,
+ * before the member can write.
+ */
+export async function confirmLocation(
+  circleId: string,
+  location: DeviceLocation | null
+): Promise<ActionResult> {
+  const participant = await requireParticipant();
+  if ('error' in participant) return { ok: false, error: participant.error };
+
+  const circle = await prisma.agoraCircle.findUnique({ where: { id: String(circleId) } });
+  if (!circle || circle.status === 'CLOSED') {
+    return { ok: false, error: 'This circle is not available.' };
+  }
+
+  const member = await prisma.agoraMember.findUnique({
+    where: { circleId_userId: { circleId: circle.id, userId: participant.userId } },
+    select: { id: true, checkedLat: true, checkedLng: true, checkedAt: true },
+  });
+  if (!member) return { ok: false, error: 'Join the circle first.' };
+
+  const verdict = await checkLocation(location, circle, {
+    lat: member.checkedLat,
+    lng: member.checkedLng,
+    at: member.checkedAt,
+  });
+  if (!verdict.valid) return { ok: false, error: verdict.reason };
+
+  const local = verdict.distanceKm <= circle.radiusKm;
+  await prisma.agoraMember.update({
+    where: { id: member.id },
+    data: {
+      local,
+      checkedAt: new Date(),
+      checkedLat: roundCoord(verdict.lat),
+      checkedLng: roundCoord(verdict.lng),
+    },
+  });
+
+  if (circle.localOnly && !local) {
+    return {
+      ok: false,
+      error: `You appear to be ${formatDistance(verdict.distanceKm)} away, outside this circle's area (${formatRadius(circle.radiusKm)}).`,
+    };
+  }
   return { ok: true };
 }

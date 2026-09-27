@@ -312,6 +312,8 @@ model AgoraCircle {
   durationMin Int               @default(30)
   maxSeats    Int               @default(8)
   status      AgoraCircleStatus @default(OPEN)
+  localOnly   Boolean           @default(false)
+  radiusKm    Float             @default(2)
   resultText  String?
   createdById String
   createdBy   User              @relation("AgoraCirclesCreated", fields: [createdById], references: [id], onDelete: Cascade)
@@ -331,6 +333,10 @@ model AgoraMember {
   userId   String
   user     User        @relation("AgoraMemberships", fields: [userId], references: [id], onDelete: Cascade)
   joinedAt DateTime    @default(now())
+  local      Boolean   @default(false)
+  checkedAt  DateTime?
+  checkedLat Float?
+  checkedLng Float?
 
   @@unique([circleId, userId])
   @@index([userId])

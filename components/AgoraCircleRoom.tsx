@@ -12,12 +12,37 @@ import './AgoraExplorer.css';
 import './AgoraCircleRoom.css';
 import {
   cancelCircle,
+  confirmLocation,
   joinCircle,
   leaveCircle,
   postMove,
   type ActionResult,
   type MoveKind,
 } from '../app/agora/actions';
+import { formatRadius, type DeviceLocation } from '../lib/agora';
+import { getDeviceLocation } from '../lib/deviceLocation';
+
+// Joining always asks for the device's location, so the member can be marked
+// Local or Visiting. In a local-only circle, location is required.
+async function joinWithLocation(circleId: string, localOnly: boolean): Promise<ActionResult> {
+  let location: DeviceLocation | null = null;
+  try {
+    location = await getDeviceLocation();
+  } catch {
+    if (localOnly) {
+      return { ok: false, error: 'This circle is local only: allow location access to join.' };
+    }
+  }
+  return joinCircle(circleId, location);
+}
+
+async function confirmWithLocation(circleId: string): Promise<ActionResult> {
+  try {
+    return await confirmLocation(circleId, await getDeviceLocation());
+  } catch {
+    return { ok: false, error: 'Allow location access to confirm where you are.' };
+  }
+}
 
 const POLL_MS = 3000;
 
@@ -43,11 +68,19 @@ type RoomData = {
     durationMin: number;
     maxSeats: number;
     creatorName: string;
+    localOnly: boolean;
+    radiusKm: number;
   };
   phase: Phase;
-  members: { username: string }[];
+  members: { username: string; local: boolean }[];
   moves: Move[];
-  me: { signedIn: boolean; isMember: boolean; isCreator: boolean };
+    me: {
+    signedIn: boolean;
+    isMember: boolean;
+    isCreator: boolean;
+    canPost: boolean;
+    needsLocationCheck: boolean;
+  };
   serverNow: string;
 };
 
@@ -213,7 +246,7 @@ export default function AgoraCircleRoom({ circleId }: { circleId: string }) {
   const startMs = new Date(circle.startsAt).getTime();
   const endMs = startMs + circle.durationMin * 60_000;
   const open = data.phase === 'upcoming' || data.phase === 'live';
-  const canPost = online && me.isMember && data.phase === 'live';
+  const canPost = me.canPost; // decided by the server (includes the local-only check)
   const seatsLeft = circle.maxSeats - members.length;
 
   // Definitions (proposals and rival definitions) are numbered #1, #2, …
@@ -263,8 +296,11 @@ export default function AgoraCircleRoom({ circleId }: { circleId: string }) {
       <section className="section">
         <div className="wrap">
           <span className={online ? 'agoraFormat' : 'agoraFormat inPerson'}>
-            {online ? 'Online' : 'In person'}
-          </span>
+                        {online ? 'Online' : 'In person'}
+          </span>{' '}
+          {circle.localOnly && (
+            <span className="agoraFormat local">Local only · {formatRadius(circle.radiusKm)}</span>
+          )}
           <h1 className="sectionTitle agoraRoomTitle">{circle.question}</h1>
 
           <p className="agoraMeta">
@@ -322,8 +358,20 @@ export default function AgoraCircleRoom({ circleId }: { circleId: string }) {
             <span className="agoraMembersLabel">
               Members {members.length}/{circle.maxSeats}
             </span>{' '}
-            {members.length > 0 ? members.map((m) => m.username).join(', ') : 'none yet'}
+                        {members.length === 0 && 'none yet'}
           </p>
+          {members.length > 0 && (
+            <ul className="agoraMemberList">
+              {members.map((m) => (
+                <li key={m.username}>
+                  {m.username}{' '}
+                  <span className={m.local ? 'agoraBadgeLocal' : 'agoraBadgeVisiting'}>
+                    {m.local ? 'Local' : 'Visiting'}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
 
           {open && (
             <div className="agoraRoomActions">
@@ -345,7 +393,7 @@ export default function AgoraCircleRoom({ circleId }: { circleId: string }) {
                   type="button"
                   className="ctaBtn"
                   disabled={pending}
-                  onClick={() => run(() => joinCircle(circleId))}
+                                    onClick={() => run(() => joinWithLocation(circleId, circle.localOnly))}
                 >
                   Join
                 </button>
@@ -496,6 +544,23 @@ export default function AgoraCircleRoom({ circleId }: { circleId: string }) {
                   <span className="agoraHint">Ctrl+Enter also sends.</span>
                 </div>
               </form>
+            )}
+
+                        {me.needsLocationCheck && (
+              <div className="agoraCheckBanner">
+                <p>
+                  This circle is local only. Confirm that you are within{' '}
+                  {formatRadius(circle.radiusKm)} to take part.
+                </p>
+                <button
+                  type="button"
+                  className="ctaBtn"
+                  disabled={pending}
+                  onClick={() => run(() => confirmWithLocation(circleId))}
+                >
+                  Confirm my location
+                </button>
+              </div>
             )}
 
             {data.phase === 'live' && !me.isMember && (

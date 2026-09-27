@@ -16,13 +16,30 @@ import {
 } from '../app/agora/actions';
 import {
   DURATIONS,
+  LOCAL_AREA_KM,
   MAX_SEATS,
   MIN_SEATS,
   RADIUS_KM,
-    RADIUS_OPTIONS,
+  RADIUS_OPTIONS,
   formatRadius,
+  type DeviceLocation,
   type RepeatSource,
 } from '../lib/agora';
+import { getDeviceLocation } from '../lib/deviceLocation';
+
+// Joining always asks for the device's location, so the member can be marked
+// Local or Visiting. In a local-only circle, location is required.
+async function joinWithLocation(circleId: string, localOnly: boolean): Promise<ActionResult> {
+  let location: DeviceLocation | null = null;
+  try {
+    location = await getDeviceLocation();
+  } catch {
+    if (localOnly) {
+      return { ok: false, error: 'This circle is local only: allow location access to join.' };
+    }
+  }
+  return joinCircle(circleId, location);
+}
 
 const AgoraMap = dynamic(() => import('./AgoraMap'), {
   ssr: false,
@@ -47,6 +64,8 @@ type NearbyCircle = {
   joined: boolean;
   isCreator: boolean;
   distanceKm: number;
+  localOnly: boolean;
+  radiusKm: number;
 };
 
 const FORMAT_LABEL: Record<Format, string> = {
@@ -289,8 +308,13 @@ export default function AgoraExplorer({
                 <li key={c.id} className="agoraCircleItem">
                   <div>
                     <span className={c.format === 'ONLINE' ? 'agoraFormat' : 'agoraFormat inPerson'}>
-                      {FORMAT_LABEL[c.format]}
+                                            {FORMAT_LABEL[c.format]}
                     </span>
+                    {c.localOnly && (
+                      <span className="agoraFormat local">
+                        Local only · {formatRadius(c.radiusKm)}
+                      </span>
+                    )}
                     <h3>
                       <Link href={`/agora/circle/${c.id}`} className="agoraCircleLink">
                         {c.question}
@@ -329,7 +353,7 @@ export default function AgoraExplorer({
                         type="button"
                         className="ctaBtn"
                         disabled={pending}
-                        onClick={() => run(() => joinCircle(c.id))}
+                                                onClick={() => run(() => joinWithLocation(c.id, c.localOnly))}
                       >
                         Join
                       </button>
@@ -402,17 +426,20 @@ function CreateCircleForm({
   onCancel: () => void;
   onSubmit: (input: Parameters<typeof createCircle>[0]) => void;
 }) {
-    const [format, setFormat] = useState<Format>(initial?.format ?? 'ONLINE');
+  const [format, setFormat] = useState<Format>(initial?.format ?? 'ONLINE');
   const [question, setQuestion] = useState(initial?.question ?? '');
   const [placeName, setPlaceName] = useState(initial?.placeName ?? '');
   const [startLocal, setStartLocal] = useState(defaultStartLocal);
   const [durationMin, setDurationMin] = useState(initial?.durationMin ?? 30);
   const [maxSeats, setMaxSeats] = useState(initial?.maxSeats ?? MAX_SEATS);
+  const [localOnly, setLocalOnly] = useState(initial?.localOnly ?? false);
+  const [areaKm, setAreaKm] = useState<number>(initial?.radiusKm ?? LOCAL_AREA_KM);
+  const [locating, setLocating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const online = format === 'ONLINE';
 
-  function submit(e: React.FormEvent) {
+    async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!centre) {
       setError(online ? 'Tap the map to mark your neighbourhood.' : 'Tap the map to choose where the circle meets.');
@@ -423,7 +450,23 @@ function CreateCircleForm({
       setError('Choose a start time.');
       return;
     }
-    setError(null);
+        setError(null);
+
+    // The creator is checked like any member (Local or Visiting);
+    // a local-only circle must be started from within its area.
+    setLocating(true);
+    let creatorLocation: DeviceLocation | null = null;
+    try {
+      creatorLocation = await getDeviceLocation();
+    } catch {
+      if (localOnly) {
+        setLocating(false);
+        setError('A local-only circle needs your location: allow location access and try again.');
+        return;
+      }
+    }
+    setLocating(false);
+
     onSubmit({
       format,
       question,
@@ -433,6 +476,9 @@ function CreateCircleForm({
       startsAt: start.toISOString(),
       durationMin,
       maxSeats,
+      localOnly,
+      radiusKm: areaKm,
+      creatorLocation,
     });
   }
 
@@ -521,9 +567,39 @@ function CreateCircleForm({
                 {n}
               </option>
             ))}
+                    </select>
+        </label>
+      </div>
+
+      <div className="agoraFormRow agoraFormRowTwo">
+        <label>
+          Who can join
+          <select
+            value={localOnly ? 'local' : 'everyone'}
+            onChange={(e) => setLocalOnly(e.target.value === 'local')}
+          >
+            <option value="everyone">Everyone</option>
+            <option value="local">Only people nearby</option>
+          </select>
+        </label>
+        <label>
+          Local area
+          <select value={areaKm} onChange={(e) => setAreaKm(Number(e.target.value))}>
+            {RADIUS_OPTIONS.map((r) => (
+              <option key={r} value={r}>
+                {formatRadius(r)}
+              </option>
+            ))}
           </select>
         </label>
       </div>
+      <p className="agoraHint">
+        {localOnly
+          ? `Only people within ${formatRadius(areaKm)} of the circle can join. Their device location is checked when they join, and again when an online circle starts.`
+          : `Everyone can join. Members within ${formatRadius(areaKm)} get a Local badge; others show as Visiting.`}{' '}
+        Starting or joining asks for your device’s location; only the result is kept.
+      </p>
+
       {centre && (
         <p className="agoraHint">
           {online
@@ -534,8 +610,8 @@ function CreateCircleForm({
       )}
       {error && <p className="agoraMessage">{error}</p>}
       <div className="agoraFormActions">
-        <button type="submit" className="ctaBtn" disabled={pending}>
-          Start circle
+                <button type="submit" className="ctaBtn" disabled={pending || locating}>
+          {locating ? 'Checking location…' : 'Start circle'}
         </button>
         <button type="button" className="agoraGhostBtn" onClick={onCancel}>
           Cancel

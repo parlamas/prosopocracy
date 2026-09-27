@@ -71,12 +71,15 @@ export async function POST(request: Request) {
   const circles = rows
     .filter((c) => circleEndsAt(c) > now)
     .map((c) => ({
-      id: c.id,
+           id: c.id,
       format: c.format,
       question: c.question,
       placeName: c.placeName,
-      latitude: c.latitude,
-      longitude: c.longitude,
+      // Online circles only mark a neighbourhood: show the point rounded to about 1 km.
+      latitude: c.format === 'ONLINE' ? Math.round(c.latitude * 100) / 100 : c.latitude,
+      longitude: c.format === 'ONLINE' ? Math.round(c.longitude * 100) / 100 : c.longitude,
+      localOnly: c.localOnly,
+      radiusKm: c.radiusKm,
       startsAt: c.startsAt.toISOString(),
       durationMin: c.durationMin,
       maxSeats: c.maxSeats,

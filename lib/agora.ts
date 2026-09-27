@@ -20,6 +20,17 @@ export const MAX_SEATS = 8;
 export const MAX_DAYS_AHEAD = 30;
 export const MAX_UPCOMING_PER_USER = 3;
 
+/** Default size of a circle's local area (for Local badges and local-only circles). */
+export const LOCAL_AREA_KM = 2;
+
+/** A reading from the member's device (browser geolocation). */
+export type DeviceLocation = { lat: number; lng: number; accuracy: number };
+
+/** "350 m" below 1 km, "2.4 km" from 1 km up. */
+export function formatDistance(km: number): string {
+  return km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(1)} km`;
+}
+
 /** The settings copied from an earlier circle when a member presses "Repeat". */
 export type RepeatSource = {
   question: string;
@@ -29,6 +40,8 @@ export type RepeatSource = {
   maxSeats: number;
   latitude: number;
   longitude: number;
+  localOnly: boolean;
+  radiusKm: number;
 };
 
 const KM_PER_DEG_LAT = 111.32;

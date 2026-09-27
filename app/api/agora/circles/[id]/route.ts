@@ -19,9 +19,14 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
     where: { id },
     include: {
       createdBy: { select: { username: true } },
-      members: {
+            members: {
         orderBy: { joinedAt: 'asc' },
-        select: { userId: true, user: { select: { username: true } } },
+        select: {
+          userId: true,
+          local: true,
+          checkedAt: true,
+          user: { select: { username: true } },
+        },
       },
       moves: {
         orderBy: { createdAt: 'asc' },
@@ -51,6 +56,22 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
           ? 'live'
           : 'ended';
 
+    const myMembership = userId !== '' ? c.members.find((m) => m.userId === userId) : undefined;
+  // Local-only circles: a member must be local and have confirmed their
+  // location since the circle started before they can write.
+  const locationConfirmed =
+    !!myMembership &&
+    myMembership.local &&
+    !!myMembership.checkedAt &&
+    myMembership.checkedAt >= c.startsAt;
+  const canPost =
+    c.format === 'ONLINE' &&
+    phase === 'live' &&
+    !!myMembership &&
+    (!c.localOnly || locationConfirmed);
+  const needsLocationCheck =
+    c.format === 'ONLINE' && phase === 'live' && !!myMembership && c.localOnly && !locationConfirmed;
+
   return NextResponse.json({
     circle: {
       id: c.id,
@@ -61,9 +82,11 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
       durationMin: c.durationMin,
       maxSeats: c.maxSeats,
       creatorName: c.createdBy.username,
+      localOnly: c.localOnly,
+      radiusKm: c.radiusKm,
     },
     phase,
-    members: c.members.map((m) => ({ username: m.user.username })),
+        members: c.members.map((m) => ({ username: m.user.username, local: m.local })),
     moves: c.moves.map((m) => ({
       id: m.id,
       kind: m.kind,
@@ -76,7 +99,9 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
     me: {
       signedIn: userId !== '',
       isMember: userId !== '' && c.members.some((m) => m.userId === userId),
-      isCreator: userId !== '' && c.createdById === userId,
+            isCreator: userId !== '' && c.createdById === userId,
+      canPost,
+      needsLocationCheck,
     },
     serverNow: now.toISOString(),
   });

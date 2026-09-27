@@ -125,3 +125,9 @@
 }
 .agoraPlaceSearch input:focus{outline:2px solid var(--civic-blue); outline-offset:1px;}
 .agoraPlaceSearch + .agoraToolbar{margin-top:14px;}
+
+
+/* Local-only tag and the who-can-join row */
+.agoraFormat.local{color:var(--brass); border-color:var(--brass); margin-left:6px;}
+.agoraFormRow.agoraFormRowTwo{grid-template-columns:1fr 1fr;}
+@media(max-width:640px){.agoraFormRow.agoraFormRowTwo{grid-template-columns:1fr;}}

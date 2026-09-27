@@ -33,6 +33,8 @@ export default async function AgoraPage({
             maxSeats: true,
             latitude: true,
             longitude: true,
+            localOnly: true,
+            radiusKm: true,
           },
         })
             : null;
