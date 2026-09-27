@@ -1,0 +1,346 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+model User {
+  id            String    @id @default(cuid())
+  username      String    @unique
+  usernameLower String    @unique
+  email         String    @unique
+  passwordHash  String
+  firstName     String
+  lastName      String
+  dateOfBirth   DateTime
+  gender        Gender
+  country       String
+  banned        Boolean   @default(false)
+  isAdmin       Boolean   @default(false)
+  avatarUrl       String?
+  profession      String?
+  favoriteThemes  String[] @default([])
+  themesPublic    Boolean  @default(false)
+  hasReadRules    Boolean  @default(false)
+  lastNotificationCheckAt DateTime?
+  usernameTransliteration String?
+  emailVerified   DateTime?
+  bookOfferClaimedAt DateTime?
+  createdAt     DateTime  @default(now())
+
+  posts               Post[]
+  comments            Comment[]
+  likes               Like[]
+  verificationTokens  VerificationToken[]
+  passwordResetTokens PasswordResetToken[]
+  reports             Report[]
+  revealRequestsSent     RevealRequest[] @relation("RevealRequester")
+  revealRequestsReceived RevealRequest[] @relation("RevealTarget")
+  contactExchangesSent     ContactExchange[] @relation("ExchangeRequester")
+  contactExchangesReceived ContactExchange[] @relation("ExchangeTarget")
+  following  Follow[] @relation("Follower")
+  followers  Follow[] @relation("Following")
+  adminNoticesReceived AdminNotice[] @relation("NoticeRecipient")
+  adminNoticesSent     AdminNotice[] @relation("NoticeSender")
+  agoraCirclesCreated  AgoraCircle[] @relation("AgoraCirclesCreated")
+  agoraMemberships     AgoraMember[] @relation("AgoraMemberships")
+  agoraMovesAuthored   AgoraMove[]   @relation("AgoraMovesAuthored")
+}
+
+model AdminNotice {
+  id          String    @id @default(cuid())
+  recipientId String
+  recipient   User      @relation("NoticeRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
+  senderId    String
+  sender      User      @relation("NoticeSender", fields: [senderId], references: [id], onDelete: Cascade)
+  message     String
+  createdAt   DateTime  @default(now())
+  seenAt      DateTime?
+
+  @@index([recipientId])
+}
+
+model VerificationToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+enum PostCategory {
+  PIN
+  TPA
+  COMMENT
+  QUESTION
+}
+
+enum VideoStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Post {
+  id        String       @id @default(cuid())
+  code      String       @unique
+  authorId  String
+  author    User         @relation(fields: [authorId], references: [id])
+  category  PostCategory
+  originalCategory PostCategory?
+  text      String
+  headline  String?
+  editedAt  DateTime?
+  originalText String?
+  imageUrl  String?
+  isChallenge Boolean @default(false)
+  sourceLanguage String?
+  videoUrl    String?
+  videoStatus VideoStatus?
+  videoScript String?
+  featuredAt  DateTime?
+  preferredAnswerId String? @unique
+  preferredAnswer   Comment? @relation("PreferredAnswer", fields: [preferredAnswerId], references: [id])
+  createdAt DateTime     @default(now())
+
+  comments Comment[]
+  likes    Like[]
+  reports  Report[]
+  reclassifications Reclassification[]
+
+  @@index([createdAt])
+}
+
+model Reclassification {
+  id           String       @id @default(cuid())
+  postId       String
+  post         Post         @relation(fields: [postId], references: [id], onDelete: Cascade)
+  fromCategory PostCategory
+  toCategory   PostCategory
+  reason       String?
+  createdAt    DateTime     @default(now())
+
+  @@index([postId])
+}
+
+enum CommentKind {
+  COMMENT
+  ESSAY
+  WITHDRAWAL
+  REFINEMENT
+  COUNTEREXAMPLE
+  RIVAL
+}
+
+model Comment {
+  id        String      @id @default(cuid())
+  code      String      @unique
+  kind      CommentKind @default(COMMENT)
+  postId    String
+  post      Post        @relation(fields: [postId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User        @relation(fields: [authorId], references: [id])
+  text      String
+  sourceLanguage String?
+  editedAt    DateTime?
+  originalText String?
+  replyToId   String?
+  replyTo     Comment?  @relation("CommentReplies", fields: [replyToId], references: [id], onDelete: SetNull)
+  replies     Comment[] @relation("CommentReplies")
+  preferredForPost Post? @relation("PreferredAnswer")
+  createdAt DateTime    @default(now())
+
+  @@index([postId])
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([postId, userId])
+}
+
+enum ReportStatus {
+  PENDING
+  REVIEWED
+}
+
+model Report {
+  id         String       @id @default(cuid())
+  postId     String
+  post       Post         @relation(fields: [postId], references: [id], onDelete: Cascade)
+  reporterId String
+  reporter   User         @relation(fields: [reporterId], references: [id])
+  reason     String
+  status     ReportStatus @default(PENDING)
+  createdAt  DateTime     @default(now())
+
+  @@index([postId])
+  @@index([status])
+}
+
+enum RevealStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+}
+
+model RevealRequest {
+  id             String       @id @default(cuid())
+  requesterId    String
+  requester      User         @relation("RevealRequester", fields: [requesterId], references: [id])
+  targetId       String
+  target         User         @relation("RevealTarget", fields: [targetId], references: [id])
+  status         RevealStatus @default(PENDING)
+  createdAt      DateTime     @default(now())
+  respondedAt    DateTime?
+
+  @@unique([requesterId, targetId])
+  @@index([targetId])
+}
+
+// A mutual, verified email exchange so two members can connect outside
+// Veltistos. Neither email is shown until BOTH sides have (a) submitted
+// one and (b) clicked a confirmation link sent to the address they
+// typed — proving it's real and reachable, not just typed text. Once
+// both are verified and a short viewing window has passed, the actual
+// email addresses are permanently wiped (see the lazy purge in the GET
+// route) — only a bare record that an exchange happened is kept.
+model ContactExchange {
+  id                   String                @id @default(cuid())
+  requesterId          String
+  requester            User                  @relation("ExchangeRequester", fields: [requesterId], references: [id])
+  targetId             String
+  target               User                  @relation("ExchangeTarget", fields: [targetId], references: [id])
+  status               ContactExchangeStatus @default(PENDING)
+  requesterEmail       String?
+  targetEmail          String?
+  requesterVerifyToken String?               @unique
+  targetVerifyToken    String?               @unique
+  requesterVerifiedAt  DateTime?
+  targetVerifiedAt     DateTime?
+  createdAt            DateTime              @default(now())
+  respondedAt          DateTime?
+  verifiedAt           DateTime?
+  purgedAt             DateTime?
+
+  @@unique([requesterId, targetId])
+  @@index([targetId])
+}
+
+enum ContactExchangeStatus {
+  PENDING
+  DECLINED
+  AWAITING_VERIFICATION
+  VERIFIED
+  EXPIRED
+  COMPLETED
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  follower    User     @relation("Follower", fields: [followerId], references: [id])
+  followingId String
+  following   User     @relation("Following", fields: [followingId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@unique([followerId, followingId])
+  @@index([followingId])
+}
+
+// ── Agora (prosopocracy.com/agora) ─────────────────────────────
+// Live local discussion circles. Tables live here so Veltistos owns
+// all migrations; prosopocracy only runs `prisma generate`.
+
+enum AgoraCircleStatus {
+  OPEN
+  LIVE
+  CLOSED
+}
+
+enum AgoraMoveKind {
+  PROPOSAL
+  REFINEMENT
+  COUNTEREXAMPLE
+  RIVAL
+}
+
+model AgoraCircle {
+  id          String            @id @default(cuid())
+  question    String
+  placeName   String
+  latitude    Float
+  longitude   Float
+  startsAt    DateTime
+  durationMin Int               @default(30)
+  maxSeats    Int               @default(8)
+  status      AgoraCircleStatus @default(OPEN)
+  resultText  String?
+  createdById String
+  createdBy   User              @relation("AgoraCirclesCreated", fields: [createdById], references: [id], onDelete: Cascade)
+  createdAt   DateTime          @default(now())
+
+  members AgoraMember[]
+  moves   AgoraMove[]
+
+  @@index([latitude, longitude])
+  @@index([startsAt])
+}
+
+model AgoraMember {
+  id       String      @id @default(cuid())
+  circleId String
+  circle   AgoraCircle @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  userId   String
+  user     User        @relation("AgoraMemberships", fields: [userId], references: [id], onDelete: Cascade)
+  joinedAt DateTime    @default(now())
+
+  @@unique([circleId, userId])
+  @@index([userId])
+}
+
+model AgoraMove {
+  id        String        @id @default(cuid())
+  circleId  String
+  circle    AgoraCircle   @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User          @relation("AgoraMovesAuthored", fields: [authorId], references: [id], onDelete: Cascade)
+  kind      AgoraMoveKind
+  text      String
+  replyToId String?
+  replyTo   AgoraMove?    @relation("AgoraMoveReplies", fields: [replyToId], references: [id], onDelete: SetNull)
+  replies   AgoraMove[]   @relation("AgoraMoveReplies")
+  createdAt DateTime      @default(now())
+
+  @@index([circleId, createdAt])
+}

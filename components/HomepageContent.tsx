@@ -13,7 +13,15 @@ const HORISTICS_QUOTE_EN =
 const HORISTICS_QUOTE_EL =
   '«Οριστική είναι η εύστοχη και αεροστεγής διατύπωση της ειδοποιού διαφοράς εννοιών.»';
 
-export default function HomepageContent({ lang, t }: { lang: LanguageCode; t: HomepageText }) {
+export default function HomepageContent({
+  lang,
+  t,
+  userName = null,
+}: {
+  lang: LanguageCode;
+  t: HomepageText;
+  userName?: string | null;
+}) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -71,6 +79,14 @@ export default function HomepageContent({ lang, t }: { lang: LanguageCode; t: Ho
             <a href="#accountability">{t.navAccountability}</a>
             <span aria-hidden="true"> | </span>
             <a href="#rota">ROTA</a>
+            <span aria-hidden="true"> | </span>
+            <a href="/agora">Agora</a>
+            {userName && (
+              <>
+                <span aria-hidden="true"> | </span>
+                <a href="/agora/login">{userName}</a>
+              </>
+            )}
             <LanguageSwitcher current={lang} />
           </nav>
         </div>
