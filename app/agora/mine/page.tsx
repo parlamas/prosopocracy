@@ -10,6 +10,7 @@ import '../../../components/AgoraExplorer.css';
 import '../../../components/AgoraCircleRoom.css';
 import LocalTime from '../../../components/LocalTime';
 import MyCircleActions from '../../../components/MyCircleActions';
+import CircleLink from '../../../components/CircleLink';
 import { auth } from '../../../lib/auth';
 import { prisma } from '../../../lib/prisma';
 import { circleEndsAt } from '../../../lib/agora';
@@ -57,8 +58,9 @@ function CircleList({ rows }: { rows: Row[] }) {
               {r.status === 'Live now' ? <span className="agoraNow">Live now</span> : r.status} ·{' '}
               {r.started ? 'You started this' : 'You joined'} · {r.memberCount}/{r.maxSeats} members
               {r.messageCount > 0 &&
-                ` · ${r.messageCount} message${r.messageCount === 1 ? '' : 's'}`}
+                                ` · ${r.messageCount} message${r.messageCount === 1 ? '' : 's'}`}
             </p>
+            <CircleLink id={r.id} />
           </div>
                     <div className="agoraCircleAction">
             <MyCircleActions id={r.id} started={r.started} />

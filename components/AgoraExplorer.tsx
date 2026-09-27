@@ -27,6 +27,7 @@ import {
   type RepeatSource,
 } from '../lib/agora';
 import { getDeviceLocation } from '../lib/deviceLocation';
+import CircleLink from './CircleLink';
 
 // Joining always asks for the device's location, so the member can be marked
 // Local or Visiting. In a local-only circle, location is required.
@@ -332,8 +333,9 @@ export default function AgoraExplorer({
                       ) : (
                         formatStart(c.startsAt)
                       )}{' '}
-                      · {c.durationMin} min · {c.seatsTaken}/{c.maxSeats} seats
+                                            · {c.durationMin} min · {c.seatsTaken}/{c.maxSeats} seats
                     </p>
+                    <CircleLink id={c.id} />
                   </div>
                   <div className="agoraCircleAction">
                     {!signedIn ? (
@@ -628,3 +630,4 @@ function CreateCircleForm({
     </form>
   );
 }
+
