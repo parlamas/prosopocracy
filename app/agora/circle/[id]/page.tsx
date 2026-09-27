@@ -29,7 +29,13 @@ export async function generateMetadata({
     metadataBase: new URL('https://www.prosopocracy.com'),
     title: `${circle.question} · Agora · Prosopocracy`,
     description,
-    openGraph: { title: circle.question, description, siteName: 'Prosopocracy' },
+        openGraph: {
+      title: circle.question,
+      description,
+      siteName: 'Prosopocracy',
+      type: 'website',
+      url: `/agora/circle/${id}`,
+    },
     twitter: { card: 'summary_large_image', title: circle.question, description },
   };
 }

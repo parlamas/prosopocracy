@@ -11,7 +11,8 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.prosopocracy.com'),
   title: AGORA_TRANSLATIONS.en!.metaTitle,
   description: AGORA_TRANSLATIONS.en!.metaDescription,
-  twitter: { card: 'summary_large_image' },
+    twitter: { card: 'summary_large_image' },
+  openGraph: { type: 'website', url: '/agora', siteName: 'Prosopocracy' },
 };
 
 export default async function AgoraPage({
