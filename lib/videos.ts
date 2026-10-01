@@ -22,6 +22,12 @@ export const VIDEOS: Video[] = [
     title: "Grammar, Episode 1",
     description: "Grammar vs Paragrammar",
   },
+  {
+    slug: "grammatiki-01",
+    filename: "GRAMMAR-01-HEL.mp4",
+    title: "Γραμματική, Επισόδειο 1",
+    description: "Γραμματική και Παραγραμματική",
+  },
 ];
 
 export function videoUrl(filename: string): string {
