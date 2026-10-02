@@ -1,3 +1,5 @@
+//app/layout.tsx
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
@@ -17,6 +19,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://prosopocracy.com"),
   title: "Prosopocracy",
   description: "Prosopocracy is a government in which citizens exercise power personally, not through representatives.",
+  verification: {
+    google: "DsFl1HuwsD1h70U0FsoE2OhPuD6GJJ6V-qeNgMrCdNo",
+  },
 };
 
 export default function RootLayout({
