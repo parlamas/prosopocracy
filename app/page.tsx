@@ -1,16 +1,25 @@
 // app/page.tsx
+import type { Metadata } from 'next';
 import './styles.css';
 import HomepageContent from '../components/HomepageContent';
 import { HOMEPAGE_TRANSLATIONS } from '../lib/homepage-translations';
-import { auth } from '../lib/auth';
 
-export default async function ProsopocracyPage() {
-  const session = await auth();
-  return (
-    <HomepageContent
-      lang="en"
-      t={HOMEPAGE_TRANSLATIONS.en!}
-      userName={session?.user?.name ?? null}
-    />
-  );
+const t = HOMEPAGE_TRANSLATIONS.en!;
+
+export const metadata: Metadata = {
+  title: `${t.heroThesis} — ${t.wordmarkSecondary}`,
+  description: t.heroLede,
+  alternates: {
+    canonical: '/',
+    languages: Object.fromEntries(
+      Object.keys(HOMEPAGE_TRANSLATIONS).map((code) => [
+        code,
+        code === 'en' ? '/' : `/${code}`,
+      ])
+    ),
+  },
+};
+
+export default function ProsopocracyPage() {
+  return <HomepageContent lang="en" t={HOMEPAGE_TRANSLATIONS.en!} />;
 }

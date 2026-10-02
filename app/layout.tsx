@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://prosopocracy.com"),
   title: "Prosopocracy",
   description: "Prosopocracy is a government in which citizens exercise power personally, not through representatives.",
 };

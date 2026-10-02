@@ -1,10 +1,29 @@
 // app/videos/[slug]/page.tsx
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import '../../styles.css';
 import { VIDEOS, getVideoBySlug, videoUrl } from '../../../lib/videos';
 
 export function generateStaticParams() {
   return VIDEOS.map((v) => ({ slug: v.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const video = getVideoBySlug(slug);
+  if (!video) return {};
+
+  return {
+    title: `${video.title} — Prosopocracy`,
+    description: video.description,
+    alternates: {
+      canonical: `/videos/${video.slug}`,
+    },
+  };
 }
 
 export default async function VideoPage({

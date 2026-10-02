@@ -1,7 +1,17 @@
 // app/videos/page.tsx
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import '../styles.css';
 import { VIDEOS } from '../../lib/videos';
+
+export const metadata: Metadata = {
+  title: 'Videos — Prosopocracy',
+  description:
+    'Short videos on prosopocracy and civic philosophy, hosted directly on prosopocracy.com rather than through YouTube or another third-party platform.',
+  alternates: {
+    canonical: '/videos',
+  },
+};
 
 export default function VideosIndexPage() {
   return (
