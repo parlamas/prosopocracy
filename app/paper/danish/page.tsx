@@ -1,0 +1,27 @@
+//app/paper/danish/page.tsx
+
+import type { Metadata } from "next";
+import PaperShell from "../PaperShell";
+import Paper from "../Paginator";
+import { danish } from "../content/danish";
+import { english } from "../content/english";
+
+export const metadata: Metadata = {
+  title: "Horistics — dansk og engelsk udgave",
+  description: "Grammatik, paragrammatik, politik, livskvalitet, fortolkende journalistik. Ugentlig.",
+};
+
+// /paper/danish              → screen version (Danish, then English)
+// /paper/danish?layout=print → tête-bêche print version
+export default async function PaperDanish({
+  searchParams,
+}: {
+    searchParams: Promise<{ layout?: string; single?: string }>;
+}) {
+    const { layout, single } = await searchParams;
+  return (
+    <PaperShell>
+            <Paper editions={single ? [danish] : [danish, english]} layout={layout === "print" ? "print" : "screen"} />
+    </PaperShell>
+  );
+}

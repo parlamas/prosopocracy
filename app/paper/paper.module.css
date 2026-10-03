@@ -1,0 +1,355 @@
+/* A5 newspaper layout — 148 × 210 mm pages, 2 columns per page */
+
+.viewer {
+  --ink: #1a1a1a;
+  --accent: #6b1d1d;   /* oxblood */
+  --rule: #b9b2a8;
+  --paper: #ffffff;
+  --define: #0057ff;   /* bright blue for definitions */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10mm;
+  padding: 10mm 0;
+  background: #e9e5df;
+  color: var(--ink);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Each edition's pages sit directly in the viewer */
+.part {
+  display: contents;
+}
+
+.page {
+  box-sizing: border-box;
+  width: 148mm;
+  height: 210mm;
+  padding: 10mm 10mm 8mm;
+  background: var(--paper);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-size: 8.8pt;
+  line-height: 1.38;
+}
+
+/* Second edition in a tête-bêche print: upside down */
+.rotated {
+  transform: rotate(180deg);
+}
+
+/* ── Masthead (front page) ── */
+.masthead {
+  text-align: center;
+  border-bottom: 1.5pt solid var(--ink);
+  padding-bottom: 2.5mm;
+  margin-bottom: 4mm;
+}
+.mastheadTop {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 0.5pt solid var(--rule);
+  padding-bottom: 1.5mm;
+  margin-bottom: 2mm;
+}
+.title {
+  margin: 0;
+  font-size: 30pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--accent);
+}
+.tagline {
+  margin-top: 1.5mm;
+  font-size: 7.5pt;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+/* ── Two columns: text fills the left column, then the right ── */
+.columns {
+  flex: 1;
+  min-height: 0;
+  column-count: 2;
+  column-gap: 5mm;
+  column-fill: auto;
+  overflow: hidden;
+  position: relative;
+  text-align: justify;
+  hyphens: auto;
+}
+.columns p {
+  margin: 0 0 1.6mm;
+  orphans: 2;
+  widows: 2;
+}
+
+/* Thin line between the two columns, drawn on every page */
+.columns::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: var(--line-bottom, 0);
+  left: 50%;
+  border-left: 0.5pt solid var(--rule);
+}
+.columns:empty::before {
+  display: none;
+}
+/* Full-width blocks cover the line */
+.headlineSpan,
+.kicker,
+.wide {
+  position: relative;
+  z-index: 1;
+  background: var(--paper);
+}
+
+/* Headline across both columns */
+.headlineSpan {
+  column-span: all;
+  margin: 0;
+  padding-bottom: 3mm;
+  font-size: 15pt;
+  line-height: 1.12;
+  font-weight: 700;
+  text-align: left;
+  hyphens: manual;
+}
+/* Centered headline (front page) */
+.headlineCenter {
+  text-align: center;
+}
+/* Headline inside one column */
+.headline {
+  margin: 2.5mm 0 1mm;
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: left;
+  break-after: avoid;
+}
+.lead {
+  font-size: 10pt;
+  line-height: 1.32;
+  font-style: italic;
+  text-align: left;
+}
+
+/* ── Target words in grammar examples ── */
+.target {
+  color: #d10000;
+  font-weight: 600;
+}
+
+/* ── Section label above a headline ── */
+.kicker {
+  column-span: all;
+  margin: 0;
+  padding: 6mm 0 1mm;
+  /* a full-width rule in the space above the label */
+  background: linear-gradient(var(--ink), var(--ink)) 0 2.5mm / 100% 1.2pt no-repeat,
+    var(--paper) !important;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* No rule when an article starts at the top of a page */
+.columns > .kicker:first-child {
+  padding-top: 0;
+  background: var(--paper) !important;
+}
+
+/* ── Images ── */
+.figure {
+  break-inside: avoid;
+  margin: 1mm 0 2.5mm;
+}
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.figure figcaption {
+  margin-top: 1mm;
+  font-size: 7pt;
+  font-style: italic;
+  line-height: 1.3;
+  text-align: left;
+}
+
+/* ── Paragraph numbers, to match paragraphs between languages ── */
+.columns p[data-pn]::before,
+.frontCol p[data-pn]::before {
+  content: attr(data-pn);
+  font-size: 0.62em;
+  font-weight: 700;
+  color: var(--accent);
+  vertical-align: 0.45em;
+  line-height: 0;
+  margin-right: 0.35em;
+}
+
+/* ── Definitions ── */
+.def {
+  color: var(--define);
+}
+.defTerm {
+  font-weight: 700;
+  color: var(--define);
+}
+
+.contents {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.contents li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5pt dotted var(--rule);
+  padding: 0.8mm 0;
+}
+
+.box {
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  margin: 2.5mm 0;
+  padding: 2mm 2.5mm;
+  border: 0.75pt solid var(--accent);
+  text-align: left;
+}
+.boxTitle {
+  font-weight: 700;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin-bottom: 1.2mm;
+  break-after: avoid;
+}
+
+.pull {
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  margin: 2.5mm 0;
+  padding: 1.5mm 0;
+  border-top: 1pt solid var(--accent);
+  border-bottom: 1pt solid var(--accent);
+  font-size: 11pt;
+  font-style: italic;
+  line-height: 1.25;
+  text-align: left;
+}
+
+/* ── Automatic page flow ── */
+.source {
+  display: none;
+}
+.splitTop {
+  text-align-last: justify;
+  margin-bottom: 0 !important;
+}
+
+/* ── One column ── */
+.wide {
+  column-span: all;
+  display: flow-root;
+  margin: 0 !important;
+  padding: 0.8mm 0;
+}
+/* A photo in a one-column article: one column wide, text wraps around it */
+.wide .figure {
+  float: right;
+  width: calc(50% - 2.5mm);
+  margin: 0.5mm 0 2mm 4mm;
+}
+/* Boxes and quotes sit beside the photo instead of running under it */
+.wide .box,
+.wide .pull {
+  display: flow-root;
+}
+
+/* ── Front page: two stories side by side ── */
+.frontGrid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(0, 1fr);
+  column-gap: 2.5mm;
+}
+.frontCol {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  hyphens: auto;
+}
+.frontCol + .frontCol {
+  border-left: 0.5pt solid var(--rule);
+  padding-left: 2.5mm;
+}
+.frontCol p {
+  margin: 0 0 1.6mm;
+}
+.jumpTo {
+  margin-top: auto;
+  padding-top: 1mm;
+  font-size: 7.5pt;
+  font-style: italic;
+  text-align: right;
+  color: var(--accent);
+}
+.jumpFrom {
+  display: block;
+  margin-top: 0.5mm;
+  font-size: 7.5pt;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* ── Page footer ── */
+.folio {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3mm;
+  padding-top: 1.5mm;
+  border-top: 0.5pt solid var(--rule);
+  font-size: 6.8pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.imprint {
+  margin-top: 3mm;
+  padding-top: 2mm;
+  border-top: 1pt solid var(--ink);
+  font-size: 7pt;
+  line-height: 1.45;
+}
+
+@media print {
+  .viewer {
+    gap: 0;
+    padding: 0;
+    background: none;
+  }
+  .page {
+    box-shadow: none;
+    break-after: page;
+  }
+}
