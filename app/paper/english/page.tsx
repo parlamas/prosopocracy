@@ -1,3 +1,5 @@
+//app/paper/english/page.tsx
+
 import type { Metadata } from "next";
 import PaperShell from "../PaperShell";
 import Paper from "../Paginator";

@@ -59,7 +59,9 @@ function layoutEdition(src: HTMLElement, mast: HTMLElement, out: HTMLElement, ed
   let page!: HTMLElement;
   let cols!: HTMLDivElement;
 
-    const isHeading = (el: Element | null) => !!el && /^H[1-6]$/.test(el.tagName);
+  // Headlines and section labels must never be left alone at the bottom of a page.
+  const isHeading = (el: Element | null) =>
+    !!el && (/^H[1-6]$/.test(el.tagName) || el.classList.contains(styles.kicker));
 
   // Number the paragraphs of each article (restarting at every article headline),
   // so readers can match paragraphs between the language editions.
@@ -68,7 +70,7 @@ function layoutEdition(src: HTMLElement, mast: HTMLElement, out: HTMLElement, ed
     let skip = false;
     const noNumber = `.${CSS.escape(styles.box)}, .${CSS.escape(styles.imprint)}`;
     for (const el of Array.from(src.querySelectorAll("h2, p")) as HTMLElement[]) {
-            if (el.tagName === "H2") {
+      if (el.tagName === "H2") {
         skip = el.hasAttribute("data-nonum");
         continue;
       }
@@ -239,9 +241,12 @@ function layoutEdition(src: HTMLElement, mast: HTMLElement, out: HTMLElement, ed
   // Fill a slot until it is full or a marker comes up.
   const fill = (s: Slot, queue: HTMLElement[]) => {
     const q = [...queue];
+    // A photo that doesn't fit waits for the next page; the text keeps filling this one.
+    let deferred: HTMLElement | null = null;
+    const withDeferred = (rest: HTMLElement[]) => (deferred ? [deferred, ...rest] : rest);
     while (q.length) {
       const block = q[0];
-      if (isMarker(block)) return { left: q, full: false };
+      if (isMarker(block)) return deferred ? { left: withDeferred(q), full: true } : { left: q, full: false };
       q.shift();
 
       // A one-column group: fill it block by block; what doesn't fit continues on the next page.
@@ -250,9 +255,11 @@ function layoutEdition(src: HTMLElement, mast: HTMLElement, out: HTMLElement, ed
         const shell = block.cloneNode(false) as HTMLElement;
         put(s, shell);
         const inner: Slot = { box: shell, before: null, overflows: s.overflows, force: slotWasEmpty };
-                const r = fill(inner, Array.from(block.children).map((c) => c.cloneNode(true) as HTMLElement));
+        const r = fill(inner, Array.from(block.children).map((c) => c.cloneNode(true) as HTMLElement));
         if (!r.full) continue;
-        if (shell.childElementCount > 0) {
+        // Only a standfirst fitted? Then move the whole article on, so it isn't left alone.
+        const onlyLead = Array.from(shell.children).every((c) => c.classList.contains(styles.lead));
+        if (shell.childElementCount > 0 && !(onlyLead && !slotWasEmpty)) {
           const restGroup = block.cloneNode(false) as HTMLElement;
           for (const k of r.left) restGroup.appendChild(k);
           return { left: [restGroup, ...q], full: true };
@@ -270,6 +277,11 @@ function layoutEdition(src: HTMLElement, mast: HTMLElement, out: HTMLElement, ed
       put(s, block);
       if (!s.overflows()) continue;
       block.remove();
+
+      if (block.tagName === "FIGURE" && !deferred && contentCount(s) > 0) {
+        deferred = block;
+        continue;
+      }
 
       if (contentCount(s) === 0) {
         if (s.force === false) return { left: [block, ...q], full: true };
@@ -291,9 +303,9 @@ function layoutEdition(src: HTMLElement, mast: HTMLElement, out: HTMLElement, ed
           carry.unshift(h);
         }
       }
-      return { left: [...carry, rest ?? block, ...q], full: true };
+      return { left: [...carry, ...withDeferred([rest ?? block, ...q])], full: true };
     }
-    return { left: q, full: false };
+    return deferred ? { left: withDeferred(q), full: true } : { left: q, full: false };
   };
 
   const held: Record<string, { title: string; blocks: HTMLElement[]; jump: HTMLElement }> = {};
