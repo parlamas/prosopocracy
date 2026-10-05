@@ -34,7 +34,8 @@ const masthead = (
       <span>{ISSUE.date} · CVR 43109324 · MobilePay 27 13 44 83</span>
       <span>{ISSUE.price}</span>
     </div>
-    <h1 className={styles.title}>{ISSUE.name}</h1>
+        <h1 className={styles.title}>{ISSUE.name}</h1>
+    <div className={styles.motto}>The Revealing Power Of Definitions</div>
     <div className={styles.tagline}>{ISSUE.tagline}</div>
   </header>
 );
@@ -46,31 +47,45 @@ const content = (
 
       {/* Left column */}
       <Story id="grammar">
-        <h2 className={styles.headlineSpan}>What grammar is — not what it does</h2>
-        <p className={styles.lead}>
-          <Def term="Grammar">is the set of fundamental universal concepts of glossology.</Def>
-        </p>
+        <h2 className={styles.headlineSpan}>What grammar is — not what it consists of</h2>
+
+        <p className={styles.lead}><Def term="Grammar">is the generation of thought.</Def><span className={styles.defLabel}>(def-1)</span></p>
+
+        <p>In other words, it is grammar that generates thoughts.</p>
+
         <p>
-          That sounds simple, but that is what grammar is, not what it does.
-          Most definitions describe what grammar does. Very few say what it is.
+          That sounds simple, but it says what grammar is, not what it consists of. What pass for definitions of grammar are really descriptions, not definitions.
         </p>
-        <p>
-          Grammar covers only six fundamental concepts: parts of speech, moods,
-          diatheses, aspects, clauses and syntax. Everything else is
-          paragrammar.
-        </p>
-                <p>
-          Take one simple sentence: <em>We bought fish this morning.</em> Say it
+        <p className={styles.lead}><Def term="Thoughts">are mental, composite, simulated representations of occurrences.</Def><span className={styles.defLabel}>(def-2)</span></p>
+
+        <p>Grammar generates thoughts through six fundamental concepts: parts of speech, moods, diatheses, aspects, clauses and syntax. Everything else (morphology, vocabulary, punctuation, pronunciation and so on) is paragrammar.</p>
+
+        <p>When we think of something, all six concepts are set in motion. No thought is possible without all six.</p>
+
+        <p>The human brain is wired to generate thought in exactly the same way, regardless of language. Grammar is therefore a panhuman trait that unites us all in a very special but overlooked way. Grammar is universal; language is not.</p>
+
+        <p className={styles.lead}><Def term="Communication">is the exchange of messages that carry meaning.</Def><span className={styles.defLabel}>(def-3)</span></p>
+
+        <p>Every message that carries meaning carries thought, and no thought exists without grammar. All communication is therefore grammatical.</p>
+
+        <p>Language is often said to be what gives thoughts a voice, but that is a metaphor, not a definition.</p>
+
+        <p className={styles.lead}><Def term="Language">is paragrammatical communication.</Def><span className={styles.defLabel}>(def-4)</span></p>
+
+        <p>In other words, language is communication via paragrammar. All communication is grammatical, but only language is both grammatical and paragrammatical. Grammar is what all languages share with all thought; paragrammar is how each language dresses it.</p>
+                
+          <p>Take one simple sentence: <em className={styles.example}>We bought fish this morning.</em> Say it
           in Danish, Greek, Spanish or any other language, and the words change,
           the endings change, the word order may change. But the grammar does not.
         </p>
         <h3 className={styles.headline}>Parts of speech</h3>
-        <p>
-                    <em className={styles.target}>We</em> is a pronoun, <em className={styles.target}>bought</em> is a verb, <em className={styles.target}>fish</em> is a
-          noun, <em className={styles.target}>this</em> is an adjective and <em className={styles.target}>morning</em> is a noun. In
-          every language that can say this sentence, the same words do the same
-          jobs.
+                <p>
+          <em className={styles.target}>We</em> is a pronoun, <em className={styles.target}>bought</em> is a verb, <em className={styles.target}>fish</em> is a
+          noun, <em className={styles.target}>this</em> is an adjective and <em className={styles.target}>morning</em> is a noun.</p>
+
+          <p>Many words can belong to different parts of speech in different contexts, but in a given context each word belongs to only one. Taken one by one, their equivalents belong to the same parts of speech in every language.
         </p>
+        <p>In Greek or Spanish, <em className={styles.target}>we</em> can be stated (<em>εμείς</em>, <em>nosotros/as</em>) or left to the verb ending. Either way, the pronoun is there. Only its marking differs, and that is paragrammar.</p>
         <h3 className={styles.headline}>Mood</h3>
         <p>
           The sentence states a fact. It is in the indicative mood, in all
@@ -92,15 +107,14 @@ const content = (
         </p>
         <h3 className={styles.headline}>Syntax</h3>
         <p>
-          <em className={styles.target}>We</em> is the subject, <em className={styles.target}>bought</em> is the verb, <em className={styles.target}>fish</em>
+          <em className={styles.target}>We</em> is the subject, <em className={styles.target}>bought</em> is the verb, <em className={styles.target}>fish</em>  
           is the direct object and <em className={styles.target}>this morning</em> is the adverb, in all
           languages.
         </p>
         <p>
-          Six concepts, and not one of them changes from language to language.
+          Six concepts, and not one of them changes across languages.
                     What varies <em>from language to language</em> is how each language marks them: its endings, its word
-          order, its spelling, its pronunciation and so on. That is paragrammar. Grammar is what every language
-                    shares; paragrammar is how each language dresses it.
+                    order, its spelling, its pronunciation and so on. That is paragrammar.
         </p>
         <p>
           <em>In the next edition: the parts of speech, discussed in detail.</em>
@@ -109,17 +123,17 @@ const content = (
 
       {/* Right column */}
       <Story id="politics">
-        <h2 className={styles.headlineSpan}>The Revealing Power Of Definitions</h2>
+        <h2 className={styles.headlineSpan}>The Law vs The Penalty For Breaking The Law</h2>
         <p className={styles.lead}>Enforcing the penalty for breaking the law is not the law itself.</p>
         <p>
-          What is justice? Let us define it: <Def term="Justice">is the prevention of crime.</Def>{" "}
-          Once a crime has been committed, no justice can be done, because justice
+          What is justice? Let us define it:</p> <p className={styles.lead}><Def term="Justice">is the prevention of crime.</Def></p>
+          <p>Once a crime has been committed, no justice can be done, because justice
           is preventing crime. What follows — arrest, trial, imprisonment — has to
           do with the penalty for breaking the law, which is not justice. So what
           is called law enforcement is really penalty enforcement.
         </p>
         <p>
-          This reveals a great deal about the revealing power of definitions, and
+          This shows a great deal about the revealing power of definitions, and
           what it reveals is central to a myriad of misconceptions that derail
           millions of lives.
         </p>
@@ -368,7 +382,7 @@ const content = (
         <h2 className={styles.headlineSpan} data-nonum>Subscribe</h2>
     <OneColumn>
     <p>
-      Published weekly in English, Greek, Spanish and Danish. Available in
+      Published weekly in English, Danish, Polish, Greek and Spanish. Available in
       print and as PDF.
     </p>
     <h3 className={styles.headline}>Schools</h3>

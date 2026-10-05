@@ -44,7 +44,7 @@ const content = (
       <Story id="grammar">
         <h2 className={styles.headlineSpan}>Czym jest gramatyka – a nie co robi</h2>
         <p className={styles.lead}>
-          <Def term="Gramatyka">jest zbiorem podstawowych uniwersalnych pojęć glosologii.</Def>
+          <Def term="Gramatyka">jest syntezą myśli.</Def>
         </p>
         <p>
           Brzmi to prosto, ale tym właśnie jest gramatyka – a nie tym, co robi.

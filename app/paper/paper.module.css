@@ -67,6 +67,14 @@
   line-height: 1;
   color: var(--accent);
 }
+.motto {
+  margin-top: 2.5mm;
+  font-size: 18pt;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+}
 .tagline {
   margin-top: 1.5mm;
   font-size: 7.5pt;
@@ -144,6 +152,12 @@
   text-align: left;
 }
 
+/* ── Example sentences ── */
+.example {
+  color: #ff0000;
+  font-weight: 700;
+}
+
 /* ── Target words in grammar examples ── */
 .target {
   color: #d10000;
@@ -201,13 +215,30 @@
   margin-right: 0.35em;
 }
 
+/* ── Definition number label, e.g. (def-1) ── */
+.defLabel {
+  margin-left: 0.3em;
+  font-size: 0.75em;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
 /* ── Definitions ── */
 .def {
-  color: var(--define);
+  /*text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 0.6pt;
+  text-underline-offset: 2.5px;*/
+  color: var(--accent);
 }
 .defTerm {
   font-weight: 700;
-  color: var(--define);
+  font-variant: small-caps;
+  letter-spacing: 0.03em;
+  color: var(--accent);
 }
 
 .contents {

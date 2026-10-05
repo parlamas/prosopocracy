@@ -44,7 +44,7 @@ const content = (
       <Story id="grammar">
         <h2 className={styles.headlineSpan}>Hvad grammatik er – ikke hvad den gør</h2>
         <p className={styles.lead}>
-          <Def term="Grammatik">er sættet af glossologiens grundlæggende universelle begreber.</Def>
+          <Def term="Grammatik">er syntesen af tanke.</Def>
         </p>
         <p>
           Det lyder enkelt, men det er, hvad grammatik er, ikke hvad den gør.
