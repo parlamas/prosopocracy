@@ -17,7 +17,7 @@ const ISSUE = {
   tagline: "Gramatyka · Paragramatyka · Polityka · Jakość życia · Interpretacja wydarzeń",
   number: "Nr 1",
   date: "9 października 2026",
-  price: "[cena]",
+  price: "12 zł",
   editor: "Isidoros Parlamas",
   publisher: "Horistics · CVR 43109324",
   issn: "ISSN w przygotowaniu",
@@ -27,49 +27,56 @@ const masthead = (
   <header className={styles.masthead}>
     <div className={styles.mastheadTop}>
       <span>{ISSUE.number}</span>
-      <span>{ISSUE.date}</span>
+      <span>{ISSUE.date} · CVR 43109324 · MobilePay 27 13 44 83</span>
       <span>{ISSUE.price}</span>
     </div>
     <h1 className={styles.title}>{ISSUE.name}</h1>
+    <div className={styles.motto}>Odkrywcza moc definicji</div>
     <div className={styles.tagline}>{ISSUE.tagline}</div>
   </header>
 );
 
-const content = (
+const content = (schools: boolean) => (
   <>
     {/* ═════════════ STRONA 1: DWA ARTYKUŁY OBOK SIEBIE ═════════════ */}
     <FrontPage>
 
       {/* Lewa kolumna */}
       <Story id="grammar">
-        <h2 className={styles.headlineSpan}>Czym jest gramatyka – a nie co robi</h2>
-        <p className={styles.lead}>
-          <Def term="Gramatyka">jest syntezą myśli.</Def>
-        </p>
-        <p>
-          Brzmi to prosto, ale tym właśnie jest gramatyka – a nie tym, co robi.
-          Większość definicji opisuje, co gramatyka robi. Bardzo niewiele mówi,
-          czym jest.
-        </p>
-        <p>
-          Gramatyka obejmuje tylko sześć podstawowych pojęć: części mowy, tryby,
-          strony (diatezy), aspekty, zdania i składnię. Wszystko inne to
-          paragramatyka.
-        </p>
-        <p>
-          Weźmy jedno proste zdanie: <em>My kupiliśmy rybę tego ranka.</em> Powiedz
-          je po duńsku, grecku, hiszpańsku czy w jakimkolwiek innym języku –
-          zmienią się słowa, zmienią się końcówki, może zmienić się szyk wyrazów.
-          Ale gramatyka się nie zmienia.
-        </p>
+        <h2 className={styles.headlineSpan}>Czym jest gramatyka – a nie z czego się składa</h2>
+
+        <p className={styles.lead}><Def term="Gramatyka">jest wytwarzaniem myśli.</Def><span className={styles.defLabel}>(def-1)</span></p>
+
+        <p>Innymi słowy, to gramatyka wytwarza myśli.</p>
+
+        <p>Brzmi to prosto, ale mówi, czym gramatyka jest, a nie z czego się składa. To, co uchodzi za definicje gramatyki, to w rzeczywistości opisy, a nie definicje.</p>
+
+        <p className={styles.lead}><Def term="Myśli">są umysłowymi, złożonymi, symulowanymi reprezentacjami zdarzeń.</Def><span className={styles.defLabel}>(def-2)</span></p>
+
+        <p>Gramatyka wytwarza myśli za pomocą sześciu podstawowych pojęć: części mowy, trybów, stron (diatez), aspektów, zdań i składni. Wszystko inne (morfologia, słownictwo, interpunkcja, wymowa i tak dalej) to paragramatyka.</p>
+
+        <p>Gdy o czymś myślimy, uruchamia się wszystkie sześć pojęć. Żadna myśl nie jest możliwa bez wszystkich sześciu.</p>
+
+        <p>Ludzki mózg jest tak zbudowany, że wytwarza myśli dokładnie w ten sam sposób, niezależnie od języka. Gramatyka jest więc cechą ogólnoludzką, która łączy nas wszystkich w bardzo szczególny, choć niedostrzegany sposób. Gramatyka jest uniwersalna; język – nie.</p>
+
+        <p className={styles.lead}><Def term="Komunikacja">jest wymianą komunikatów niosących znaczenie.</Def><span className={styles.defLabel}>(def-3)</span></p>
+
+        <p>Każdy komunikat niosący znaczenie niesie myśl, a żadna myśl nie istnieje bez gramatyki. Wszelka komunikacja jest więc gramatyczna.</p>
+
+        <p>Często mówi się, że język jest tym, co daje myślom głos, ale to metafora, a nie definicja.</p>
+
+        <p className={styles.lead}><Def term="Język">jest komunikacją paragramatyczną.</Def><span className={styles.defLabel}>(def-4)</span></p>
+
+        <p>Innymi słowy, język to komunikacja za pośrednictwem paragramatyki. Wszelka komunikacja jest gramatyczna, ale tylko język jest zarazem gramatyczny i paragramatyczny. Gramatyka jest tym, co wszystkie języki dzielą z każdą myślą; paragramatyka – strojem, w który ubiera ją każdy język.</p>
+
+        <p>Weźmy jedno proste zdanie: <em className={styles.example}>My kupiliśmy rybę tego ranka.</em> Powiedz je po duńsku, grecku, hiszpańsku czy w jakimkolwiek innym języku – zmienią się słowa, zmienią się końcówki, może zmienić się szyk wyrazów. Ale gramatyka się nie zmienia.</p>
         <h3 className={styles.headline}>Części mowy</h3>
         <p>
           <em className={styles.target}>My</em> to zaimek, <em className={styles.target}>kupiliśmy</em> to
           czasownik, <em className={styles.target}>rybę</em> to rzeczownik, <em className={styles.target}>tego</em> to
-          przymiotnik, a <em className={styles.target}>ranka</em> to rzeczownik. W każdym języku,
-          w którym można wypowiedzieć to zdanie, te same słowa pełnią te same
-          funkcje.
-        </p>
+          przymiotnik, a <em className={styles.target}>ranka</em> to rzeczownik.</p>
+        <p>Wiele słów może należeć do różnych części mowy w różnych kontekstach, ale w danym kontekście każde słowo należy tylko do jednej. Brane pojedynczo, ich odpowiedniki należą do tych samych części mowy w każdym języku.</p>
+        <p>Po polsku, grecku czy hiszpańsku <em className={styles.target}>my</em> można wypowiedzieć (<em>my</em>, <em>εμείς</em>, <em>nosotros/as</em>) albo pozostawić końcówce czasownika. Tak czy inaczej zaimek tam jest. Różni się tylko jego oznaczenie, a to jest paragramatyka.</p>
         <h3 className={styles.headline}>Tryb</h3>
         <p>
           Zdanie stwierdza fakt. Jest w trybie oznajmującym – we wszystkich
@@ -96,11 +103,10 @@ const content = (
           a <em className={styles.target}>tego ranka</em> to przysłówek – we wszystkich językach.
         </p>
         <p>
-          Sześć pojęć i żadne z nich nie zmienia się od języka do języka. To, co
+          Sześć pojęć i żadne z nich nie zmienia się między językami. To, co
           się zmienia <em>od języka do języka</em>, to sposób, w jaki każdy język
           je oznacza: jego końcówki, szyk wyrazów, pisownia, wymowa i tak dalej.
-          To jest paragramatyka. Gramatyka jest tym, co wspólne wszystkim językom;
-          paragramatyka – strojem, w który ubiera ją każdy język.
+          To jest paragramatyka.
         </p>
         <p>
           <em>W następnym wydaniu: części mowy, omówione szczegółowo.</em>
@@ -109,10 +115,11 @@ const content = (
 
       {/* Prawa kolumna */}
       <Story id="politics">
-        <h2 className={styles.headlineSpan}>Odkrywcza moc definicji</h2>
+        <h2 className={styles.headlineSpan}>Prawo a kara za złamanie prawa</h2>
         <p className={styles.lead}>Egzekwowanie kary za złamanie prawa nie jest samym prawem.</p>
+        <p>Czym jest sprawiedliwość? Zdefiniujmy ją:</p>
+        <p className={styles.lead}><Def term="Sprawiedliwość">to zapobieganie przestępstwom.</Def></p>
         <p>
-          Czym jest sprawiedliwość? Zdefiniujmy ją: <Def term="Sprawiedliwość">to zapobieganie przestępstwom.</Def>{" "}
           Gdy przestępstwo zostało już popełnione, sprawiedliwość nie może się
           dokonać, ponieważ sprawiedliwość to zapobieganie przestępstwom. To, co
           następuje potem – aresztowanie, proces, więzienie – dotyczy kary za
@@ -198,6 +205,7 @@ const content = (
     <Continue id="politics" />
 
     {/* ═════════════ INTERPRETACJA WYDARZEŃ ═════════════ */}
+    {!schools && (<>
     <div className={styles.kicker}>Interpretacja wydarzeń</div>
     <h2 className={styles.headlineSpan}>Użycie broni jądrowej przestało być nie do pomyślenia</h2>
     <OneColumn>
@@ -357,6 +365,7 @@ const content = (
         Izraela, Iranu czy Bliskiego Wschodu, lecz potencjalnie całej ludzkości.
       </p>
     </OneColumn>
+    </>)}
 
         {/* ═════════════ PRENUMERATA + STOPKA REDAKCYJNA ═════════════ */}
     <div className={styles.kicker}>Informacje</div>
@@ -367,15 +376,15 @@ const content = (
         wydanie wraz z wersją angielską. Dostępna w druku i jako PDF.
       </p>
       <h3 className={styles.headline}>Szkoły</h3>
-      <p>[Licencja szkolna: cena, co obejmuje.]</p>
+      <p>1995 DKK (268 €) rocznie za szkołę. Obejmuje wydanie PDF we wszystkich językach, które szkoła może kopiować dla własnych uczniów i nauczycieli.</p>
       <h3 className={styles.headline}>Firmy i organizacje</h3>
-      <p>[Prenumerata dla organizacji: cena, co obejmuje.]</p>
+      <p>1495 DKK (200 €) rocznie. Obejmuje wydanie PDF dla maksymalnie 10 czytelników. Większe grupy – na zapytanie.</p>
       <h3 className={styles.headline}>Osoby prywatne</h3>
-      <p>[Ceny prenumeraty drukowanej i PDF.]</p>
+      <p>Druk: 799 DKK (107 €) rocznie. PDF: 399 DKK (54 €) rocznie. Pojedynczy egzemplarz: 20 DKK (2,70 €).</p>
       <h3 className={styles.headline}>Lekcje gramatyki</h3>
-      <p>W sprawie indywidualnych lub grupowych lekcji gramatyki prosimy pisać na adres mind@horistics.com.</p>
+      <p>Lekcje gramatyki indywidualne i grupowe – po angielsku, duńsku, polsku, grecku i hiszpańsku. Zapytania: mind@horistics.com.</p>
       <h3 className={styles.headline}>Kontakt</h3>
-      <p>mind@horistics.com<br />prosopocracy.com/paper</p>
+      <p>Aby zamówić prenumeratę, napisz na adres mind@horistics.com, podając imię i nazwisko, adres oraz wybrane wydanie. Płatność przez MobilePay 27 13 44 83.</p>
 
       <div className={styles.imprint}>
         <div><strong>Redaktor odpowiedzialny:</strong> {ISSUE.editor}</div>
@@ -393,5 +402,8 @@ export const polish: Edition = {
   masthead,
   continuedOn: "Ciąg dalszy na stronie {n} →",
   continuedFrom: "Ciąg dalszy ze strony 1",
-  content,
+  content: content(false),
 };
+
+// Wydanie szkolne: ta sama gazeta bez artykułu z działu Interpretacja wydarzeń.
+export const polishSchools: Edition = { ...polish, content: content(true) };

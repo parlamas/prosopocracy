@@ -31,44 +31,52 @@ const masthead = (
       <span>{ISSUE.price}</span>
     </div>
     <h1 className={styles.title}>{ISSUE.name}</h1>
+    <div className={styles.motto}>Definitionernes afslørende kraft</div>
     <div className={styles.tagline}>{ISSUE.tagline}</div>
   </header>
 );
 
-const content = (
+const content = (schools: boolean) => (
   <>
     {/* ═════════════ SIDE 1: TO ARTIKLER SIDE OM SIDE ═════════════ */}
     <FrontPage>
 
       {/* Venstre spalte */}
       <Story id="grammar">
-        <h2 className={styles.headlineSpan}>Hvad grammatik er – ikke hvad den gør</h2>
-        <p className={styles.lead}>
-          <Def term="Grammatik">er syntesen af tanke.</Def>
-        </p>
-        <p>
-          Det lyder enkelt, men det er, hvad grammatik er, ikke hvad den gør.
-          De fleste definitioner beskriver, hvad grammatik gør. Meget få siger,
-          hvad den er.
-        </p>
-        <p>
-          Grammatik omfatter kun seks grundlæggende begreber: ordklasser, modi,
-          diateser, aspekter, sætninger og syntaks. Alt andet er paragrammatik.
-        </p>
-        <p>
-                    Tag en enkel sætning: <em>Vi købte fisk i morges.</em> Sig den på
-          engelsk, græsk, spansk eller et hvilket som helst andet sprog, og ordene
-          ændrer sig, endelserne ændrer sig, ordstillingen kan ændre sig. Men
-          grammatikken gør ikke.
-        </p>
+        <h2 className={styles.headlineSpan}>Hvad grammatik er – ikke hvad den består af</h2>
+
+        <p className={styles.lead}><Def term="Grammatik">er frembringelse af tanke.</Def><span className={styles.defLabel}>(def-1)</span></p>
+
+        <p>Med andre ord er det grammatikken, der frembringer tankerne.</p>
+
+        <p>Det lyder enkelt, men det siger, hvad grammatik er, ikke hvad den består af. Det, der gælder for definitioner af grammatik, er i virkeligheden beskrivelser, ikke definitioner.</p>
+
+        <p className={styles.lead}><Def term="Tanker">er mentale, sammensatte, simulerede repræsentationer af hændelser.</Def><span className={styles.defLabel}>(def-2)</span></p>
+
+        <p>Grammatikken frembringer tanker gennem seks grundlæggende begreber: ordklasser, modi, diateser, aspekter, sætninger og syntaks. Alt andet (morfologi, ordforråd, tegnsætning, udtale og så videre) er paragrammatik.</p>
+
+        <p>Når vi tænker på noget, sættes alle seks begreber i gang. Ingen tanke er mulig uden alle seks.</p>
+
+        <p>Den menneskelige hjerne er indrettet til at frembringe tanke på nøjagtig samme måde, uanset sprog. Grammatik er derfor et almenmenneskeligt træk, der forener os alle på en helt særlig, men overset måde. Grammatik er universel; sprog er ikke.</p>
+
+        <p className={styles.lead}><Def term="Kommunikation">er udveksling af budskaber, der bærer mening.</Def><span className={styles.defLabel}>(def-3)</span></p>
+
+        <p>Ethvert budskab, der bærer mening, bærer tanke, og ingen tanke findes uden grammatik. Al kommunikation er derfor grammatisk.</p>
+
+        <p>Det siges ofte, at sproget er det, der giver tankerne en stemme, men det er en metafor, ikke en definition.</p>
+
+        <p className={styles.lead}><Def term="Sprog">er paragrammatisk kommunikation.</Def><span className={styles.defLabel}>(def-4)</span></p>
+
+        <p>Med andre ord er sprog kommunikation gennem paragrammatik. Al kommunikation er grammatisk, men kun sprog er både grammatisk og paragrammatisk. Grammatik er det, alle sprog deler med al tanke; paragrammatik er den dragt, hvert sprog giver den.</p>
+
+        <p>Tag en enkel sætning: <em className={styles.example}>Vi købte fisk i morges.</em> Sig den på engelsk, græsk, spansk eller et hvilket som helst andet sprog, og ordene ændrer sig, endelserne ændrer sig, ordstillingen kan ændre sig. Men grammatikken gør ikke.</p>
         <h3 className={styles.headline}>Ordklasser</h3>
         <p>
           <em className={styles.target}>Vi</em> er et pronomen, <em className={styles.target}>købte</em> er
-                    et verbum, <em className={styles.target}>fisk</em> er et substantiv, <em className={styles.target}>i</em> er
-          en præposition, og <em className={styles.target}>morges</em> er et substantiv. På ethvert
-          sprog, der kan udtrykke denne sætning, udfører de samme ord de samme
-          opgaver.
-        </p>
+          et verbum, <em className={styles.target}>fisk</em> er et substantiv, <em className={styles.target}>i</em> er
+          en præposition, og <em className={styles.target}>morges</em> er et substantiv.</p>
+        <p>Mange ord kan tilhøre forskellige ordklasser i forskellige sammenhænge, men i en given sammenhæng tilhører hvert ord kun én. Taget ét for ét tilhører deres modsvarigheder de samme ordklasser på alle sprog.</p>
+        <p>På græsk eller spansk kan <em className={styles.target}>vi</em> udtrykkes (<em>εμείς</em>, <em>nosotros/as</em>) eller overlades til verbets endelse. Pronomenet er der under alle omstændigheder. Kun dets markering er forskellig, og det er paragrammatik.</p>
         <h3 className={styles.headline}>Modus</h3>
         <p>
           Sætningen fremsætter et faktum. Den står i indikativ – på alle sprog.
@@ -90,15 +98,14 @@ const content = (
         <h3 className={styles.headline}>Syntaks</h3>
         <p>
           <em className={styles.target}>Vi</em> er subjekt, <em className={styles.target}>købte</em> er
-                    verbum, <em className={styles.target}>fisk</em> er direkte objekt, og <em className={styles.target}>i morges</em> er
+          verbum, <em className={styles.target}>fisk</em> er direkte objekt, og <em className={styles.target}>i morges</em> er
           adverbium – på alle sprog.
         </p>
         <p>
-          Seks begreber, og ikke ét af dem ændrer sig fra sprog til sprog. Det,
+          Seks begreber, og ikke ét af dem ændrer sig på tværs af sprog. Det,
           der varierer <em>fra sprog til sprog</em>, er, hvordan hvert sprog
           markerer dem: dets endelser, dets ordstilling, dets stavemåde, dets
-          udtale og så videre. Det er paragrammatik. Grammatik er det, alle sprog
-          har til fælles; paragrammatik er den dragt, hvert sprog giver den.
+          udtale og så videre. Det er paragrammatik.
         </p>
         <p>
           <em>I næste udgave: ordklasserne, gennemgået i detaljer.</em>
@@ -107,10 +114,11 @@ const content = (
 
       {/* Højre spalte */}
       <Story id="politics">
-        <h2 className={styles.headlineSpan}>Definitionernes afslørende kraft</h2>
+        <h2 className={styles.headlineSpan}>Loven vs. straffen for at bryde loven</h2>
         <p className={styles.lead}>At håndhæve straffen for at bryde loven er ikke selve loven.</p>
+        <p>Hvad er retfærdighed? Lad os definere den:</p>
+        <p className={styles.lead}><Def term="Retfærdighed">er forebyggelse af kriminalitet.</Def></p>
         <p>
-          Hvad er retfærdighed? Lad os definere den: <Def term="Retfærdighed">er forebyggelse af kriminalitet.</Def>{" "}
           Når en forbrydelse først er begået, kan der ikke ske retfærdighed, fordi
           retfærdighed er at forebygge kriminalitet. Det, der følger – anholdelse,
           retssag, fængsling – har med straffen for at bryde loven at gøre, og det
@@ -196,6 +204,7 @@ const content = (
     <Continue id="politics" />
 
     {/* ═════════════ FORTOLKENDE NYHEDER ═════════════ */}
+    {!schools && (<>
     <div className={styles.kicker}>Fortolkende nyheder</div>
     <h2 className={styles.headlineSpan}>Brugen af atomvåben er ikke længere utænkelig</h2>
     <OneColumn>
@@ -353,6 +362,7 @@ const content = (
         menneskeheden.
       </p>
     </OneColumn>
+    </>)}
 
     {/* ═════════════ ABONNEMENT + KOLOFON ═════════════ */}
     <PageBreak />
@@ -363,13 +373,15 @@ const content = (
         udgave. Fås på tryk og som PDF.
       </p>
       <h3 className={styles.headline}>Skoler</h3>
-      <p>[Skolelicens: pris, hvad den omfatter.]</p>
+      <p>1.995 kr. (268 €) om året pr. skole. Omfatter PDF-udgaven på alle sprog, som skolen må kopiere til egne elever og lærere.</p>
       <h3 className={styles.headline}>Virksomheder og organisationer</h3>
-      <p>[Abonnement for organisationer: pris, hvad det omfatter.]</p>
+      <p>1.495 kr. (200 €) om året. Omfatter PDF-udgaven til op til 10 læsere. Større grupper efter aftale.</p>
       <h3 className={styles.headline}>Privatpersoner</h3>
-      <p>[Priser for tryk og PDF.]</p>
+      <p>Tryk: 799 kr. (107 €) om året. PDF: 399 kr. (54 €) om året. Enkeltnummer: 20 kr. (2,70 €).</p>
+      <h3 className={styles.headline}>Grammatikundervisning</h3>
+      <p>Individuel undervisning og holdundervisning i grammatik på engelsk, dansk, polsk, græsk og spansk. Henvendelse: mind@horistics.com.</p>
       <h3 className={styles.headline}>Kontakt</h3>
-      <p>mind@horistics.com<br />prosopocracy.com/paper</p>
+      <p>Abonnér ved at skrive til mind@horistics.com med navn, adresse og den udgave, du ønsker. Betal med MobilePay 27 13 44 83.</p>
 
       <div className={styles.imprint}>
         <div><strong>Ansvarshavende redaktør:</strong> {ISSUE.editor}</div>
@@ -387,5 +399,8 @@ export const danish: Edition = {
   masthead,
   continuedOn: "Fortsættes på side {n} →",
   continuedFrom: "Fortsat fra side 1",
-  content,
+  content: content(false),
 };
+
+// Skoleudgave: samme avis uden artiklen under Fortolkende nyheder.
+export const danishSchools: Edition = { ...danish, content: content(true) };

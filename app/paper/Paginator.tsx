@@ -48,7 +48,8 @@ export type Edition = {
   masthead: ReactNode;     // top of the edition's front page
   continuedOn: string;     // e.g. "Continued on page {n} →"   ({n} = page number)
   continuedFrom: string;   // e.g. "Continued from page 1"
-  content: ReactNode;      // the articles, in reading order
+    content: ReactNode;      // the articles, in reading order
+  oneColumn?: boolean;     // true: every page after the front page in one column
 };
 
 type Slot = { box: HTMLElement; before: Node | null; overflows: () => boolean; force?: boolean };
@@ -117,7 +118,8 @@ function layoutEdition(src: HTMLElement, mast: HTMLElement, out: HTMLElement, ed
       for (const n of Array.from(mast.childNodes)) page.appendChild(n.cloneNode(true));
     }
     cols = document.createElement("div");
-    cols.className = styles.columns;
+        cols.className = styles.columns;
+    if (ed.oneColumn && pageNo > 1) cols.classList.add(styles.single);
     page.appendChild(cols);
     if (pageNo > 1) {
       const folio = document.createElement("div");
@@ -210,28 +212,35 @@ function layoutEdition(src: HTMLElement, mast: HTMLElement, out: HTMLElement, ed
     const kids = Array.from(el.children) as HTMLElement[];
     const title = kids[0]?.classList.contains(styles.boxTitle) ? kids[0] : null;
     const items = title ? kids.slice(1) : kids;
-    if (items.length < 2) return null;
+        if (items.length < 1) return null;
 
     const part = el.cloneNode(false) as HTMLElement;
     if (title) part.appendChild(title.cloneNode(true));
     put(s, part);
     let placed = 0;
+    let tail: HTMLElement | null = null;
     for (const item of items) {
       const k = item.cloneNode(true);
       part.appendChild(k);
       if (s.overflows()) {
         part.removeChild(k);
+        // The line that doesn't fit is split too, so the box fills the gap.
+        if (item.tagName === "P") {
+          const inner: Slot = { box: part, before: null, overflows: s.overflows };
+          tail = splitToFit(item, inner);
+        }
         break;
       }
       placed++;
     }
-    if (placed === 0 || placed === items.length) {
+    if ((placed === 0 && !tail) || placed === items.length) {
       part.remove();
       return null;
     }
     const rest = el.cloneNode(false) as HTMLElement;
     if (title) rest.appendChild(title.cloneNode(true));
-    for (const item of items.slice(placed)) rest.appendChild(item.cloneNode(true));
+    if (tail) rest.appendChild(tail);
+    for (const item of items.slice(placed + (tail ? 1 : 0))) rest.appendChild(item.cloneNode(true));
     return rest;
   };
 

@@ -51,7 +51,7 @@ export default async function VideoPage({
           borderBottom: '1px solid var(--line)',
         }}
       >
-        A Horistics project &middot; by Isidoros Parlamas
+        A Horistics project &middot; by &copy; Isidoros Parlamas
       </div>
 
       <header className="masthead">

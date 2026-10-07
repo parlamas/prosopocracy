@@ -112,6 +112,13 @@
 .columns:empty::before {
   display: none;
 }
+/* One column: every page after the front page (Edition.oneColumn) */
+.single {
+  column-count: 1;
+}
+.single::before {
+  display: none;
+}
 /* Full-width blocks cover the line */
 .headlineSpan,
 .kicker,

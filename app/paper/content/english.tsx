@@ -1,3 +1,5 @@
+//app/paper/content/english.tsx
+
 import styles from "../paper.module.css";
 import { PageBreak, OneColumn, FrontPage, Story, Continue, Def, type Edition } from "../Paginator";
 
@@ -21,7 +23,7 @@ const ISSUE = {
   tagline: "Grammar · Paragrammar · Politics · Quality Of Life · Interpretive News",
   number: "No. 1",
   date: "9 October 2026",
-  price: "20 kr.",
+  price: "€2.70",
   editor: "Isidoros Parlamas",
   publisher: "Horistics · CVR 43109324",
   issn: "ISSN pending",
@@ -40,7 +42,7 @@ const masthead = (
   </header>
 );
 
-const content = (
+const content = (schools: boolean) => (
   <>
     {/* ═════════════ PAGE 1: TWO STORIES SIDE BY SIDE ═════════════ */}
     <FrontPage>
@@ -59,6 +61,8 @@ const content = (
         <p className={styles.lead}><Def term="Thoughts">are mental, composite, simulated representations of occurrences.</Def><span className={styles.defLabel}>(def-2)</span></p>
 
         <p>Grammar generates thoughts through six fundamental concepts: parts of speech, moods, diatheses, aspects, clauses and syntax. Everything else (morphology, vocabulary, punctuation, pronunciation and so on) is paragrammar.</p>
+
+        <p>These concepts are not new. Grammar as a discipline was founded by the Greeks: by Socrates (470–399 Before Year 1, BY1) in Plato's <em>Cratylus</em>, who examines the correctness of names and distinguishes nouns (<em>ὀνόματα</em>) from verbs (<em>ῥήματα</em>); by Dionysius Thrax (c. 170–90 BY1), whose <em>Art of Grammar</em> set out the eight parts of speech; and by Apollonius Dyscolus (2nd century After Year 1, AY1), who founded the study of syntax.</p>
 
         <p>When we think of something, all six concepts are set in motion. No thought is possible without all six.</p>
 
@@ -107,8 +111,7 @@ const content = (
         </p>
         <h3 className={styles.headline}>Syntax</h3>
         <p>
-          <em className={styles.target}>We</em> is the subject, <em className={styles.target}>bought</em> is the verb, <em className={styles.target}>fish</em>  
-          is the direct object and <em className={styles.target}>this morning</em> is the adverb, in all
+          <em className={styles.target}>We</em> is the subject, <em className={styles.target}>bought</em> is the verb, <em className={styles.target}>fish</em> is the direct object and <em className={styles.target}>this morning</em> is the adverb, in all
           languages.
         </p>
         <p>
@@ -116,8 +119,126 @@ const content = (
                     What varies <em>from language to language</em> is how each language marks them: its endings, its word
                     order, its spelling, its pronunciation and so on. That is paragrammar.
         </p>
+                        <h3 className={styles.headline}>Thought comes first</h3>
+        <p>Before anything is said or written, it exists as a thought. We do not first find the words and then work out what they mean. We think first, and then we look for the words. The thought is already complete in the mind, with all six concepts in place, before any language gives it form.</p>
+        <p>Language comes after. It chooses the words, the endings and the word order, and decides how much of the thought is said aloud. By then, grammar has already done its work. Grammar generates the thought; language communicates it. The next two examples show this.</p>
+        <h3 className={styles.headline}>A second example</h3>
+        <p>Take another sentence: <em className={styles.example}>The children were playing in the garden.</em></p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>The children were playing in the garden.</div>
+          <p><strong>Parts of speech:</strong> <em className={styles.target}>the</em> article, <em className={styles.target}>children</em> noun, <em className={styles.target}>were</em> verb, <em className={styles.target}>playing</em> participle, <em className={styles.target}>in</em> preposition, <em className={styles.target}>the</em> article, <em className={styles.target}>garden</em> noun.</p>
+          <p><strong>Mood:</strong> indicative.</p>
+          <p><strong>Diathesis:</strong> active.</p>
+          <p><strong>Aspect:</strong> progressive. The playing is seen as ongoing, not as one complete act.</p>
+          <p><strong>Clause:</strong> declarative main clause.</p>
+          <p><strong>Syntax:</strong> <em className={styles.target}>the children</em> subject, <em className={styles.target}>were playing</em> verb, <em className={styles.target}>in the garden</em> adverb.</p>
+        </div>
+        <p>Compared with the first sentence, only the aspect differs. One concept changes, and the thought changes with it: a completed purchase becomes an ongoing game.</p>
+        <h3 className={styles.headline}>What is not said</h3>
+        <p>Someone asks: <em>When are you leaving?</em> You answer with one word: <em className={styles.example}>Tomorrow.</em></p>
+        <p>One word is spoken, yet the listener understands a complete thought: <em className={styles.target}>[I am leaving]</em> <em>tomorrow</em>. The words in brackets are not said. They are implied, and grammar supplies them.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>[I am leaving] tomorrow.</div>
+          <p><strong>Parts of speech:</strong> <em className={styles.target}>[I]</em> pronoun, <em className={styles.target}>[am]</em> verb, <em className={styles.target}>[leaving]</em> participle, <em className={styles.target}>tomorrow</em> adverb.</p>
+          <p><strong>Mood:</strong> indicative.</p>
+          <p><strong>Diathesis:</strong> active.</p>
+          <p><strong>Aspect:</strong> progressive.</p>
+          <p><strong>Clause:</strong> declarative main clause.</p>
+          <p><strong>Syntax:</strong> <em className={styles.target}>[I]</em> subject, <em className={styles.target}>[am leaving]</em> verb, <em className={styles.target}>tomorrow</em> adverb.</p>
+        </div>
+        <p>All six concepts are at work, although only one word was spoken. That is what it means for grammar to generate thought: the thought is complete before a single word is chosen. How much of it we say aloud is paragrammar.</p>
+                        <h3 className={styles.headline}>The parts of speech</h3>
+        <p>Before we list the parts of speech, let us define them.</p>
+        <p className={styles.lead}><Def term="The parts of speech">are non-semiotic categories of interacting concepts that clarify the semantics of speech.</Def><span className={styles.defLabel}>(def-5)</span></p>
+        <p><em>Non-semiotic</em> means that the parts of speech have no morphology; that is, we do not take morphology into account when dealing with the parts of speech. <em>Semantics</em> means meaning.</p>
+        <p>It follows that the definition of each part of speech must be honoured strictly and without exception.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Note 1</div>
+          <p>The part of speech to which a word belongs in a given sentence is determined solely by the definition whose criteria that word actually satisfies.</p>
+          <p>Each part of speech has a specific definition. The criteria of the definitions are exclusively semantic, never morphological.</p>
+        </div>
+        <p>There are ten parts of speech, the same in every language. Some languages, such as Polish and Chinese, have no articles, so they have nine.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>The ten parts of speech</div>
+          <p>1. Nouns</p>
+          <p>2. Articles</p>
+          <p>3. Pronouns</p>
+          <p>4. Adjectives</p>
+          <p>5. Verbs</p>
+          <p>6. Participles</p>
+          <p>7. Adverbs</p>
+          <p>8. Prepositions</p>
+          <p>9. Conjunctions</p>
+          <p>10. Interjections</p>
+        </div>
+                <p className={styles.lead}><Def term="Nouns">are words that name entities.</Def><span className={styles.defLabel}>(def-6)</span></p>
+                <p>An entity is anything we can name: a person, a thing, a place, an idea. <em className={styles.target}>Fish</em>, <em className={styles.target}>Copenhagen</em>, <em className={styles.target}>teacher</em> and <em className={styles.target}>justice</em> are all nouns, because each one names an entity.</p>
+        <p>The definition decides, not the form. In <em className={styles.example}>Swimming is healthy</em>, the word <em className={styles.target}>swimming</em> ends like a verb form, but here it names an activity as an entity. It satisfies the definition of a noun, so it is a noun.</p>
+        <p className={styles.lead}><Def term="Articles">are the words that determine the selectivity of nouns.</Def><span className={styles.defLabel}>(def-7)</span></p>
+        <p>Compare <em className={styles.example}>I bought a fish</em> with <em className={styles.example}>I bought the fish</em>. With <em className={styles.target}>a</em>, the fish is not selected: it is any one fish. With <em className={styles.target}>the</em>, the fish is selected: it is a particular fish that speaker and listener both know. The noun is the same; the article determines how selective it is.</p>
+        <p className={styles.lead}><Def term="Pronouns">are words used in place of nouns.</Def><span className={styles.defLabel}>(def-8)</span></p>
+        <p>In <em className={styles.example}>Maria bought a fish. She cooked it.</em>, the word <em className={styles.target}>she</em> stands in place of <em className={styles.target}>Maria</em>, and <em className={styles.target}>it</em> stands in place of <em className={styles.target}>fish</em>. In our first sentence, <em className={styles.target}>we</em> stands in place of the names of the people who bought the fish.</p>
+        <p className={styles.lead}><Def term="Adjectives">are words or groups of words that qualify nouns.</Def><span className={styles.defLabel}>(def-9)</span></p>
+        <p>In <em className={styles.example}>fresh fish</em>, the word <em className={styles.target}>fresh</em> qualifies the noun <em className={styles.target}>fish</em>, so it is an adjective. In our first sentence, <em className={styles.target}>this</em> qualifies <em className={styles.target}>morning</em>, so it is an adjective too.</p>
+        <p>An adjective can also be a group of words. In <em className={styles.example}>fish from the market</em>, the group <em className={styles.target}>from the market</em> qualifies <em className={styles.target}>fish</em>. By the definition, it is an adjective.</p>
+        <p className={styles.lead}><Def term="Verbs">are words that take a subject.</Def><span className={styles.defLabel}>(def-10)</span></p>
+        <p className={styles.lead}><Def term="Subjects">instantiate the meaning of verbs.</Def><span className={styles.defLabel}>(def-11)</span></p>
+        <p>On its own, <em className={styles.target}>bought</em> is only a meaning: an act of buying, by no one in particular. In <em className={styles.example}>We bought fish</em>, the subject <em className={styles.target}>we</em> instantiates that meaning: the buying becomes an act that someone actually performed.</p>
+        <p className={styles.lead}><Def term="Participles">are derivatives of verbs that introduce retrievable elliptical clauses.</Def><span className={styles.defLabel}>(def-12)</span></p>
+        <p>A participle stands for a whole clause that has been shortened. The clause can always be retrieved:</p>
+        <p><em className={styles.example}>Having injured his knee, he limped home.</em> = <em>Because he had injured his knee, he limped home.</em></p>
+        <p><em className={styles.example}>Once mentioned, the name went viral.</em> = <em>After the name was mentioned, it went viral.</em></p>
+        <p>In each case, the elliptical clause has been retrieved, and the meaning is unchanged.</p>
+        <p className={styles.lead}><Def term="Adverbs">are words or groups of words that qualify verbs, adjectives, other adverbs and also clauses, with respect to time, place, manner, frequency, degree, attitude or perception.</Def><span className={styles.defLabel}>(def-13)</span></p>
+        <p>Adverbs answer the questions <em>where?</em>, <em>how?</em>, <em>when?</em> and <em>how much?</em> The last one can be extended: <em>how often? how high? how surely? how much better?</em> An adverb can even be an answer on its own.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Four examples</div>
+          <p>1. <em className={styles.example}>Maria sings beautifully.</em> The adverb <em className={styles.target}>beautifully</em> qualifies the verb <em className={styles.target}>sings</em>. <em>How does Maria sing? Beautifully!</em> It is an adverb of manner.</p>
+          <p>2. <em className={styles.example}>Some people are incredibly naive.</em> The adverb <em className={styles.target}>incredibly</em> qualifies the adjective <em className={styles.target}>naive</em>. It is an adverb of degree: it tells us how naive.</p>
+          <p>3. <em className={styles.example}>We go swimming very early.</em> The adverb <em className={styles.target}>very</em> qualifies the adverb <em className={styles.target}>early</em>. <em>Very</em> is an adverb of degree; <em>early</em> is an adverb of time.</p>
+          <p>4. <em className={styles.example}>Perhaps they don't believe you.</em> The adverb <em className={styles.target}>perhaps</em> qualifies the whole clause <em className={styles.target}>they don't believe you</em>. It expresses probability.</p>
+        </div>
+        <p className={styles.lead}><Def term="Prepositions">are words or groups of words that take nouns or noun phrases as objects and express place, time, direction, cause, manner and so on.</Def><span className={styles.defLabel}>(def-14)</span></p>
+        <p>There is no preposition without an object.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Three examples</div>
+          <p>1. <em className={styles.example}>I gave the books to them.</em> The preposition <em className={styles.target}>to</em> takes the object <em className={styles.target}>them</em>, a pronoun standing in place of a noun, and expresses direction.</p>
+          <p>2. <em className={styles.example}>The keys are in my pocket.</em> The preposition <em className={styles.target}>in</em> takes the noun phrase <em className={styles.target}>my pocket</em> and expresses place.</p>
+          <p>3. <em className={styles.example}>I studied the problem in depth.</em> The preposition <em className={styles.target}>in</em> takes the noun <em className={styles.target}>depth</em> and expresses manner.</p>
+        </div>
+        <p className={styles.lead}><Def term="Noun phrases">are phrases that contain nouns or pronouns and can function as subjects, objects or complements.</Def><span className={styles.defLabel}>(def-15)</span></p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Three examples</div>
+          <p>1. <em className={styles.target}>drama</em> → noun; <em className={styles.target}>a lot of drama</em> → noun phrase. <em className={styles.example}>If a film has a lot of drama, it is usually tiring.</em> <em>A lot of drama</em> is the direct object of the verb <em>has</em>.</p>
+          <p>2. <em className={styles.target}>story</em> → noun; <em className={styles.target}>a long story</em> → noun phrase. <em className={styles.example}>Her life is a long story.</em> <em>A long story</em> is the complement of the verb <em>is</em>.</p>
+          <p>3. <em className={styles.target}>moments</em> → noun; <em className={styles.target}>the hard moments</em> → noun phrase. <em className={styles.example}>The hard moments forge character.</em> <em>The hard moments</em> is the subject of the verb <em>forge</em>.</p>
+        </div>
+                        <p className={styles.lead}><Def term="Conjunctions">are words or groups of words that establish a relation of subordination, that is, of interdependence, between clauses.</Def><span className={styles.defLabel}>(def-16)</span></p>
+        
+<p>All conjunctions are hypotactic. The notion that some conjunctions are paratactic is unfounded and will be dealt with <strong>in due time</strong>.</p>
+
+        <p>Conventional grammar books divide conjunctions into two categories: coordinating and subordinating. But why is this division made, and what does it contribute to the understanding of grammar?</p>
+        <p>Conjunctions are divided in this way because the so-called grammarians have not grasped that, with the exception of conditional clauses, if we remove the conjunction from any subordinate clause, it automatically becomes a main clause. This happens not only with the "coordinating" conjunctions, but with all conjunctions.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Remove the conjunction</div>
+          <p>1. <em className={styles.example}>I stayed at home because it was raining.</em> Without <em className={styles.target}>because</em>: <em>It was raining.</em> A main clause.</p>
+          <p>2. <em className={styles.example}>I stayed at home, but she went out.</em> Without <em className={styles.target}>but</em>: <em>She went out.</em> A main clause.</p>
+        </div>
+        <p>As a rule, what makes a clause subordinate is the presence of a conjunction. The story does not end there, however. As we will see, even clauses without any conjunction are sometimes subordinate, because the semantics itself requires it.</p>
+        <p>The nominal authors of grammar books simply copy other grammar books and paste the copy into a "new" book, changing only a few superficial details to keep up appearances. It goes without saying that the only thing this division of conjunctions contributes to grammar is abundant and pervasive confusion.</p>
+        <p>It is also very important to point out that the definitions of concepts in these books, when they are given at all, do not meet the requirements of horistics. Beyond that, the "authors" of these books repeatedly violate the very definitions they supposedly formulated. The truth is that they simply copy from other books whatever definition happens to catch their eye.</p>
+        <p className={styles.lead}><Def term="Interjections">are words or groups of words that express emotion and have no syntactic role.</Def><span className={styles.defLabel}>(def-17)</span></p>
+        <p>By emotion we also mean <strong>will</strong> (<em className={styles.target}>shh!</em> meaning silence, <em className={styles.target}>come on!</em>), <strong>hesitation</strong> (<em className={styles.target}>hm</em>, <em className={styles.target}>er</em>) and <strong>social convention</strong> (<em className={styles.target}>hello</em>, <em className={styles.target}>thank you</em>), when these words are used as exclamations.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Four examples</div>
+          <p>1. <em className={styles.example}>Phew, it's finally over!</em> The word <em className={styles.target}>phew</em> has no syntactic role: it is not a subject, a complement, an object or anything else. This holds for all interjections.</p>
+          <p>2. <em className={styles.example}>Ah, how I miss my mother!</em></p>
+          <p>3. <em className={styles.example}>Ouch, what happened to me!</em></p>
+          <p>4. <em className={styles.example}>Bravo, you did it perfectly!</em></p>
+        </div>
+        <p>A handful of words fit none of the definitions of the ten parts of speech. We call those words particles.</p>
         <p>
-          <em>In the next edition: the parts of speech, discussed in detail.</em>
+          <em>In the next edition: the moods, discussed in detail.</em>
         </p>
       </Story>
 
@@ -211,7 +332,8 @@ const content = (
         
     <Continue id="politics" />
 
-        {/* ═════════════ INTERPRETIVE NEWS ═════════════ */}
+                {/* ═════════════ INTERPRETIVE NEWS ═════════════ */}
+    {!schools && (<>
     
             <div className={styles.kicker}>Interpretive News</div>
         <h2 className={styles.headlineSpan}>The Use Of Nuclear Weapons Is No Longer Unthinkable</h2>
@@ -377,6 +499,8 @@ const content = (
 
         </OneColumn>
 
+        </>)}
+
     {/* ═════════════ SUBSCRIBE + IMPRINT ═════════════ */}
     <PageBreak />
         <h2 className={styles.headlineSpan} data-nonum>Subscribe</h2>
@@ -386,13 +510,15 @@ const content = (
       print and as PDF.
     </p>
     <h3 className={styles.headline}>Schools</h3>
-    <p>[School licence: price, what it includes.]</p>
+    <p>1,995 kr. (€268) a year per school. Includes the PDF edition in every language, which the school may copy for its own pupils and teachers.</p>
     <h3 className={styles.headline}>Businesses and organisations</h3>
-    <p>[Organisation subscription: price, what it includes.]</p>
+    <p>1,495 kr. (€200) a year. Includes the PDF edition for up to 10 readers. Larger groups on request.</p>
     <h3 className={styles.headline}>Individuals</h3>
-    <p>[Print and PDF subscription prices.]</p>
+    <p>Print: 799 kr. (€107) a year. PDF: 399 kr. (€54) a year. Single copy: 20 kr. (€2.70).</p>
+        <h3 className={styles.headline}>Grammar lessons</h3>
+    <p>Individual and group lessons in grammar, in English, Greek and Spanish. Enquiries: mind@horistics.com.</p>
     <h3 className={styles.headline}>Contact</h3>
-    <p>mind@horistics.com<br />prosopocracy.com/paper</p>
+    <p>To subscribe, write to mind@horistics.com with your name, address and the edition you want. Pay by MobilePay 27 13 44 83.</p>
 
     <div className={styles.imprint}>
       <div><strong>Responsible editor:</strong> {ISSUE.editor}</div>
@@ -410,5 +536,8 @@ export const english: Edition = {
   masthead,
   continuedOn: "Continued on page {n} →",
   continuedFrom: "Continued from page 1",
-  content,
+    content: content(false),
 };
+
+// Schools edition: same paper without the Interpretive News article.
+export const englishSchools: Edition = { ...english, content: content(true), oneColumn: true };
