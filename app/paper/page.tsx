@@ -2,6 +2,7 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import EditionSelect from "./EditionSelect";
 
 export const metadata: Metadata = {
   title: "Horistics — the newspaper",
@@ -51,6 +52,7 @@ export default function PaperIndex() {
         Grammar, paragrammar, politics, quality of life. Weekly.
       </p>
       <p>Read each edition online or download it as a PDF.</p>
+      <EditionSelect editions={EDITIONS} />
 
       <ul style={{ listStyle: "none", padding: 0, margin: "2rem 0 0" }}>
         {EDITIONS.map((e) => (
