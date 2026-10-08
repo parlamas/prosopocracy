@@ -1,5 +1,3 @@
-//app/paper/EditionSelect.tsx
-
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -23,13 +21,17 @@ export default function EditionSelect({
         fontSize: "1rem",
         padding: "0.5rem 0.75rem",
         marginTop: "0.5rem",
+        color: "#111",
+        background: "#fff",
+        border: "1px solid #999",
+        borderRadius: 4,
       }}
     >
       <option value="" disabled>
         Choose an edition…
       </option>
       {editions.map((e) => (
-        <option key={e.href} value={e.href}>
+        <option key={e.href} value={e.href} style={{ color: "#111", background: "#fff" }}>
           {e.name}
         </option>
       ))}
