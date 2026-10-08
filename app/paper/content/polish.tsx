@@ -27,7 +27,7 @@ const masthead = (
   <header className={styles.masthead}>
     <div className={styles.mastheadTop}>
       <span>{ISSUE.number}</span>
-      <span>{ISSUE.date} · CVR 43109324 · MobilePay 27 13 44 83</span>
+      <span>{ISSUE.date} · CVR 43109324 · Vejle · MobilePay 27 13 44 83</span>
       <span>{ISSUE.price}</span>
     </div>
     <h1 className={styles.title}>{ISSUE.name}</h1>
