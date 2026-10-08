@@ -1,5 +1,6 @@
 
 //app/paper/PaperShell.tsx
+
 import { ReactNode } from "react";
 import Link from "next/link";
 import { Lora, Literata } from "next/font/google";
@@ -37,7 +38,17 @@ export default function PaperShell({ children }: { children: ReactNode }) {
       <style dangerouslySetInnerHTML={{ __html: printCss }} />
       <nav
         className="paper-back"
-        style={{ padding: "0.75rem 1rem", fontFamily: "Georgia, serif", fontSize: "0.95rem" }}
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 100,
+          background: "#fff",
+          color: "#111",
+          borderBottom: "1px solid #ddd",
+          padding: "0.75rem 1rem",
+          fontFamily: "Georgia, serif",
+          fontSize: "0.95rem",
+        }}
       >
         <Link href="/paper" style={{ textDecoration: "underline" }}>
           &larr; All editions
