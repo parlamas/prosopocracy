@@ -50,7 +50,7 @@ export default function PaperShell({ children }: { children: ReactNode }) {
           fontSize: "0.95rem",
         }}
       >
-        <Link href="/paper" style={{ textDecoration: "underline" }}>
+        <Link href="/paper" style={{ textDecoration: "none" }}>
           &larr; All editions
         </Link>
       </nav>
