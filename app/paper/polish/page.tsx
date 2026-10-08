@@ -8,7 +8,7 @@ import { english } from "../content/english";
 
 export const metadata: Metadata = {
   title: "Horistics — wydanie polskie i angielskie",
-  description: "Gramatyka, paragramatyka, polityka, jakość życia. Tygodnik.",
+  description: "Gramatyka, paragramatyka, polityka, jakość życia. Miesięcznik.",
 };
 
 // /paper/polish              → screen version (Polish, then English)

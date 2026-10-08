@@ -10,7 +10,7 @@ import { spanishSchools } from "../content/spanish";
 
 export const metadata: Metadata = {
   title: "Horistics — schools edition",
-  description: "Grammar, paragrammar, politics, quality of life. Weekly.",
+  description: "Grammar, paragrammar, politics, quality of life. Monthly.",
 };
 
 // Schools edition (no Interpretive News):

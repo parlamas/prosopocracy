@@ -8,7 +8,7 @@ import { english } from "../content/english";
 
 export const metadata: Metadata = {
   title: "Horistics — dansk og engelsk udgave",
-  description: "Grammatik, paragrammatik, politik, livskvalitet. Ugentlig.",
+  description: "Grammatik, paragrammatik, politik, livskvalitet. Månedlig.",
 };
 
 // /paper/danish              → screen version (Danish, then English)

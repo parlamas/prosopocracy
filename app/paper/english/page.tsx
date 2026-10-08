@@ -7,7 +7,7 @@ import { english } from "../content/english";
 
 export const metadata: Metadata = {
   title: "Horistics — English edition",
-  description: "Grammar, paragrammar, politics, quality of life, interpretive news. Weekly.",
+  description: "Grammar, paragrammar, politics, quality of life, interpretive news. Monthly.",
 };
 
 // English on its own (for previewing while you write).

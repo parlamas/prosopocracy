@@ -19,7 +19,7 @@ const ISSUE = {
   date: "9 de octubre de 2026",
   price: "20 DKK · 2,70 €",
   editor: "Isidoros Parlamas",
-  publisher: "Horistics · CVR 43109324",
+  publisher: "Horistics · Vejle · CVR 43109324",
   issn: "ISSN en trámite",
 };
 
@@ -27,7 +27,7 @@ const masthead = (
   <header className={styles.masthead}>
     <div className={styles.mastheadTop}>
       <span>{ISSUE.number}</span>
-      <span>{ISSUE.date} · CVR 43109324 · Vejle · MobilePay 27 13 44 83</span>
+      <span>{ISSUE.date} · CVR 43109324 · MobilePay 27 13 44 83</span>
       <span>{ISSUE.price}</span>
     </div>
     <h1 className={styles.title}>{ISSUE.name}</h1>

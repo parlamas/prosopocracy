@@ -25,7 +25,7 @@ const ISSUE = {
   date: "9 October 2026",
   price: "€2.70",
   editor: "Isidoros Parlamas",
-  publisher: "Horistics · CVR 43109324",
+  publisher: "Horistics · Vejle · CVR 43109324",
   issn: "ISSN pending",
 };
 
@@ -33,7 +33,7 @@ const masthead = (
   <header className={styles.masthead}>
     <div className={styles.mastheadTop}>
       <span>{ISSUE.number}</span>
-      <span>{ISSUE.date} · CVR 43109324 · Vejle · MobilePay 27 13 44 83</span>
+      <span>{ISSUE.date} · CVR 43109324 · MobilePay 27 13 44 83</span>
       <span>{ISSUE.price}</span>
     </div>
         <h1 className={styles.title}>{ISSUE.name}</h1>
@@ -506,7 +506,7 @@ const content = (schools: boolean) => (
         <h2 className={styles.headlineSpan} data-nonum>Subscribe</h2>
     <OneColumn>
     <p>
-      Published weekly in English, Danish, Polish, Greek and Spanish. Available in
+      Published monthly in English, Danish, Polish, Greek and Spanish. Available in
       print and as PDF.
     </p>
     <h3 className={styles.headline}>Schools</h3>

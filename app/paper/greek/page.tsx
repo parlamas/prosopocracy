@@ -6,7 +6,7 @@ import { english } from "../content/english";
 
 export const metadata: Metadata = {
   title: "Horistics — ελληνική και αγγλική έκδοση",
-  description: "Γραμματική, παραγραμματική, πολιτική, ποιότητα ζωής. Εβδομαδιαία.",
+  description: "Γραμματική, παραγραμματική, πολιτική, ποιότητα ζωής. Μηνιαία.",
 };
 
 // /paper/greek              → screen version (Greek, then English)
