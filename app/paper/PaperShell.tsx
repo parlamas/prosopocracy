@@ -3,6 +3,7 @@
 
 import { ReactNode } from "react";
 import Link from "next/link";
+import AutoPrint from "./AutoPrint";
 import { Lora, Literata } from "next/font/google";
 
 const lora = Lora({
@@ -59,6 +60,7 @@ export default function PaperShell({ children }: { children: ReactNode }) {
         className={lora.className}
         style={{ fontFamily: `${first(lora.style.fontFamily)}, ${greekFont.style.fontFamily}` }}
       >
+        <AutoPrint />
         {children}
       </div>
     </>

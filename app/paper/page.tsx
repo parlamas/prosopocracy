@@ -94,6 +94,9 @@ export default function PaperIndex() {
                 <Link href={e.href} style={linkStyle}>
                   Read online
                 </Link>
+                <Link href={`${e.href}?layout=print&print=1`} style={linkStyle}>
+                  Print
+                </Link>
                 {e.pdf ? (
                   <a href={e.pdf} download style={linkStyle}>
                     Download PDF
