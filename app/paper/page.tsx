@@ -67,9 +67,9 @@ export default function PaperIndex() {
         lineHeight: 1.6,
       }}
     >
-      <h1 style={{ fontSize: "2.4rem", margin: 0 }}>Horistics</h1>
-      <p style={{ opacity: 0.7, marginTop: "0.25rem" }}>
-        Grammar, paragrammar, politics, quality of life. Monthly.
+      <h1 style={{ fontSize: "2.4rem", margin: 0 }}>Horistics Paper</h1>
+      <p style={{ fontSize: "1rem", fontWeight: 700, marginTop: "0.75rem", background: "#f5ecd7", color: "#5c3d1e", padding: "0.6rem 1rem", borderRadius: 4, display: "inline-block" }}>
+        Grammar &middot; Paragrammar &middot; Politics &middot; Quality Of Life<span style={{ display: "block", borderTop: "1px solid #5c3d1e", margin: "0.4rem 0" }} />Monthly.
       </p>
       <p>Read each issue online or download it as a PDF.</p>
       <EditionSelect editions={OPTIONS} />
