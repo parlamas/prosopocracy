@@ -26,7 +26,7 @@ const ISSUE = {
   price: "€2.70",
   editor: "Isidoros Parlamas",
   publisher: "Horistics · Vejle · CVR 43109324",
-  issn: "ISSN pending",
+  issn: "ISSN 3151-9164 (print) · ISSN 3151-9172 (online)",
 };
 
 const masthead = (

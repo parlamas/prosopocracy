@@ -20,7 +20,7 @@ const ISSUE = {
   price: "20 DKK · 2,70 €",
   editor: "Isidoros Parlamas",
   publisher: "Horistics · Vejle · CVR 43109324",
-  issn: "ISSN en trámite",
+  issn: "ISSN 3151-9164 (impresa) · ISSN 3151-9172 (en línea)",
 };
 
 const masthead = (
@@ -54,6 +54,8 @@ const content = (schools: boolean) => (
         <p className={styles.lead}><Def term="Pensamientos">son representaciones mentales, compuestas y simuladas de sucesos.</Def><span className={styles.defLabel}>(def-2)</span></p>
 
         <p>La gramática genera pensamientos mediante seis conceptos fundamentales: partes del discurso, modos, diátesis, aspectos, cláusulas y sintaxis. Todo lo demás (morfología, vocabulario, puntuación, pronunciación, etc.) es paragramática.</p>
+
+        <p>Estos conceptos no son nuevos. La gramática como disciplina fue fundada por los griegos: por Sócrates (470–399 antes del año 1) en el <em>Crátilo</em> de Platón, que examina la exactitud de los nombres y distingue los sustantivos (<em>ὀνόματα</em>) de los verbos (<em>ῥήματα</em>); por Dionisio Tracio (c. 170–90 antes del año 1), cuyo <em>Arte gramatical</em> estableció las ocho partes del discurso; y por Apolonio Díscolo (siglo II después del año 1), que fundó el estudio de la sintaxis.</p>
 
         <p>Cuando pensamos en algo, los seis conceptos se ponen en marcha. Ningún pensamiento es posible sin los seis.</p>
 
@@ -107,8 +109,124 @@ const content = (schools: boolean) => (
           su orden de palabras, su ortografía, su pronunciación, etc. Eso es
           paragramática.
         </p>
+        <h3 className={styles.headline}>Primero, el pensamiento</h3>
+        <p>Antes de que algo se diga o se escriba, existe como pensamiento. No encontramos primero las palabras para luego averiguar qué significan. Primero pensamos, y después buscamos las palabras. El pensamiento ya está completo en la mente, con los seis conceptos en su sitio, antes de que una lengua le dé forma.</p>
+        <p>La lengua viene después. Elige las palabras, las terminaciones y el orden de las palabras, y decide cuánto del pensamiento se dice en voz alta. Para entonces, la gramática ya ha hecho su trabajo. La gramática genera el pensamiento; la lengua lo comunica. Los dos ejemplos siguientes lo muestran.</p>
+        <h3 className={styles.headline}>Un segundo ejemplo</h3>
+        <p>Tomemos otra oración: <em className={styles.example}>Los niños estaban jugando en el jardín.</em></p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Los niños estaban jugando en el jardín.</div>
+          <p><strong>Partes del discurso:</strong> <em className={styles.target}>los</em> artículo, <em className={styles.target}>niños</em> sustantivo, <em className={styles.target}>estaban</em> verbo, <em className={styles.target}>jugando</em> participio, <em className={styles.target}>en</em> preposición, <em className={styles.target}>el</em> artículo, <em className={styles.target}>jardín</em> sustantivo.</p>
+          <p><strong>Modo:</strong> indicativo.</p>
+          <p><strong>Diátesis:</strong> activa.</p>
+          <p><strong>Aspecto:</strong> progresivo. El juego se ve como algo en curso, no como un solo acto completo.</p>
+          <p><strong>Cláusula:</strong> cláusula principal enunciativa.</p>
+          <p><strong>Sintaxis:</strong> <em className={styles.target}>los niños</em> sujeto, <em className={styles.target}>estaban jugando</em> verbo, <em className={styles.target}>en el jardín</em> adverbio.</p>
+        </div>
+        <p>Comparada con la primera oración, solo cambia el aspecto. Cambia un concepto, y el pensamiento cambia con él: una compra terminada se convierte en un juego en curso.</p>
+        <h3 className={styles.headline}>Lo que no se dice</h3>
+        <p>Alguien pregunta: <em>¿Cuándo sales?</em> Usted responde con una palabra: <em className={styles.example}>Mañana.</em></p>
+        <p>Se dice una sola palabra, y sin embargo el oyente entiende un pensamiento completo: <em className={styles.target}>[Yo salgo]</em> <em>mañana</em>. Las palabras entre corchetes no se dicen. Están implícitas, y la gramática las aporta.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>[Yo salgo] mañana.</div>
+          <p><strong>Partes del discurso:</strong> <em className={styles.target}>[yo]</em> pronombre, <em className={styles.target}>[salgo]</em> verbo, <em className={styles.target}>mañana</em> adverbio.</p>
+          <p><strong>Modo:</strong> indicativo.</p>
+          <p><strong>Diátesis:</strong> activa.</p>
+          <p><strong>Aspecto:</strong> progresivo.</p>
+          <p><strong>Cláusula:</strong> cláusula principal enunciativa.</p>
+          <p><strong>Sintaxis:</strong> <em className={styles.target}>[yo]</em> sujeto, <em className={styles.target}>[salgo]</em> verbo, <em className={styles.target}>mañana</em> adverbio.</p>
+        </div>
+        <p>Los seis conceptos están en funcionamiento, aunque solo se dijo una palabra. Eso es lo que significa que la gramática genera el pensamiento: el pensamiento está completo antes de elegir una sola palabra. Cuánto de él decimos en voz alta es paragramática.</p>
+        <h3 className={styles.headline}>Las partes del discurso</h3>
+        <p>Antes de enumerar las partes del discurso, definámoslas.</p>
+        <p className={styles.lead}><Def term="Las partes del discurso">son categorías no semióticas de conceptos que interactúan y que aclaran la semántica del habla.</Def><span className={styles.defLabel}>(def-5)</span></p>
+        <p><em>No semióticas</em> significa que las partes del discurso no tienen morfología; es decir, no tenemos en cuenta la morfología cuando tratamos las partes del discurso. <em>Semántica</em> significa significado.</p>
+        <p>De ello se sigue que la definición de cada parte del discurso debe respetarse estrictamente y sin excepción.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Nota 1</div>
+          <p>La parte del discurso a la que pertenece una palabra en una oración dada la determina únicamente la definición cuyos criterios esa palabra cumple realmente.</p>
+          <p>Cada parte del discurso tiene una definición concreta. Los criterios de las definiciones son exclusivamente semánticos, nunca morfológicos.</p>
+        </div>
+        <p>Hay diez partes del discurso, las mismas en todas las lenguas. Algunas lenguas, como el polaco y el chino, no tienen artículos, así que tienen nueve.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Las diez partes del discurso</div>
+          <p>1. Sustantivos</p>
+          <p>2. Artículos</p>
+          <p>3. Pronombres</p>
+          <p>4. Adjetivos</p>
+          <p>5. Verbos</p>
+          <p>6. Participios</p>
+          <p>7. Adverbios</p>
+          <p>8. Preposiciones</p>
+          <p>9. Conjunciones</p>
+          <p>10. Interjecciones</p>
+        </div>
+        <p className={styles.lead}><Def term="Sustantivos">son palabras que nombran entidades.</Def><span className={styles.defLabel}>(def-6)</span></p>
+        <p>Una entidad es todo lo que podemos nombrar: una persona, una cosa, un lugar, una idea. <em className={styles.target}>Pescado</em>, <em className={styles.target}>Madrid</em>, <em className={styles.target}>maestro</em> y <em className={styles.target}>justicia</em> son sustantivos, porque cada uno nombra una entidad.</p>
+        <p>Decide la definición, no la forma. En <em className={styles.example}>Nadar es sano</em>, la palabra <em className={styles.target}>nadar</em> tiene forma de verbo, pero aquí nombra una actividad como entidad. Cumple la definición de sustantivo, así que es un sustantivo.</p>
+        <p className={styles.lead}><Def term="Artículos">son las palabras que determinan la selectividad de los sustantivos.</Def><span className={styles.defLabel}>(def-7)</span></p>
+        <p>Compare <em className={styles.example}>Compré un pescado</em> con <em className={styles.example}>Compré el pescado</em>. Con <em className={styles.target}>un</em>, el pescado no está seleccionado: es un pescado cualquiera. Con <em className={styles.target}>el</em>, el pescado está seleccionado: es un pescado concreto que conocen tanto el hablante como el oyente. El sustantivo es el mismo; el artículo determina cuán selectivo es.</p>
+        <p className={styles.lead}><Def term="Pronombres">son palabras que se usan en lugar de sustantivos.</Def><span className={styles.defLabel}>(def-8)</span></p>
+        <p>En <em className={styles.example}>María compró un pescado. Ella lo cocinó.</em>, la palabra <em className={styles.target}>ella</em> está en lugar de <em className={styles.target}>María</em>, y <em className={styles.target}>lo</em> está en lugar de <em className={styles.target}>pescado</em>. En nuestra primera oración, <em className={styles.target}>nosotros</em> está en lugar de los nombres de quienes compraron el pescado.</p>
+        <p className={styles.lead}><Def term="Adjetivos">son palabras o grupos de palabras que califican a los sustantivos.</Def><span className={styles.defLabel}>(def-9)</span></p>
+        <p>En <em className={styles.example}>pescado fresco</em>, la palabra <em className={styles.target}>fresco</em> califica al sustantivo <em className={styles.target}>pescado</em>, así que es un adjetivo. En nuestra primera oración, <em className={styles.target}>esta</em> califica a <em className={styles.target}>mañana</em>, así que también es un adjetivo.</p>
+        <p>Un adjetivo también puede ser un grupo de palabras. En <em className={styles.example}>pescado del mercado</em>, el grupo <em className={styles.target}>del mercado</em> califica a <em className={styles.target}>pescado</em>. Según la definición, es un adjetivo.</p>
+        <p className={styles.lead}><Def term="Verbos">son palabras que toman un sujeto.</Def><span className={styles.defLabel}>(def-10)</span></p>
+        <p className={styles.lead}><Def term="Sujetos">concretan el significado de los verbos.</Def><span className={styles.defLabel}>(def-11)</span></p>
+        <p>Por sí solo, <em className={styles.target}>comprar</em> es solo un significado: un acto de compra, de nadie en particular. En <em className={styles.example}>Nosotros compramos pescado</em>, el sujeto <em className={styles.target}>nosotros</em> concreta ese significado: la compra se convierte en un acto que alguien realizó de verdad.</p>
+        <p className={styles.lead}><Def term="Participios">son derivados de verbos que introducen cláusulas elípticas recuperables.</Def><span className={styles.defLabel}>(def-12)</span></p>
+        <p>Un participio representa una cláusula entera que se ha abreviado. La cláusula siempre se puede recuperar:</p>
+        <p><em className={styles.example}>Habiendo terminado el trabajo, se fue a casa.</em> = <em>Como había terminado el trabajo, se fue a casa.</em></p>
+        <p><em className={styles.example}>Una vez mencionado, el nombre se hizo viral.</em> = <em>Después de que se mencionara el nombre, se hizo viral.</em></p>
+        <p>En ambos casos, la cláusula elíptica se ha recuperado, y el significado no cambia.</p>
+        <p className={styles.lead}><Def term="Adverbios">son palabras o grupos de palabras que califican a verbos, adjetivos, otros adverbios y también a cláusulas, en cuanto a tiempo, lugar, modo, frecuencia, grado, actitud o percepción.</Def><span className={styles.defLabel}>(def-13)</span></p>
+        <p>Los adverbios responden a las preguntas <em>¿dónde?</em>, <em>¿cómo?</em>, <em>¿cuándo?</em> y <em>¿cuánto?</em> La última puede ampliarse: <em>¿con qué frecuencia? ¿a qué altura? ¿con qué seguridad? ¿cuánto mejor?</em> Un adverbio puede incluso ser una respuesta por sí solo.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Cuatro ejemplos</div>
+          <p>1. <em className={styles.example}>María canta maravillosamente.</em> El adverbio <em className={styles.target}>maravillosamente</em> califica al verbo <em className={styles.target}>canta</em>. <em>¿Cómo canta María? ¡Maravillosamente!</em> Es un adverbio de modo.</p>
+          <p>2. <em className={styles.example}>Algunas personas son increíblemente ingenuas.</em> El adverbio <em className={styles.target}>increíblemente</em> califica al adjetivo <em className={styles.target}>ingenuas</em>. Es un adverbio de grado: indica cuán ingenuas.</p>
+          <p>3. <em className={styles.example}>Vamos a nadar muy temprano.</em> El adverbio <em className={styles.target}>muy</em> califica al adverbio <em className={styles.target}>temprano</em>. <em>Muy</em> es un adverbio de grado; <em>temprano</em> es un adverbio de tiempo.</p>
+          <p>4. <em className={styles.example}>Quizás no te creen.</em> El adverbio <em className={styles.target}>quizás</em> califica a toda la cláusula <em className={styles.target}>no te creen</em>. Expresa probabilidad.</p>
+        </div>
+        <p className={styles.lead}><Def term="Preposiciones">son palabras o grupos de palabras que toman sustantivos o sintagmas nominales como objetos y expresan lugar, tiempo, dirección, causa, modo, etc.</Def><span className={styles.defLabel}>(def-14)</span></p>
+        <p>No hay preposición sin objeto.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Tres ejemplos</div>
+          <p>1. <em className={styles.example}>Les di los libros a ellos.</em> La preposición <em className={styles.target}>a</em> toma el objeto <em className={styles.target}>ellos</em>, un pronombre en lugar de un sustantivo, y expresa dirección.</p>
+          <p>2. <em className={styles.example}>Las llaves están en mi bolsillo.</em> La preposición <em className={styles.target}>en</em> toma el sintagma nominal <em className={styles.target}>mi bolsillo</em> y expresa lugar.</p>
+          <p>3. <em className={styles.example}>Estudié el problema en profundidad.</em> La preposición <em className={styles.target}>en</em> toma el sustantivo <em className={styles.target}>profundidad</em> y expresa modo.</p>
+        </div>
+        <p className={styles.lead}><Def term="Sintagmas nominales">son sintagmas que contienen sustantivos o pronombres y pueden funcionar como sujetos, objetos o atributos.</Def><span className={styles.defLabel}>(def-15)</span></p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Tres ejemplos</div>
+          <p>1. <em className={styles.target}>drama</em> → sustantivo; <em className={styles.target}>mucho drama</em> → sintagma nominal. <em className={styles.example}>Si una película tiene mucho drama, suele ser agotadora.</em> <em>Mucho drama</em> es el complemento directo del verbo <em>tiene</em>.</p>
+          <p>2. <em className={styles.target}>historia</em> → sustantivo; <em className={styles.target}>una larga historia</em> → sintagma nominal. <em className={styles.example}>Su vida es una larga historia.</em> <em>Una larga historia</em> es el atributo del verbo <em>es</em>.</p>
+          <p>3. <em className={styles.target}>momentos</em> → sustantivo; <em className={styles.target}>los momentos difíciles</em> → sintagma nominal. <em className={styles.example}>Los momentos difíciles forjan el carácter.</em> <em>Los momentos difíciles</em> es el sujeto del verbo <em>forjan</em>.</p>
+        </div>
+        <p className={styles.lead}><Def term="Conjunciones">son palabras o grupos de palabras que establecen una relación de subordinación, es decir, de interdependencia, entre cláusulas.</Def><span className={styles.defLabel}>(def-16)</span></p>
+        <p>Todas las conjunciones son hipotácticas. La idea de que algunas conjunciones son paratácticas es infundada y se tratará <strong>a su debido tiempo</strong>.</p>
+        <p>Los libros de gramática convencionales dividen las conjunciones en dos categorías: coordinantes y subordinantes. Pero ¿por qué se hace esta división, y qué aporta a la comprensión de la gramática?</p>
+        <p>Las conjunciones se dividen así porque los llamados gramáticos no han comprendido que, con la excepción de las cláusulas condicionales, si quitamos la conjunción de cualquier cláusula subordinada, esta se convierte automáticamente en principal. Y esto no ocurre solo con las conjunciones «coordinantes», sino con todas las conjunciones.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Quite la conjunción</div>
+          <p>1. <em className={styles.example}>Me quedé en casa porque llovía.</em> Sin <em className={styles.target}>porque</em>: <em>Llovía.</em> Una cláusula principal.</p>
+          <p>2. <em className={styles.example}>Me quedé en casa, pero ella salió.</em> Sin <em className={styles.target}>pero</em>: <em>Ella salió.</em> Una cláusula principal.</p>
+        </div>
+        <p>Por regla general, lo que hace subordinada a una cláusula es la presencia de una conjunción. Sin embargo, la historia no termina aquí. Como veremos, incluso cláusulas sin ninguna conjunción son a veces subordinadas, porque así lo exige la propia semántica.</p>
+        <p>Los autores nominales de libros de gramática simplemente copian otros libros de gramática y pegan la copia en un libro «nuevo», cambiando solo algunos detalles superficiales para guardar las apariencias. Huelga decir que lo único que esta división de las conjunciones aporta a la gramática es una confusión abundante y generalizada.</p>
+        <p>También es muy importante señalar que las definiciones de los conceptos en estos libros, cuando se dan, no cumplen los requisitos de la horística. Además, los «autores» de estos libros violan una y otra vez las mismas definiciones que supuestamente formularon ellos mismos. La verdad es que simplemente copian de otros libros la definición que les llama la atención.</p>
+        <p className={styles.lead}><Def term="Interjecciones">son palabras o grupos de palabras que expresan emoción y no tienen ninguna función sintáctica.</Def><span className={styles.defLabel}>(def-17)</span></p>
+        <p>Por emoción entendemos también la <strong>voluntad</strong> (<em className={styles.target}>¡chis!</em> en el sentido de silencio, <em className={styles.target}>¡vamos!</em>), la <strong>vacilación</strong> (<em className={styles.target}>hm</em>, <em className={styles.target}>eh</em>) y la <strong>convención social</strong> (<em className={styles.target}>hola</em>, <em className={styles.target}>gracias</em>), cuando estas palabras se usan como exclamaciones.</p>
+        <div className={styles.box}>
+          <div className={styles.boxTitle}>Cuatro ejemplos</div>
+          <p>1. <em className={styles.example}>¡Uf, por fin se acabó!</em> La palabra <em className={styles.target}>uf</em> no tiene ninguna función sintáctica: no es sujeto, atributo, objeto ni nada más. Esto vale para todas las interjecciones.</p>
+          <p>2. <em className={styles.example}>¡Ay, cuánto echo de menos a mi madre!</em></p>
+          <p>3. <em className={styles.example}>¡Huy, qué me ha pasado!</em></p>
+          <p>4. <em className={styles.example}>¡Bravo, lo hiciste perfecto!</em></p>
+        </div>
+        <p>Un puñado de palabras no encaja en ninguna de las definiciones de las diez partes del discurso. Las llamamos partículas.</p>
         <p>
-          <em>En la próxima edición: las partes del discurso, en detalle.</em>
+          <em>En la próxima edición: los modos, en detalle.</em>
         </p>
       </Story>
 
@@ -376,7 +494,7 @@ const content = (schools: boolean) => (
     <h2 className={styles.headlineSpan} data-nonum>Suscripción</h2>
     <OneColumn>
       <p>
-        Se publica cada semana en español, danés, polaco y griego, cada edición
+        Se publica cada mes en español, danés, polaco y griego, cada edición
         junto con la inglesa. Disponible impresa y en PDF.
       </p>
       <h3 className={styles.headline}>Escuelas</h3>
@@ -386,7 +504,7 @@ const content = (schools: boolean) => (
       <h3 className={styles.headline}>Particulares</h3>
       <p>Impresa: 799 DKK (107 €) al año. PDF: 399 DKK (54 €) al año. Ejemplar suelto: 20 DKK (2,70 €).</p>
       <h3 className={styles.headline}>Clases de gramática</h3>
-      <p>Clases de gramática individuales y en grupo, en inglés, danés, polaco, griego y español. Consultas: mind@horistics.com.</p>
+      <p>Clases de gramática individuales y en grupo, en inglés, griego y español. Consultas: mind@horistics.com.</p>
       <h3 className={styles.headline}>Contacto</h3>
       <p>Para suscribirse, escriba a mind@horistics.com indicando su nombre, su dirección y la edición que desea. Pago por MobilePay 27 13 44 83.</p>
 
@@ -410,4 +528,4 @@ export const spanish: Edition = {
 };
 
 // Edición escolar: el mismo periódico sin el artículo de Noticias interpretativas.
-export const spanishSchools: Edition = { ...spanish, content: content(true) };
+export const spanishSchools: Edition = { ...spanish, content: content(true), oneColumn: true };
