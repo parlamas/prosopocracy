@@ -232,7 +232,17 @@ export default function HomepageContent({
 
       <footer className="prosopoFooter">
         <div className="wrap">
-          <p>{t.footerText}</p>
+                    <p>{t.footerText}</p>
+          <p style={{ fontSize: 13, marginTop: 8 }}>
+            Prosopocracy is defined in{' '}
+            <a
+              href="https://www.amazon.com/dp/B0HBZKMXJR"
+              style={{ color: 'inherit', textDecoration: 'underline' }}
+            >
+              <i>Learn How To Work With AI To Hydrate Critical And Independent Thinking</i>
+            </a>{' '}
+            by Isidoros Parlamas, published 17 August 2026.
+          </p>
         </div>
       </footer>
     </div>
