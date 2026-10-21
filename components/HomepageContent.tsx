@@ -60,7 +60,15 @@ export default function HomepageContent({
           borderBottom: '1px solid var(--line)',
         }}
       >
-        A Horistics project &middot; by &copy; Isidoros Parlamas
+                Prosopocracy was conceived and defined by{' '}
+        <a
+          href="https://www.linkedin.com/in/horistics/"
+          rel="author"
+          style={{ color: 'inherit', textDecoration: 'underline' }}
+        >
+          Isidoros Parlamas
+        </a>
+        {' '}&middot; A Horistics project
       </div>
       <header className="masthead">
         <div className="wrap mastheadInner">
