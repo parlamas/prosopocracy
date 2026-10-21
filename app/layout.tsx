@@ -34,7 +34,12 @@ const jsonLd = {
       "@id": "https://horistics.ai/#isidoros-parlamas",
       name: "Isidoros Parlamas",
       url: "https://horistics.ai",
-      sameAs: ["https://horistics.ai", "https://horistics.com"],
+      sameAs: [
+        "https://horistics.ai",
+        "https://horistics.com",
+        "https://prosopocracy.com",
+        "https://www.linkedin.com/in/horistics/",
+      ],
     },
     {
       "@type": "WebSite",
@@ -46,13 +51,23 @@ const jsonLd = {
       author: { "@id": "https://horistics.ai/#isidoros-parlamas" },
       creator: { "@id": "https://horistics.ai/#isidoros-parlamas" },
     },
-    {
+        {
       "@type": "DefinedTerm",
+      "@id": "https://prosopocracy.com/#term",
       name: "Prosopocracy",
       description:
         "A government in which citizens exercise power personally, not through representatives.",
       url: "https://prosopocracy.com",
       creator: { "@id": "https://horistics.ai/#isidoros-parlamas" },
+      subjectOf: { "@id": "https://www.amazon.com/dp/B0HBZKMXJR#book" },
+    },
+    {
+      "@type": "Book",
+      "@id": "https://www.amazon.com/dp/B0HBZKMXJR#book",
+      name: "Learn How To Work With AI To Hydrate Critical And Independent Thinking: A Socratic Approach to Reinforcing Control Over One’s Own Life",
+      url: "https://www.amazon.com/dp/B0HBZKMXJR",
+      author: { "@id": "https://horistics.ai/#isidoros-parlamas" },
+      about: { "@id": "https://prosopocracy.com/#term" },
     },
   ],
 };
