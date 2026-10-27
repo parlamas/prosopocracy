@@ -89,6 +89,8 @@ export default function HomepageContent({
             <a href="#rota">ROTA</a>
             <span aria-hidden="true"> | </span>
             <a href="/agora">Agora</a>
+            <span aria-hidden="true"> | </span>
+            <a href="/6-homer-st/chapter-1.html">6 Homer St.</a>
             {userName && (
               <>
                 <span aria-hidden="true"> | </span>
