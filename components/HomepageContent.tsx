@@ -22,7 +22,7 @@ const BOOK_EN = {
     'October 2026. Four American journalists arrive in Neo Psychiko, a quiet district of Athens, to expose a town with no politicians, where every citizen takes a turn as police officer, legislator and judge. Over four years they watch it spread to Athens.',
   bookPaperback: 'Paperback',
   bookKindle: 'Kindle',
-  bookRead: 'Read chapter 1 free',
+  bookRead: 'Read the preface and chapter 1 free',
 };
 
 export default function HomepageContent({
@@ -150,7 +150,7 @@ export default function HomepageContent({
               <p style={{ display: 'flex', gap: 18, flexWrap: 'wrap', marginTop: 16 }}>
                 <a href={BOOK_PAPERBACK_URL} className="rotaLink">{book.paperback}</a>
                 <a href={BOOK_KINDLE_URL} className="rotaLink">{book.kindle}</a>
-                <a href="/6-homer-st/chapter-1.html" className="rotaLink">{book.read}</a>
+                <a href="/6-homer-st/preface.html" className="rotaLink">{book.read}</a>
               </p>
             </div>
           </div>

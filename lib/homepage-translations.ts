@@ -219,7 +219,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     bookText: "Οκτώβριος 2026. Τέσσερις Αμερικανοί δημοσιογράφοι φτάνουν στο Νέο Ψυχικό για να ξεσκεπάσουν έναν δήμο χωρίς πολιτικούς, όπου κάθε πολίτης υπηρετεί με τη σειρά ως αστυνομικός, νομοθέτης και δικαστής. Μέσα σε τέσσερα χρόνια τον βλέπουν να φτάνει ως την Αθήνα. Στα αγγλικά.",
     bookPaperback: "Χάρτινη έκδοση",
     bookKindle: "Kindle",
-    bookRead: "Διαβάστε δωρεάν το 1ο κεφάλαιο",
+    bookRead: "Διαβάστε δωρεάν τον πρόλογο και το 1ο κεφάλαιο",
   },
   es: {
     label: "Español",
@@ -281,7 +281,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     bookText: "Octubre de 2026. Cuatro periodistas estadounidenses llegan a Neo Psychiko, un barrio tranquilo de Atenas, para destapar un municipio sin políticos, donde cada ciudadano sirve por turnos como policía, legislador y juez. En cuatro años ven cómo la idea llega hasta Atenas. En inglés.",
     bookPaperback: "Tapa blanda",
     bookKindle: "Kindle",
-    bookRead: "Lee gratis el capítulo 1",
+    bookRead: "Lee gratis el prólogo y el capítulo 1",
   },
   pt: {
     label: "Português",
@@ -628,7 +628,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     bookText: "Oktober 2026. Fire amerikanske journalister ankommer til Neo Psychiko, en stille bydel i Athen, for at afsløre en kommune uden politikere, hvor hver borger på skift gør tjeneste som politibetjent, lovgiver og dommer. Over fire år ser de ideen brede sig til Athen. På engelsk.",
     bookPaperback: "Paperback",
     bookKindle: "Kindle",
-    bookRead: "Læs kapitel 1 gratis",
+    bookRead: "Læs forordet og kapitel 1 gratis",
   },
   no: {
     label: "Norsk",
@@ -1089,7 +1089,7 @@ export const HOMEPAGE_TRANSLATIONS: Partial<Record<LanguageCode, HomepageText>> 
     bookText: "Październik 2026. Czworo amerykańskich dziennikarzy przyjeżdża do Neo Psychiko, spokojnej dzielnicy Aten, by zdemaskować gminę bez polityków, w której każdy obywatel na zmianę pełni służbę jako policjant, ustawodawca i sędzia. Przez cztery lata obserwują, jak idea dociera do Aten. Po angielsku.",
     bookPaperback: "Wersja papierowa",
     bookKindle: "Kindle",
-    bookRead: "Przeczytaj rozdział 1 za darmo",
+    bookRead: "Przeczytaj za darmo przedmowę i rozdział 1",
   },
   cs: {
     label: "Čeština",
