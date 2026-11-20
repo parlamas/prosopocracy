@@ -13,6 +13,18 @@ const HORISTICS_QUOTE_EN =
 const HORISTICS_QUOTE_EL =
   '«Οριστική είναι η εύστοχη και αεροστεγής διατύπωση της ειδοποιού διαφοράς εννοιών.»';
 
+// The novel. English is the fallback for languages without their own text.
+const BOOK_PAPERBACK_URL = 'https://www.amazon.com/dp/8797568856';
+const BOOK_KINDLE_URL = 'https://www.amazon.com/dp/B0HS6S6KZM';
+const BOOK_EN = {
+  bookLabel: 'The novel',
+  bookText:
+    'October 2026. Four American journalists arrive in Neo Psychiko, a quiet district of Athens, to expose a town with no politicians, where every citizen takes a turn as police officer, legislator and judge. Over four years they watch it spread to Athens.',
+  bookPaperback: 'Paperback',
+  bookKindle: 'Kindle',
+  bookRead: 'Read chapter 1 free',
+};
+
 export default function HomepageContent({
   lang,
   t,
@@ -22,7 +34,14 @@ export default function HomepageContent({
   t: HomepageText;
   userName?: string | null;
 }) {
-  const rootRef = useRef<HTMLDivElement>(null);
+    const rootRef = useRef<HTMLDivElement>(null);
+  const book = {
+    label: t.bookLabel ?? BOOK_EN.bookLabel,
+    text: t.bookText ?? BOOK_EN.bookText,
+    paperback: t.bookPaperback ?? BOOK_EN.bookPaperback,
+    kindle: t.bookKindle ?? BOOK_EN.bookKindle,
+    read: t.bookRead ?? BOOK_EN.bookRead,
+  };
 
   useEffect(() => {
     const els = rootRef.current?.querySelectorAll('.reveal');
@@ -107,7 +126,34 @@ export default function HomepageContent({
           <div className="eyebrow">{t.heroEyebrow}</div>
           <h1 className="thesis">{t.heroThesis}</h1>
           <span className="greekTerm">{t.heroGreekTerm}</span>
-          <p className="lede">{t.heroLede}</p>
+                    <p className="lede">{t.heroLede}</p>
+        </div>
+      </section>
+
+      <section id="book" className="section">
+        <div className="wrap">
+          <div className="sectionLabel">{book.label}</div>
+          <div
+            className="rotaBox reveal"
+            style={{ display: 'flex', gap: 28, alignItems: 'flex-start', flexWrap: 'wrap' }}
+          >
+            <img
+              src="/6-homer-st/cover.jpg"
+              alt="The Story of Prosopocracy at 6 Homer St. by Isidoros Parlamas"
+              width={160}
+              height={256}
+              style={{ flex: '0 0 auto', boxShadow: '0 4px 14px rgba(0,0,0,0.18)' }}
+            />
+            <div style={{ flex: '1 1 260px' }}>
+              <h3>The Story of Prosopocracy at 6 Homer St.</h3>
+              <p>{book.text}</p>
+              <p style={{ display: 'flex', gap: 18, flexWrap: 'wrap', marginTop: 16 }}>
+                <a href={BOOK_PAPERBACK_URL} className="rotaLink">{book.paperback}</a>
+                <a href={BOOK_KINDLE_URL} className="rotaLink">{book.kindle}</a>
+                <a href="/6-homer-st/chapter-1.html" className="rotaLink">{book.read}</a>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
