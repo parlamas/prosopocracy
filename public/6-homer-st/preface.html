@@ -21,9 +21,22 @@
   }
   p.break { text-align:center; color:var(--muted); margin:1.2em 0; }
   .note { font-size:.85em; color:var(--muted); margin-top:.6em; }
+  .pic { margin:0 0 24px; }
+  .pic img { max-width:100%; height:auto; display:block; }
+  .pic figcaption { color:var(--muted); font-size:.85rem; margin-top:6px; }
+  header.site { border-bottom:1px solid #e2dcd4; }
+  header.site div { max-width:680px; margin:0 auto; padding:14px 16px; display:flex; justify-content:space-between; align-items:baseline; font-size:.85rem; }
+  header.site a { color:var(--accent); text-decoration:none; letter-spacing:.12em; text-transform:uppercase; }
+  .next { max-width:680px; margin:0 auto; padding:0 16px 64px; }
+  .next .box { border-top:1px solid #e2dcd4; padding-top:24px; }
+  .next p { counter-increment:none; }
+  .next p::before { content:none !important; }
+  .next a { color:var(--accent); }
+  .next a.btn { display:inline-block; margin:8px 12px 0 0; padding:8px 16px; background:var(--accent); color:#fff; text-decoration:none; border-radius:3px; }
 </style>
 </head>
 <body>
+<header class="site"><div><a href="/">Prosopocracy</a><span>6 Homer St.</span></div></header>
 <main>
 <div style="font-size: 12pt;">Isidoros Parlamas</div>
 <div style="font-size: 15pt;">The Story of Prosopocracy</div>
@@ -202,5 +215,9 @@
 <div class="note">* kafeneio/kafeneia = neighborhood traditional café. tavli = backgammon.</div>
 
 </main>
+<section class="next"><div class="box">
+<a class="btn" href="chapter-1.html">Read Chapter 1 →</a>
+<p style="margin-top:16px">Or get the whole book: <a href="https://www.amazon.com/dp/8797568856">Paperback</a> · <a href="https://www.amazon.com/dp/B0HS6S6KZM">Kindle</a></p>
+</div></section>
 </body>
 </html>
