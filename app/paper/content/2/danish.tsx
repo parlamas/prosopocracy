@@ -16,7 +16,7 @@ const ISSUE = {
   name: "HORISTICS",
   tagline: "Grammatik · Paragrammatik · Politik · Livskvalitet · Fortolkende nyheder",
   number: "Nr. 2",
-  date: "1. december 2026",
+  date: "9. november 2026",
   price: "20 kr. · 2,70 €",
   editor: "Isidoros Parlamas",
   publisher: "Horistics · Vejle · CVR 43109324",

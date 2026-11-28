@@ -16,7 +16,7 @@ const ISSUE = {
   name: "HORISTICS",
   tagline: "Γραμματική · Παραγραμματική · Πολιτική · Ποιότητα ζωής · Ερμηνεία της επικαιρότητας",
   number: "Αρ. 2",
-  date: "1 Δεκεμβρίου 2026",
+  date: "9 Νοεμβρίου 2026",
   price: "2,70 €",
   editor: "Ισίδωρος Παρλαμάς",
   publisher: "Horistics · Vejle · CVR 43109324",

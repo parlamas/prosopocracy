@@ -27,7 +27,7 @@ type Issue = {
 const ISSUES: Issue[] = [
   {
     number: 2,
-    date: "1 December 2026",
+    date: "9 November 2026",
     editions: [
       { name: "Danish + English", label: "Dansk og engelsk udgave", href: "/paper/danish" },
       { name: "Greek + English", label: "Ελληνική έκδοση", href: "/paper/greek" },

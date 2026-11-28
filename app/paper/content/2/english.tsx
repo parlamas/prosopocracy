@@ -20,7 +20,7 @@ const ISSUE = {
   name: "HORISTICS",
   tagline: "Grammar · Paragrammar · Politics · Quality Of Life · Interpretive News",
   number: "No. 2",
-  date: "1 December 2026",
+  date: "9 November 2026",
   price: "€2.70",
   editor: "Isidoros Parlamas",
   publisher: "Horistics · Vejle · CVR 43109324",
