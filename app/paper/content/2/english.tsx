@@ -54,17 +54,17 @@ const content = (schools: boolean) => (
         <p className={styles.lead}><Def term="Diathesis">is the origin of the energy in the sentence, as it bears on the subject.</Def><span className={styles.defLabel}>(def-18)</span></p>
         <p>Energy here means energy as we study it in physics. It is not a metaphor; every word is meant literally. To find the diathesis, we ask where the energy comes from and what it does to the subject.</p>
         <p className={styles.lead}><Def term="Voice">is a dedicated, full set of verb forms that accompanies a diathesis.</Def><span className={styles.defLabel}>(def-19)</span></p>
-        <p>Voice is morphology: the form of the word, its stem and its endings. Diathesis is the relation of energy to the subject. One belongs to form, the other to meaning. A language can express a diathesis without having a voice for it.</p>
+        <p>Voice is morphology: the form of the verb. Diathesis is the relation of energy to the subject. One belongs to form, the other to meaning. A language can express a diathesis without having a voice for it.</p>
         <h3 className={styles.headline}>Who has voice</h3>
-        <p>The test is strict. The set must be <strong>full</strong>: every person, every tense, every mood. Each form must be <strong>one word</strong>: a helper word plus the active form is a periphrasis, not a voice. And the set must be <strong>dedicated</strong>: its endings must differ from the endings of the active forms of the same verb.</p>
+        <p>The test is strict. The set must be <strong>full</strong>: every person, every tense, every mood. Each form must be <strong>one word</strong>: a helper word plus the active form is a periphrasis, not a voice. And the set must be <strong>dedicated</strong>: its forms must differ from the active forms of the same verb.</p>
         <div className={styles.box}>
           <div className={styles.boxTitle}>Classical Greek: λύω, “loosen”</div>
-          <p><strong>Present:</strong> λύ-ω, λύ-εις, λύ-ει → λύ-ομαι, λύ-ῃ, λύ-εται</p>
-          <p><strong>Aorist:</strong> ἔλυσ-α, ἔλυσ-ας, ἔλυσ-ε → ἐλύθη-ν, ἐλύθη-ς, ἐλύθη</p>
-          <p>Every person, tense and mood has its own one-word passive form, with endings different from the active.</p>
+          <p><strong>Present:</strong> λύω, λύεις, λύει → λύομαι, λύῃ, λύεται</p>
+          <p><strong>Aorist:</strong> ἔλυσα, ἔλυσας, ἔλυσε → ἐλύθην, ἐλύθης, ἐλύθη</p>
+          <p>Every person, tense and mood has its own one-word passive form, different from the active form.</p>
         </div>
-        <p>Among the well-documented languages, only Classical Greek and Sanskrit pass all three tests. Both inherited from their common Indo-European ancestor two complete sets of endings, one active and one middle/passive, and both kept them in every tense and mood: Greek λύ-ει → λύ-εται, Sanskrit <em>bhara-ti</em> → <em>bhriya-te</em>.</p>
-        <p>Every other language fails at least one test. English, Spanish and Hindi use a helper verb, which is a periphrasis. Latin uses one in the perfect (<em>amatus sum</em>). Arabic and Hebrew change the stem but keep the active endings (<em>katab-tu</em> → <em>kutib-tu</em>). Turkish and Japanese insert one element and keep the active endings (<em>yaz-dı-m</em> → <em>yaz-ıl-dı-m</em>). Danish and Swedish have a single form in <em>-s</em>, and one form is not a set. Modern Greek keeps its own endings only in the present (κοιτάζ-ω → κοιτάζ-ομαι); in the past the endings are the same (κοίταξ-α → κοιτάχθηκ-α).</p>
+        <p>Among the well-documented languages, only Classical Greek and Sanskrit pass all three tests. Both have two complete sets of verb forms, one active and one middle/passive, in every tense and mood: Greek λύει → λύεται, Sanskrit <em>bharati</em> → <em>bhriyate</em>.</p>
+        <p>Every other language fails at least one test. English, Spanish and Hindi use a helper verb, which is a periphrasis. Latin uses one in the perfect (<em>amatus sum</em>). Arabic and Hebrew have one-word passive forms only in some tenses (<em>kataba</em> → <em>kutiba</em>); the other tenses need a helper word, and there is no passive imperative. Turkish and Japanese insert an element that makes a new verb (<em>yazmak</em>, write → <em>yazılmak</em>, be written); its forms are the active forms of that new verb, not a set of the same verb. Danish and Swedish have a single form in <em>-s</em>, and one form is not a set. Modern Greek has one-word passive forms in the present and the past (κοιτάζω → κοιτάζομαι, κοίταξα → κοιτάχτηκα), but its perfect tenses need a helper word (έχω κοιταχτεί).</p>
         <p>Voice, in the full sense, belongs to Classical Greek and Sanskrit. No language spoken today has it. So when a grammar book today teaches “the passive voice,” it teaches something the language does not have.</p>
         <h3 className={styles.headline}>The five diatheseis</h3>
         <p>Every language has the same five, because each is decided by one question with a physical answer: where does the energy come from, and what does it do to the subject?</p>
@@ -89,7 +89,7 @@ const content = (schools: boolean) => (
           <p>3. <strong>Its fourth class is defined by what it is not.</strong> “Neuter” means the subject neither acts on something else nor receives. A class defined only by negation is a leftover box. Internal and receptive diathesis both fall into it, unseparated.</p>
         </div>
         <p>The result is that a verb can be moved from one class to another by habit or convenience. With the origin of energy as the test, it cannot.</p>
-        <p>Form does not decide diathesis either. <em>Ανησυχώ</em> (I worry) has active endings, but its diathesis is internal. <em>I see</em> has active form, but its diathesis is receptive. Voice and diathesis must be kept apart.</p>
+        <p>Form does not decide diathesis either. <em>Ανησυχώ</em> (I worry) has active form, but its diathesis is internal. <em>I see</em> has active form, but its diathesis is receptive. Voice and diathesis must be kept apart.</p>
         <h3 className={styles.headline}>Grammar and paragrammar</h3>
         <p>Diathesis is grammar, and grammar is universal. Energy comes from the same places in every language, so every language has the same five diatheseis, exactly identical.</p>
         <p>Voice is paragrammar. It depends on the language: it is one way a language may mark a diathesis, with a full, dedicated set of verb forms. Classical Greek and Sanskrit had it. Languages spoken today mark diathesis in other ways: with helper words, with changes to the stem, or with an inserted element.</p>

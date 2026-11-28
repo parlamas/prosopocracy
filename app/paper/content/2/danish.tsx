@@ -50,17 +50,17 @@ const content = (schools: boolean) => (
         <p className={styles.lead}><Def term="Diatese">er energiens oprindelse i sætningen, sådan som den angår subjektet.</Def><span className={styles.defLabel}>(def-18)</span></p>
         <p>Energi betyder her energi, sådan som vi studerer den i fysikken. Det er ikke en metafor; hvert ord er ment bogstaveligt. For at finde diatesen spørger vi, hvor energien kommer fra, og hvad den gør ved subjektet.</p>
         <p className={styles.lead}><Def term="Voice">er et særligt, fuldstændigt sæt af verbalformer, der ledsager en diatese.</Def><span className={styles.defLabel}>(def-19)</span></p>
-        <p><em>Voice</em> er morfologi: ordets form, dets stamme og dets endelser. Diatese er energiens forhold til subjektet. Det ene hører til formen, det andet til betydningen. Et sprog kan udtrykke en diatese uden at have en <em>voice</em> for den.</p>
+        <p><em>Voice</em> er morfologi: verbets form. Diatese er energiens forhold til subjektet. Det ene hører til formen, det andet til betydningen. Et sprog kan udtrykke en diatese uden at have en <em>voice</em> for den.</p>
         <h3 className={styles.headline}>Hvilke sprog har voice</h3>
-        <p>Testen er streng. Sættet skal være <strong>fuldstændigt</strong>: hver person, hver tid, hver modus. Hver form skal være <strong>ét ord</strong>: et hjælpeverbum plus den aktive form er en omskrivning, ikke en <em>voice</em>. Og sættet skal være <strong>særligt</strong>: dets endelser skal være forskellige fra endelserne i det samme verbums aktive former.</p>
+        <p>Testen er streng. Sættet skal være <strong>fuldstændigt</strong>: hver person, hver tid, hver modus. Hver form skal være <strong>ét ord</strong>: et hjælpeverbum plus den aktive form er en omskrivning, ikke en <em>voice</em>. Og sættet skal være <strong>særligt</strong>: dets former skal være forskellige fra det samme verbums aktive former.</p>
         <div className={styles.box}>
           <div className={styles.boxTitle}>Klassisk græsk: λύω, »løsne«</div>
-          <p><strong>Præsens:</strong> λύ-ω, λύ-εις, λύ-ει → λύ-ομαι, λύ-ῃ, λύ-εται</p>
-          <p><strong>Aorist:</strong> ἔλυσ-α, ἔλυσ-ας, ἔλυσ-ε → ἐλύθη-ν, ἐλύθη-ς, ἐλύθη</p>
-          <p>Hver person, tid og modus har sin egen passive form i ét ord, med andre endelser end den aktive.</p>
+          <p><strong>Præsens:</strong> λύω, λύεις, λύει → λύομαι, λύῃ, λύεται</p>
+          <p><strong>Aorist:</strong> ἔλυσα, ἔλυσας, ἔλυσε → ἐλύθην, ἐλύθης, ἐλύθη</p>
+          <p>Hver person, tid og modus har sin egen passive form i ét ord, forskellig fra den aktive form.</p>
         </div>
-        <p>Blandt de veldokumenterede sprog består kun klassisk græsk og sanskrit alle tre test. Begge arvede fra deres fælles indoeuropæiske forfader to fuldstændige sæt endelser, et aktivt og et medium-passivt, og begge beholdt dem i alle tider og modi: græsk λύ-ει → λύ-εται, sanskrit <em>bhara-ti</em> → <em>bhriya-te</em>.</p>
-        <p>Alle andre sprog dumper i mindst én test. Engelsk, spansk og hindi bruger et hjælpeverbum, og det er en omskrivning. Latin gør det i perfektum (<em>amatus sum</em>). Arabisk og hebraisk ændrer stammen, men beholder de aktive endelser (<em>katab-tu</em> → <em>kutib-tu</em>). Tyrkisk og japansk indskyder ét element og beholder de aktive endelser (<em>yaz-dı-m</em> → <em>yaz-ıl-dı-m</em>). Dansk og svensk har én form på <em>-s</em>, og én form er ikke et sæt. Nygræsk beholder sine egne endelser kun i præsens (κοιτάζ-ω → κοιτάζ-ομαι); i datid er endelserne de samme (κοίταξ-α → κοιτάχθηκ-α).</p>
+        <p>Blandt de veldokumenterede sprog består kun klassisk græsk og sanskrit alle tre test. Begge har to fuldstændige sæt verbalformer, et aktivt og et medium-passivt, i alle tider og modi: græsk λύει → λύεται, sanskrit <em>bharati</em> → <em>bhriyate</em>.</p>
+        <p>Alle andre sprog dumper i mindst én test. Engelsk, spansk og hindi bruger et hjælpeverbum, og det er en omskrivning. Latin gør det i perfektum (<em>amatus sum</em>). Arabisk og hebraisk har passive former i ét ord kun i nogle tider (<em>kataba</em> → <em>kutiba</em>); de andre tider kræver et hjælpeord, og der findes ingen passiv imperativ. Tyrkisk og japansk indskyder et element, der danner et nyt verbum (<em>yazmak</em>, skrive → <em>yazılmak</em>, blive skrevet); dets former er det nye verbums aktive former, ikke et sæt i det samme verbum. Dansk og svensk har én form på <em>-s</em>, og én form er ikke et sæt. Nygræsk har passive former i ét ord i præsens og datid (κοιτάζω → κοιτάζομαι, κοίταξα → κοιτάχτηκα), men dets perfektum kræver et hjælpeord (έχω κοιταχτεί).</p>
         <p><em>Voice</em> i fuld forstand tilhører klassisk græsk og sanskrit. Intet sprog, der tales i dag, har det. Så når en grammatikbog i dag underviser i »passiv« som <em>voice</em>, underviser den i noget, sproget ikke har.</p>
         <h3 className={styles.headline}>De fem diateser</h3>
         <p>Alle sprog har de samme fem, fordi hver af dem afgøres af ét spørgsmål med et fysisk svar: hvor kommer energien fra, og hvad gør den ved subjektet?</p>
@@ -85,7 +85,7 @@ const content = (schools: boolean) => (
           <p>3. <strong>Dens fjerde klasse er defineret ved, hvad den ikke er.</strong> »Neutral« betyder, at subjektet hverken virker på noget andet eller modtager. En klasse, der kun er defineret ved nægtelse, er en restkasse. Indre og receptiv diatese havner begge i den, uadskilte.</p>
         </div>
         <p>Resultatet er, at et verbum kan flyttes fra én klasse til en anden af vane eller bekvemmelighed. Med energiens oprindelse som test kan det ikke.</p>
-        <p>Formen afgør heller ikke diatesen. <em>Ανησυχώ</em> (jeg bekymrer mig) har aktive endelser, men dens diatese er indre. <em>Jeg ser</em> har aktiv form, men dens diatese er receptiv. <em>Voice</em> og diatese skal holdes adskilt.</p>
+        <p>Formen afgør heller ikke diatesen. <em>Ανησυχώ</em> (jeg bekymrer mig) har aktiv form, men dens diatese er indre. <em>Jeg ser</em> har aktiv form, men dens diatese er receptiv. <em>Voice</em> og diatese skal holdes adskilt.</p>
         <h3 className={styles.headline}>Grammatik og paragrammatik</h3>
         <p>Diatese er grammatik, og grammatik er universel. Energien kommer de samme steder fra i alle sprog, så alle sprog har de samme fem diateser, helt identiske.</p>
         <p><em>Voice</em> er paragrammatik. Den afhænger af sproget: den er én måde, et sprog kan markere en diatese på, med et fuldstændigt, særligt sæt af verbalformer. Klassisk græsk og sanskrit havde den. De sprog, der tales i dag, markerer diatese på andre måder: med hjælpeord, med ændringer i stammen eller med et indskudt element.</p>
