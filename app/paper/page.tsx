@@ -26,19 +26,25 @@ type Issue = {
 // Newest issue first. Add each new issue at the top.
 const ISSUES: Issue[] = [
   {
-    number: 1,
-    date: "9 October 2026",
+    number: 2,
+    date: "1 December 2026",
     editions: [
-      {
-        name: "Danish + English",
-        label: "Dansk og engelsk udgave",
-        href: "/paper/danish",
-        pdf: "/paper/pdf/horistics-danish-english.pdf",
-      },
+      { name: "Danish + English", label: "Dansk og engelsk udgave", href: "/paper/danish" },
       { name: "Greek + English", label: "Ελληνική έκδοση", href: "/paper/greek" },
       { name: "Spanish + English", label: "Edición en español", href: "/paper/spanish" },
       { name: "Polish + English", label: "Wydanie polskie", href: "/paper/polish" },
       { name: "English", label: "English edition", href: "/paper/english" },
+    ],
+  },
+  {
+    number: 1,
+    date: "9 October 2026",
+    editions: [
+      { name: "Danish + English", label: "Dansk og engelsk udgave", href: "/paper/1/danish" },
+      { name: "Greek + English", label: "Ελληνική έκδοση", href: "/paper/1/greek" },
+      { name: "Spanish + English", label: "Edición en español", href: "/paper/1/spanish" },
+      { name: "Polish + English", label: "Wydanie polskie", href: "/paper/1/polish" },
+      { name: "English", label: "English edition", href: "/paper/1/english" },
     ],
   },
 ];
